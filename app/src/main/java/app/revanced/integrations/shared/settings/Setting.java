@@ -7,7 +7,7 @@ import app.revanced.integrations.shared.Logger;
 import app.revanced.integrations.shared.StringRef;
 import app.revanced.integrations.shared.Utils;
 import app.revanced.integrations.shared.settings.preference.SharedPrefCategory;
-import app.revanced.integrations.youtube.sponsorblock.SponsorBlockSettings;
+//import app.revanced.integrations.youtube.sponsorblock.SponsorBlockSettings;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -357,7 +357,7 @@ public abstract class Setting<T> {
                     setting.writeToJSON(json, importExportKey);
                 }
             }
-            SponsorBlockSettings.showExportWarningIfNeeded(alertDialogContext);
+//            SponsorBlockSettings.showExportWarningIfNeeded(alertDialogContext);
 
             if (json.length() == 0) {
                 return "";
@@ -408,7 +408,7 @@ public abstract class Setting<T> {
             // This call could be removed by creating a custom Setting class that manages the
             // "String <-> Enum" logic or by adding an event hook of when settings are imported.
             // But for now this is simple and works.
-            SponsorBlockSettings.updateFromImportedSettings();
+//            SponsorBlockSettings.updateFromImportedSettings();
 
             Utils.showToastLong(numberOfSettingsImported == 0
                     ? str("revanced_settings_import_reset")
