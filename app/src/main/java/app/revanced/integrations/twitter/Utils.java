@@ -1,5 +1,6 @@
 package app.revanced.integrations.twitter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.preference.PreferenceManager;
@@ -10,7 +11,9 @@ import app.revanced.integrations.shared.settings.Setting;
 import app.revanced.integrations.twitter.settings.Settings;
 import app.revanced.integrations.twitter.settings.SettingsActivity;
 
+@SuppressWarnings("unused")
 public class Utils {
+    @SuppressLint("StaticFieldLeak")
     private static final Context ctx = app.revanced.integrations.shared.Utils.getContext();
 
     public static void startActivity() {
