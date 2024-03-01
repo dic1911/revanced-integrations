@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/crimera/revanced-integrations/compare/v1.0.0...v1.1.0) (2024-03-01)
+
+
+### Features
+
+* **twitter:** Switch back to java ([1c38d00](https://github.com/crimera/revanced-integrations/commit/1c38d00729a906f9cdb89816c1c1cabbfc3d7463))
+
 # 1.0.0 (2024-03-01)
 
 
