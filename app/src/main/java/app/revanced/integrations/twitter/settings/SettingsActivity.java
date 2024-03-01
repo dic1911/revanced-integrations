@@ -5,10 +5,14 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.preference.EditTextPreference;
-import android.preference.PreferenceFragment;
+import android.preference.Preference;
 import android.preference.PreferenceScreen;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
+
+import androidx.appcompat.widget.Toolbar;
+
+import app.revanced.integrations.shared.Utils;
+import app.revanced.integrations.shared.settings.StringSetting;
+import app.revanced.integrations.shared.settings.preference.AbstractPreferenceFragment;
 
 @SuppressWarnings("deprecation")
 public class SettingsActivity extends Activity {
@@ -17,41 +21,44 @@ public class SettingsActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        setContentView(Utils.getResourceIdentifier("preference_fragment_activity", "layout"));
+        Toolbar toolbar = findViewById(Utils.getResourceIdentifier("toolbar", "id"));
+        toolbar.setNavigationIcon(Utils.getResourceIdentifier("ic_vector_arrow_left", "drawable"));
+        toolbar.setTitle("Mod Settings");
+        toolbar.setNavigationOnClickListener(view -> {
+            onBackPressed();
+        });
 
-        FrameLayout layout = new FrameLayout(getApplicationContext());
-        layout.setLayoutParams(layoutParams);
-        layout.setId(999999);
-
-        setContentView(layout);
-
-        getFragmentManager().beginTransaction().add(layout.getId(), new Screen()).commit();
+        getFragmentManager().beginTransaction().add(Utils.getResourceIdentifier("fragment_container", "id"), new Screen()).commit();
     }
 
-    public static class Screen extends PreferenceFragment {
-        @Override
-        public void onCreate(Bundle bundle) {
-            super.onCreate(bundle);
-            Context context = getContext();
+    public static class Screen extends AbstractPreferenceFragment {
+        private Context context;
 
+        @Override
+        protected void initialize() {
+            super.initialize();
+
+            context = getContext();
             PreferenceScreen screen = getPreferenceManager().createPreferenceScreen(context);
 
-            EditTextPreference downloadPath = new EditTextPreference(context);
-            downloadPath.setTitle("Dwnload Path");
-            downloadPath.setSummary("Path to download videos to");
-            downloadPath.setKey("download_path");
-            downloadPath.setDialogTitle("Path");
-            downloadPath.setDefaultValue("Twitter");
-            downloadPath.setText("Twitter");
-            screen.addPreference(downloadPath);
-
-            EditTextPreference shareHost = new EditTextPreference(context);
-            shareHost.setTitle("Share Link Host");
-            shareHost.setSummary("Host to use when sharing links");
-            shareHost.setKey("share_host");
-            screen.addPreference(shareHost);
+            screen.addPreference(editTextPreference(
+                    "Download Subfolder",
+                    "The subfolder to download videos to (Movies/[Subfolder])",
+                    Settings.VID_SUBFOLDER
+            ));
 
             setPreferenceScreen(screen);
+        }
+
+        private Preference editTextPreference(String title, String summary, StringSetting setting) {
+            EditTextPreference preference = new EditTextPreference(context);
+            preference.setTitle(title);
+            preference.setSummary(summary);
+            preference.setKey(setting.key);
+            preference.setDefaultValue(setting.defaultValue);
+
+            return preference;
         }
     }
 }
