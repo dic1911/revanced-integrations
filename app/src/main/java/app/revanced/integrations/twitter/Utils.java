@@ -31,6 +31,10 @@ public class Utils {
         return value;
     }
 
+    public static String getPublicFolder() {
+        return getStringPref(Settings.VID_PUBLIC_FOLDER);
+    }
+
     public static String getVideoFolder(String filename) {
         return getStringPref(Settings.VID_SUBFOLDER)+"/"+filename;
     }
