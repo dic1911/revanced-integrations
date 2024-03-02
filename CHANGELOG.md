@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/crimera/revanced-integrations/compare/v1.1.0...v1.1.1) (2024-03-02)
+
+
+### Bug Fixes
+
+* **twitter:** Return value ([9f9f2d7](https://github.com/crimera/revanced-integrations/commit/9f9f2d7126f2fb152bde264299abb5f23f4f86ae))
+
 # [1.1.0](https://github.com/crimera/revanced-integrations/compare/v1.0.0...v1.1.0) (2024-03-01)
 
 
