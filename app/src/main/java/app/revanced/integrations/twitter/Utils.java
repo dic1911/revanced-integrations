@@ -28,7 +28,7 @@ public class Utils {
         if (value.isBlank()) {
             return setting.defaultValue;
         }
-        return setting.key;
+        return value;
     }
 
     public static String getVideoFolder(String filename) {
