@@ -43,25 +43,21 @@ public class SettingsActivity extends Activity {
             context = getContext();
 
             PreferenceScreen screen = getPreferenceManager().createPreferenceScreen(context);
+            SettingsStatus.load();
 
-            LegacyTwitterPreferenceCategory downloadPrefs = preferenceCategory("Download", screen);
-            downloadPrefs.addPreference(listPreference(
-                    "Public Folder",
-                    "The public folder to use for video downloads",
-                    Settings.VID_PUBLIC_FOLDER
-            ));
-            downloadPrefs.addPreference(editTextPreference(
-                    "Download Subfolder",
-                    "The subfolder to download videos to ([PublicFolder]/[Subfolder])",
-                    Settings.VID_SUBFOLDER
-            ));
-
-            LegacyTwitterPreferenceCategory customHostPrefs = preferenceCategory("Share link", screen);
-            customHostPrefs.addPreference(editTextPreference(
-                    "Host",
-                    "The custom host name for when sharing",
-                    Settings.SHARING_HOST
-            ));
+            if (SettingsStatus.changeDownloadEnabled) {
+                LegacyTwitterPreferenceCategory downloadPrefs = preferenceCategory("Download", screen);
+                downloadPrefs.addPreference(listPreference(
+                        "Public Folder",
+                        "The public folder to use for video downloads",
+                        Settings.VID_PUBLIC_FOLDER
+                ));
+                downloadPrefs.addPreference(editTextPreference(
+                        "Download Subfolder",
+                        "The subfolder to download videos to ([PublicFolder]/[Subfolder])",
+                        Settings.VID_SUBFOLDER
+                ));
+            }
 
             setPreferenceScreen(screen);
         }
