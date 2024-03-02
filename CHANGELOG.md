@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/crimera/revanced-integrations/compare/v1.2.0...v1.2.1) (2024-03-02)
+
+
+### Bug Fixes
+
+* **Twitter:** Only show settings category if patch is applied ([29da425](https://github.com/crimera/revanced-integrations/commit/29da42581893a7ddee8c03dc743814ff062fcbd4))
+
 # [1.2.0](https://github.com/crimera/revanced-integrations/compare/v1.1.2...v1.2.0) (2024-03-02)
 
 
