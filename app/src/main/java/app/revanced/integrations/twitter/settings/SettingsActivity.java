@@ -26,9 +26,7 @@ public class SettingsActivity extends Activity {
         Toolbar toolbar = findViewById(Utils.getResourceIdentifier("toolbar", "id"));
         toolbar.setNavigationIcon(Utils.getResourceIdentifier("ic_vector_arrow_left", "drawable"));
         toolbar.setTitle("Mod Settings");
-        toolbar.setNavigationOnClickListener(view -> {
-            onBackPressed();
-        });
+        toolbar.setNavigationOnClickListener(view -> onBackPressed());
 
         getFragmentManager().beginTransaction().add(Utils.getResourceIdentifier("fragment_container", "id"), new Screen()).commit();
     }
