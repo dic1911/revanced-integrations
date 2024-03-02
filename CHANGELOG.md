@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/crimera/revanced-integrations/compare/v1.1.1...v1.1.2) (2024-03-02)
+
+
+### Bug Fixes
+
+* **twitter:** Use default shared prefs ([e227318](https://github.com/crimera/revanced-integrations/commit/e227318ca16ef31bd81c818c6ae639ae31146301))
+
 ## [1.1.1](https://github.com/crimera/revanced-integrations/compare/v1.1.0...v1.1.1) (2024-03-02)
 
 
