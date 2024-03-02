@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/crimera/revanced-integrations/compare/v1.1.2...v1.2.0) (2024-03-02)
+
+
+### Features
+
+* **twitter:** Allow choosing public folder ([4ffd438](https://github.com/crimera/revanced-integrations/commit/4ffd438485fd6060e6863c41b03833f62d3adb1c))
+
 ## [1.1.2](https://github.com/crimera/revanced-integrations/compare/v1.1.1...v1.1.2) (2024-03-02)
 
 
