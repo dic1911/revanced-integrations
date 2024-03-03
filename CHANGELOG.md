@@ -1,3 +1,11 @@
+# [1.4.0-dev.2](https://github.com/crimera/revanced-integrations/compare/v1.4.0-dev.1...v1.4.0-dev.2) (2024-03-03)
+
+
+### Features
+
+* (Twitter/X) no t.co links ([cd1c143](https://github.com/crimera/revanced-integrations/commit/cd1c1435d6782eea43c8b214fe8dfbcfa31678f9))
+* add helper method for opening chooser ([c2e6203](https://github.com/crimera/revanced-integrations/commit/c2e6203d5237be3f6efc8e23a1e28fd05e1bb082))
+
 # [1.4.0-dev.1](https://github.com/crimera/revanced-integrations/compare/v1.3.0...v1.4.0-dev.1) (2024-03-03)
 
 
