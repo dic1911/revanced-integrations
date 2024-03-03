@@ -75,6 +75,6 @@ tasks {
     // Tracking: https://github.com/KengoTODA/gradle-semantic-release-plugin/issues/435
     publish {
         dependsOn(build)
-        dependsOn("sign")
+//        dependsOn("sign")
     }
 }
