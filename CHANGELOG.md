@@ -1,3 +1,10 @@
+# [1.4.0-dev.3](https://github.com/crimera/revanced-integrations/compare/v1.4.0-dev.2...v1.4.0-dev.3) (2024-03-16)
+
+
+### Features
+
+* Add settings for `Disable chirp font` patch ([8600093](https://github.com/crimera/revanced-integrations/commit/8600093d879ff708fa65500bd9c17cb2d1bcc915))
+
 # [1.4.0-dev.2](https://github.com/crimera/revanced-integrations/compare/v1.4.0-dev.1...v1.4.0-dev.2) (2024-03-03)
 
 
