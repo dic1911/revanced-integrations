@@ -1,3 +1,12 @@
+# [1.5.0](https://github.com/crimera/revanced-integrations/compare/v1.4.0...v1.5.0) (2024-03-17)
+
+
+### Features
+
+* Add settings for `Disable chirp font` patch ([8600093](https://github.com/crimera/revanced-integrations/commit/8600093d879ff708fa65500bd9c17cb2d1bcc915))
+* **Twitter:** Add Settings for `Hide Live Threads` and `Hide Banner` patch ([8026e62](https://github.com/crimera/revanced-integrations/commit/8026e6271ba306a87863e4f7695e895104ec1b0c))
+* **Twitter:** Added `Hide For You` in Mod Settings ([818698b](https://github.com/crimera/revanced-integrations/commit/818698b34c0009c1b5039eda365a4352c88fc028))
+
 # [1.5.0-dev.1](https://github.com/crimera/revanced-integrations/compare/v1.4.0...v1.5.0-dev.1) (2024-03-17)
 
 
