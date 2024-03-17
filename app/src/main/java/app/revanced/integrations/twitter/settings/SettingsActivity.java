@@ -4,19 +4,13 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.preference.EditTextPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceScreen;
-
+import android.preference.*;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
-
-import com.twitter.ui.widget.LegacyTwitterPreferenceCategory;
-
 import app.revanced.integrations.shared.Utils;
+import app.revanced.integrations.shared.settings.BooleanSetting;
 import app.revanced.integrations.shared.settings.StringSetting;
+import com.twitter.ui.widget.LegacyTwitterPreferenceCategory;
 
 @SuppressWarnings("deprecation")
 public class SettingsActivity extends Activity {
@@ -59,6 +53,52 @@ public class SettingsActivity extends Activity {
                 ));
             }
 
+            if (SettingsStatus.enableFontMod) {
+                LegacyTwitterPreferenceCategory miscPrefs = preferenceCategory("Misc", screen);
+                if (SettingsStatus.enableFontMod) {
+                    miscPrefs.addPreference(
+                            switchPreference(
+                                    "Enable Chirp Font",
+                                    "",
+                                    Settings.MISC_FONT
+                            )
+                    );
+                }
+            }
+
+            if (SettingsStatus.enableTimelineSection()) {
+                LegacyTwitterPreferenceCategory timelinePrefs = preferenceCategory("Timeline", screen);
+                if (SettingsStatus.hideForyou) {
+                    timelinePrefs.addPreference(
+                            switchPreference(
+                                    "Hide For You",
+                                    "",
+                                    Settings.TIMELINE_HIDE_FORYOU
+                            )
+                    );
+                }
+
+                if (SettingsStatus.hideLiveThreads) {
+                    timelinePrefs.addPreference(
+                            switchPreference(
+                                    "Hide Live Threads",
+                                    "",
+                                    Settings.TIMELINE_HIDE_LIVETHREADS
+                            )
+                    );
+                }
+
+                if (SettingsStatus.hideBanner) {
+                    timelinePrefs.addPreference(
+                            switchPreference(
+                                    "Hide Banner",
+                                    "",
+                                    Settings.TIMELINE_HIDE_BANNER
+                            )
+                    );
+                }
+            }
+
             setPreferenceScreen(screen);
         }
 
@@ -73,8 +113,18 @@ public class SettingsActivity extends Activity {
             return preference;
         }
 
+        private Preference switchPreference(String title, String summary, BooleanSetting setting) {
+            SwitchPreference preference = new SwitchPreference(context);
+            preference.setTitle(title);
+            preference.setSummary(summary);
+            preference.setKey(setting.key);
+            preference.setDefaultValue(setting.defaultValue);
+
+            return preference;
+        }
+
         private Preference listPreference(String title, String summary, StringSetting setting) {
-            ListPreference preference= new ListPreference(context);
+            ListPreference preference = new ListPreference(context);
             preference.setTitle(title);
             preference.setDialogTitle(title);
             preference.setSummary(summary);
