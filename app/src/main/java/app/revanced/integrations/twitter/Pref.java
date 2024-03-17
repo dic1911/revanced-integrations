@@ -24,5 +24,9 @@ public class Pref {
         return !Utils.getBooleanPerf(Settings.TIMELINE_HIDE_BANNER);
     }
 
+    public static int hideForYou() {
+        return Utils.getBooleanPerf(Settings.TIMELINE_HIDE_FORYOU)?34:17;
+    }
+
 
 }
