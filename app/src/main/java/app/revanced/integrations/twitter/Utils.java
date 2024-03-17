@@ -4,12 +4,12 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.preference.PreferenceManager;
-
-import java.util.Arrays;
-
 import app.revanced.integrations.shared.settings.Setting;
 import app.revanced.integrations.twitter.settings.Settings;
 import app.revanced.integrations.twitter.settings.SettingsActivity;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 @SuppressWarnings("unused")
 public class Utils {
@@ -50,7 +50,20 @@ public class Utils {
         return bigger;
     }
 
+    // Misc
+
     public static boolean isChirpFontEnabled() {
         return getBooleanPerf(Settings.MISC_FONT);
+    }
+
+    // Timeline
+
+    public static ArrayList liveThread(ArrayList fleets) {
+        if (getBooleanPerf(Settings.TIMELINE_HIDE_LIVETHREADS)) { return null; }
+        return fleets;
+    }
+
+    public static boolean hideBanner() {
+        return !getBooleanPerf(Settings.TIMELINE_HIDE_BANNER);
     }
 }

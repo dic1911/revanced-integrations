@@ -66,6 +66,29 @@ public class SettingsActivity extends Activity {
                 }
             }
 
+            if (SettingsStatus.hideLiveThreads || SettingsStatus.hideBanner) {
+                LegacyTwitterPreferenceCategory timelinePrefs = preferenceCategory("Timeline", screen);
+                if (SettingsStatus.hideLiveThreads) {
+                    timelinePrefs.addPreference(
+                            switchPreference(
+                                    "Hide Live Threads",
+                                    "",
+                                    Settings.TIMELINE_HIDE_LIVETHREADS
+                            )
+                    );
+                }
+
+                if (SettingsStatus.hideBanner) {
+                    timelinePrefs.addPreference(
+                            switchPreference(
+                                    "Hide Banner",
+                                    "",
+                                    Settings.TIMELINE_HIDE_BANNER
+                            )
+                    );
+                }
+            }
+
             setPreferenceScreen(screen);
         }
 
