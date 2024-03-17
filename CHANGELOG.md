@@ -1,3 +1,10 @@
+# [1.4.0-dev.4](https://github.com/crimera/revanced-integrations/compare/v1.4.0-dev.3...v1.4.0-dev.4) (2024-03-17)
+
+
+### Features
+
+* **Twitter:** Add Settings for `Hide Live Threads` and `Hide Banner` patch ([8026e62](https://github.com/crimera/revanced-integrations/commit/8026e6271ba306a87863e4f7695e895104ec1b0c))
+
 # [1.4.0-dev.3](https://github.com/crimera/revanced-integrations/compare/v1.4.0-dev.2...v1.4.0-dev.3) (2024-03-16)
 
 
