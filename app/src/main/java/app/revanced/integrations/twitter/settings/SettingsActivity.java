@@ -66,8 +66,18 @@ public class SettingsActivity extends Activity {
                 }
             }
 
-            if (SettingsStatus.hideLiveThreads || SettingsStatus.hideBanner) {
+            if (SettingsStatus.enableTimelineSection()) {
                 LegacyTwitterPreferenceCategory timelinePrefs = preferenceCategory("Timeline", screen);
+                if (SettingsStatus.hideForyou) {
+                    timelinePrefs.addPreference(
+                            switchPreference(
+                                    "Hide For You",
+                                    "",
+                                    Settings.TIMELINE_HIDE_FORYOU
+                            )
+                    );
+                }
+
                 if (SettingsStatus.hideLiveThreads) {
                     timelinePrefs.addPreference(
                             switchPreference(
