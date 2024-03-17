@@ -66,7 +66,7 @@ public class SettingsActivity extends Activity {
                 }
             }
 
-            if (SettingsStatus.hideLiveThreads || SettingsStatus.hideBanner) {
+            if (SettingsStatus.enableTimelineSection()) {
                 LegacyTwitterPreferenceCategory timelinePrefs = preferenceCategory("Timeline", screen);
                 if (SettingsStatus.hideLiveThreads) {
                     timelinePrefs.addPreference(
