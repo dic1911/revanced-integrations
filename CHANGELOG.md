@@ -1,3 +1,11 @@
+# [1.6.0-dev.1](https://github.com/crimera/revanced-integrations/compare/v1.5.0...v1.6.0-dev.1) (2024-03-18)
+
+
+### Features
+
+* **fix:** Enable `Hide Recommended Users` by default ([0653731](https://github.com/crimera/revanced-integrations/commit/0653731be724ac21d21db712207c5ec31f65decc))
+* **Twitter:** Add Settings for `Hide Recommended Users` patch ([6d518dc](https://github.com/crimera/revanced-integrations/commit/6d518dcf4d016b15ce87831d517bd64a6c29c579))
+
 # [1.5.0](https://github.com/crimera/revanced-integrations/compare/v1.4.0...v1.5.0) (2024-03-17)
 
 
