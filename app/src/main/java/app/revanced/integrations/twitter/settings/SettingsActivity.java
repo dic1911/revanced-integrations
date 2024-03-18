@@ -53,6 +53,28 @@ public class SettingsActivity extends Activity {
                 ));
             }
 
+            if(SettingsStatus.enableNetworkHookSection()){
+                LegacyTwitterPreferenceCategory nhPrefs = preferenceCategory("Network hooks", screen);
+                if (SettingsStatus.hideRecommendedUsers) {
+                    nhPrefs.addPreference(
+                            switchPreference(
+                                    "Hide recommended users",
+                                    "",
+                                    Settings.MISC_HIDE_RECOMMENDED_USERS
+                            )
+                    );
+                }
+                if (SettingsStatus.hidePromotedTrend) {
+                    nhPrefs.addPreference(
+                            switchPreference(
+                                    "Hide promoted trends",
+                                    "",
+                                    Settings.NH_HIDE_PROMOTED_TRENDS
+                            )
+                    );
+                }
+            }
+
             if (SettingsStatus.enableMiscSection()) {
                 LegacyTwitterPreferenceCategory miscPrefs = preferenceCategory("Misc", screen);
                 if (SettingsStatus.enableFontMod) {
@@ -61,15 +83,6 @@ public class SettingsActivity extends Activity {
                                     "Enable chirp font",
                                     "",
                                     Settings.MISC_FONT
-                            )
-                    );
-                }
-                if (SettingsStatus.hideRecommendedUsers) {
-                    miscPrefs.addPreference(
-                            switchPreference(
-                                    "Hide recommended users",
-                                    "",
-                                    Settings.MISC_HIDE_RECOMMENDED_USERS
                             )
                     );
                 }

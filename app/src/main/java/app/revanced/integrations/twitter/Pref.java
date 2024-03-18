@@ -36,4 +36,11 @@ public class Pref {
         return Utils.getBooleanPerf(Settings.MISC_HIDE_FAB);
     }
 
+    public static boolean hidePromotedTrend(Object data) {
+         if(data!=null && Utils.getBooleanPerf(Settings.NH_HIDE_PROMOTED_TRENDS)){
+            return true;
+        }
+         return false;
+    }
+
 }
