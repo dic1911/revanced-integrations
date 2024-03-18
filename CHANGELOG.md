@@ -1,3 +1,11 @@
+# [1.6.0-dev.4](https://github.com/crimera/revanced-integrations/compare/v1.6.0-dev.3...v1.6.0-dev.4) (2024-03-18)
+
+
+### Features
+
+* **Twitter:** Added `Hide Community Notes` to mod settings ([340bb62](https://github.com/crimera/revanced-integrations/commit/340bb62cad351a59922c6182a61476b211e212e0))
+* **Twitter:** Added `Hide Promoted Trends` to Mod Settings ([b613719](https://github.com/crimera/revanced-integrations/commit/b61371941cd8371da9479b7b1f392e5b9a191600))
+
 # [1.6.0-dev.3](https://github.com/crimera/revanced-integrations/compare/v1.6.0-dev.2...v1.6.0-dev.3) (2024-03-18)
 
 
