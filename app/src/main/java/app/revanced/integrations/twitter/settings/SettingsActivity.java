@@ -53,6 +53,24 @@ public class SettingsActivity extends Activity {
                 ));
             }
 
+            if(SettingsStatus.enableAdsSection()){
+                LegacyTwitterPreferenceCategory adsPrefs = preferenceCategory("Ads", screen);
+
+
+                if (SettingsStatus.hidePromotedTrend) {
+                    adsPrefs.addPreference(
+                            switchPreference(
+                                    "Hide promoted trends",
+                                    "",
+                                    Settings.ADS_HIDE_PROMOTED_TRENDS
+                            )
+                    );
+                }
+
+
+
+            }
+
             if (SettingsStatus.enableMiscSection()) {
                 LegacyTwitterPreferenceCategory miscPrefs = preferenceCategory("Misc", screen);
                 if (SettingsStatus.enableFontMod) {
@@ -64,6 +82,16 @@ public class SettingsActivity extends Activity {
                             )
                     );
                 }
+                if (SettingsStatus.hideFAB) {
+                    miscPrefs.addPreference(
+                            switchPreference(
+                                    "Hide floating action button",
+                                    "",
+                                    Settings.MISC_HIDE_FAB
+                            )
+                    );
+                }
+
                 if (SettingsStatus.hideRecommendedUsers) {
                     miscPrefs.addPreference(
                             switchPreference(
@@ -73,12 +101,13 @@ public class SettingsActivity extends Activity {
                             )
                     );
                 }
-                if (SettingsStatus.hideFAB) {
+
+                if (SettingsStatus.hideCommunityNote) {
                     miscPrefs.addPreference(
                             switchPreference(
-                                    "Hide floating action button",
+                                    "Hide community notes",
                                     "",
-                                    Settings.MISC_HIDE_FAB
+                                    Settings.MISC_HIDE_COMM_NOTES
                             )
                     );
                 }

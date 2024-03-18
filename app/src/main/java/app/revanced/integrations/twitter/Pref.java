@@ -36,6 +36,16 @@ public class Pref {
         return Utils.getBooleanPerf(Settings.MISC_HIDE_FAB);
     }
 
+    public static boolean hidePromotedTrend(Object data) {
+         if(data!=null && Utils.getBooleanPerf(Settings.ADS_HIDE_PROMOTED_TRENDS)){
+            return true;
+        }
+         return false;
+    }
+    public static boolean hideCommNotes() {
+        return Utils.getBooleanPerf(Settings.MISC_HIDE_COMM_NOTES);
+    }
+
     public static boolean hideViewCount() {
         return !Utils.getBooleanPerf(Settings.MISC_HIDE_VIEW_COUNT);
     }
