@@ -42,12 +42,12 @@ public class SettingsActivity extends Activity {
             if (SettingsStatus.changeDownloadEnabled) {
                 LegacyTwitterPreferenceCategory downloadPrefs = preferenceCategory("Download", screen);
                 downloadPrefs.addPreference(listPreference(
-                        "Public Folder",
+                        "Public folder",
                         "The public folder to use for video downloads",
                         Settings.VID_PUBLIC_FOLDER
                 ));
                 downloadPrefs.addPreference(editTextPreference(
-                        "Download Subfolder",
+                        "Download subfolder",
                         "The subfolder to download videos to ([PublicFolder]/[Subfolder])",
                         Settings.VID_SUBFOLDER
                 ));
@@ -58,7 +58,7 @@ public class SettingsActivity extends Activity {
                 if (SettingsStatus.enableFontMod) {
                     miscPrefs.addPreference(
                             switchPreference(
-                                    "Enable Chirp Font",
+                                    "Enable chirp font",
                                     "",
                                     Settings.MISC_FONT
                             )
@@ -67,7 +67,7 @@ public class SettingsActivity extends Activity {
                 if (SettingsStatus.hideRecommendedUsers) {
                     miscPrefs.addPreference(
                             switchPreference(
-                                    "Hide Recommended Users",
+                                    "Hide recommended users",
                                     "",
                                     Settings.MISC_HIDE_RECOMMENDED_USERS
                             )
@@ -89,7 +89,7 @@ public class SettingsActivity extends Activity {
                 if (SettingsStatus.hideForyou) {
                     timelinePrefs.addPreference(
                             switchPreference(
-                                    "Hide For You",
+                                    "Hide for you tab",
                                     "",
                                     Settings.TIMELINE_HIDE_FORYOU
                             )
@@ -99,7 +99,7 @@ public class SettingsActivity extends Activity {
                 if (SettingsStatus.hideLiveThreads) {
                     timelinePrefs.addPreference(
                             switchPreference(
-                                    "Hide Live Threads",
+                                    "Hide live threads",
                                     "",
                                     Settings.TIMELINE_HIDE_LIVETHREADS
                             )
@@ -109,7 +109,7 @@ public class SettingsActivity extends Activity {
                 if (SettingsStatus.hideBanner) {
                     timelinePrefs.addPreference(
                             switchPreference(
-                                    "Hide Banner",
+                                    "Hide banner",
                                     "",
                                     Settings.TIMELINE_HIDE_BANNER
                             )
