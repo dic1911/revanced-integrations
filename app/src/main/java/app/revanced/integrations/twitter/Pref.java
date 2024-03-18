@@ -32,5 +32,8 @@ public class Pref {
         return Utils.getBooleanPerf(Settings.TIMELINE_HIDE_FORYOU)?34:17;
     }
 
+    public static boolean hideFAB() {
+        return Utils.getBooleanPerf(Settings.MISC_HIDE_FAB);
+    }
 
 }

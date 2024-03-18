@@ -73,6 +73,15 @@ public class SettingsActivity extends Activity {
                             )
                     );
                 }
+                if (SettingsStatus.hideFAB) {
+                    miscPrefs.addPreference(
+                            switchPreference(
+                                    "Hide floating action button",
+                                    "",
+                                    Settings.MISC_HIDE_FAB
+                            )
+                    );
+                }
             }
 
             if (SettingsStatus.enableTimelineSection()) {
