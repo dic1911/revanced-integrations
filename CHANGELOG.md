@@ -1,3 +1,15 @@
+# [1.6.0-dev.2](https://github.com/crimera/revanced-integrations/compare/v1.6.0-dev.1...v1.6.0-dev.2) (2024-03-18)
+
+
+### Bug Fixes
+
+* **Twitter:** Use sentence case in settings ([6d05c55](https://github.com/crimera/revanced-integrations/commit/6d05c55d525ce3102ed1c1a9f5d8629a5ea29ca9))
+
+
+### Features
+
+* **Twitter:** Add settings for `Hide FAB` patch ([dfa58ce](https://github.com/crimera/revanced-integrations/commit/dfa58ce5a79f71c5bc0e17e39c3c456584fc1e22))
+
 # [1.6.0-dev.1](https://github.com/crimera/revanced-integrations/compare/v1.5.0...v1.6.0-dev.1) (2024-03-18)
 
 
