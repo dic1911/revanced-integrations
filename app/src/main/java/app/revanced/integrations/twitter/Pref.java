@@ -36,4 +36,7 @@ public class Pref {
         return Utils.getBooleanPerf(Settings.MISC_HIDE_FAB);
     }
 
+    public static boolean hideViewCount() {
+        return !Utils.getBooleanPerf(Settings.MISC_HIDE_VIEW_COUNT);
+    }
 }
