@@ -53,7 +53,7 @@ public class SettingsActivity extends Activity {
                 ));
             }
 
-            if (SettingsStatus.enableFontMod) {
+            if (SettingsStatus.enableMiscSection()) {
                 LegacyTwitterPreferenceCategory miscPrefs = preferenceCategory("Misc", screen);
                 if (SettingsStatus.enableFontMod) {
                     miscPrefs.addPreference(
@@ -61,6 +61,15 @@ public class SettingsActivity extends Activity {
                                     "Enable Chirp Font",
                                     "",
                                     Settings.MISC_FONT
+                            )
+                    );
+                }
+                if (SettingsStatus.hideRecommendedUsers) {
+                    miscPrefs.addPreference(
+                            switchPreference(
+                                    "Hide Recommended Users",
+                                    "",
+                                    Settings.MISC_HIDE_RECOMMENDED_USERS
                             )
                     );
                 }

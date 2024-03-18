@@ -1,9 +1,8 @@
 package app.revanced.integrations.twitter;
 
-import app.revanced.integrations.twitter.Utils;
 import app.revanced.integrations.twitter.settings.Settings;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Pref {
 
@@ -13,6 +12,11 @@ public class Pref {
 
     public static String getVideoFolder(String filename) {
         return Utils.getStringPref(Settings.VID_SUBFOLDER)+"/"+filename;
+    }
+
+    public  static ArrayList hideRecommendedUsers(ArrayList users) {
+        if (Utils.getBooleanPerf(Settings.MISC_HIDE_RECOMMENDED_USERS)) { return null; }
+        return users;
     }
 
     public static ArrayList liveThread(ArrayList fleets) {
