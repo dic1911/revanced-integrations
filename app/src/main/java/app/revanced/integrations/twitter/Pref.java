@@ -37,10 +37,13 @@ public class Pref {
     }
 
     public static boolean hidePromotedTrend(Object data) {
-         if(data!=null && Utils.getBooleanPerf(Settings.NH_HIDE_PROMOTED_TRENDS)){
+         if(data!=null && Utils.getBooleanPerf(Settings.ADS_HIDE_PROMOTED_TRENDS)){
             return true;
         }
          return false;
+    }
+    public static boolean hideCommNotes() {
+        return Utils.getBooleanPerf(Settings.MISC_HIDE_COMM_NOTES);
     }
 
 }

@@ -5,6 +5,7 @@ public class SettingsStatus {
     public static boolean enableFontMod = false;
     public static boolean hideRecommendedUsers = false;
     public static boolean hidePromotedTrend = false;
+    public static boolean hideCommunityNote = false;
     public static boolean hideFAB = false;
     public static boolean hideLiveThreads = false;
     public static boolean hideBanner = false;
@@ -16,6 +17,7 @@ public class SettingsStatus {
 
     public static void hideRecommendedUsers() { hideRecommendedUsers = true; }
     public static void hidePromotedTrends() { hidePromotedTrend = true; }
+    public static void hideCommunityNotes() { hideCommunityNote = true; }
     public static void hideFAB() { hideFAB = true; }
 
     public static void hideLiveThreads() { hideLiveThreads = true; }
@@ -23,8 +25,8 @@ public class SettingsStatus {
     public static void hideForYou() { hideForyou = true; }
 
     public static boolean enableTimelineSection(){return (hideLiveThreads || hideBanner ||hideForyou);}
-    public static boolean enableMiscSection() {return (enableFontMod || hideFAB); }
+    public static boolean enableMiscSection() {return (enableFontMod || hideFAB  || hideRecommendedUsers || hideCommunityNote); }
 
-    public static boolean enableNetworkHookSection() {return (hidePromotedTrend || hideRecommendedUsers); }
+    public static boolean enableAdsSection() {return (hidePromotedTrend); }
     public static void load() {}
 }

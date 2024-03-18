@@ -53,26 +53,22 @@ public class SettingsActivity extends Activity {
                 ));
             }
 
-            if(SettingsStatus.enableNetworkHookSection()){
-                LegacyTwitterPreferenceCategory nhPrefs = preferenceCategory("Network hooks", screen);
-                if (SettingsStatus.hideRecommendedUsers) {
-                    nhPrefs.addPreference(
-                            switchPreference(
-                                    "Hide recommended users",
-                                    "",
-                                    Settings.MISC_HIDE_RECOMMENDED_USERS
-                            )
-                    );
-                }
+            if(SettingsStatus.enableAdsSection()){
+                LegacyTwitterPreferenceCategory adsPrefs = preferenceCategory("Ads", screen);
+
+
                 if (SettingsStatus.hidePromotedTrend) {
-                    nhPrefs.addPreference(
+                    adsPrefs.addPreference(
                             switchPreference(
                                     "Hide promoted trends",
                                     "",
-                                    Settings.NH_HIDE_PROMOTED_TRENDS
+                                    Settings.ADS_HIDE_PROMOTED_TRENDS
                             )
                     );
                 }
+
+
+
             }
 
             if (SettingsStatus.enableMiscSection()) {
@@ -92,6 +88,26 @@ public class SettingsActivity extends Activity {
                                     "Hide floating action button",
                                     "",
                                     Settings.MISC_HIDE_FAB
+                            )
+                    );
+                }
+
+                if (SettingsStatus.hideRecommendedUsers) {
+                    miscPrefs.addPreference(
+                            switchPreference(
+                                    "Hide recommended users",
+                                    "",
+                                    Settings.MISC_HIDE_RECOMMENDED_USERS
+                            )
+                    );
+                }
+
+                if (SettingsStatus.hideCommunityNote) {
+                    miscPrefs.addPreference(
+                            switchPreference(
+                                    "Hide community notes",
+                                    "",
+                                    Settings.MISC_HIDE_COMM_NOTES
                             )
                     );
                 }
