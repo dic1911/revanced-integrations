@@ -111,6 +111,15 @@ public class SettingsActivity extends Activity {
                             )
                     );
                 }
+                if (SettingsStatus.hideViewCount) {
+                    miscPrefs.addPreference(
+                            switchPreference(
+                                    "Hide view count",
+                                    "",
+                                    Settings.MISC_HIDE_VIEW_COUNT
+                            )
+                    );
+                }
             }
 
             if (SettingsStatus.enableTimelineSection()) {
@@ -124,7 +133,6 @@ public class SettingsActivity extends Activity {
                             )
                     );
                 }
-
                 if (SettingsStatus.hideLiveThreads) {
                     timelinePrefs.addPreference(
                             switchPreference(
@@ -134,7 +142,6 @@ public class SettingsActivity extends Activity {
                             )
                     );
                 }
-
                 if (SettingsStatus.hideBanner) {
                     timelinePrefs.addPreference(
                             switchPreference(

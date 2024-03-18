@@ -1,3 +1,10 @@
+# [1.6.0-dev.3](https://github.com/crimera/revanced-integrations/compare/v1.6.0-dev.2...v1.6.0-dev.3) (2024-03-18)
+
+
+### Features
+
+* **Twitter:** Add settings for `Remove view count` patch ([0a1469f](https://github.com/crimera/revanced-integrations/commit/0a1469fdea4a8c90dd2f34ee9c40f64f5386ec1b))
+
 # [1.6.0-dev.2](https://github.com/crimera/revanced-integrations/compare/v1.6.0-dev.1...v1.6.0-dev.2) (2024-03-18)
 
 

@@ -46,4 +46,7 @@ public class Pref {
         return Utils.getBooleanPerf(Settings.MISC_HIDE_COMM_NOTES);
     }
 
+    public static boolean hideViewCount() {
+        return !Utils.getBooleanPerf(Settings.MISC_HIDE_VIEW_COUNT);
+    }
 }
