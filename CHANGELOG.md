@@ -1,3 +1,10 @@
+# [1.6.0-dev.5](https://github.com/crimera/revanced-integrations/compare/v1.6.0-dev.4...v1.6.0-dev.5) (2024-03-22)
+
+
+### Features
+
+* **Twitter:** Added Ad block hooks ([1d44f8d](https://github.com/crimera/revanced-integrations/commit/1d44f8d443da475e6a925716606d221d945b949c))
+
 # [1.6.0-dev.4](https://github.com/crimera/revanced-integrations/compare/v1.6.0-dev.3...v1.6.0-dev.4) (2024-03-18)
 
 
