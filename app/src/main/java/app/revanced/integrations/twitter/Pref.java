@@ -36,12 +36,6 @@ public class Pref {
         return Utils.getBooleanPerf(Settings.MISC_HIDE_FAB);
     }
 
-    public static boolean hidePromotedTrend(Object data) {
-         if(data!=null && Utils.getBooleanPerf(Settings.ADS_HIDE_PROMOTED_TRENDS)){
-            return true;
-        }
-         return false;
-    }
     public static boolean hideCommNotes() {
         return Utils.getBooleanPerf(Settings.MISC_HIDE_COMM_NOTES);
     }
@@ -49,4 +43,34 @@ public class Pref {
     public static boolean hideViewCount() {
         return !Utils.getBooleanPerf(Settings.MISC_HIDE_VIEW_COUNT);
     }
+
+    public static boolean hidePromotedTrend(Object data) {
+        if(data!=null && Utils.getBooleanPerf(Settings.ADS_HIDE_PROMOTED_TRENDS)){
+            return true;
+        }
+        return false;
+    }
+    public static boolean hideAds() {
+        return Utils.getBooleanPerf(Settings.ADS_HIDE_PROMOTED_POSTS);
+    }
+    public static boolean hideGoogleAds() {
+        return Utils.getBooleanPerf(Settings.ADS_HIDE_GOOGLE_ADS);
+    }
+    public static boolean hideWTF() {
+        return Utils.getBooleanPerf(Settings.ADS_HIDE_WHO_TO_FOLLOW);
+    }
+    public static boolean hideCTS() {
+        return Utils.getBooleanPerf(Settings.ADS_HIDE_CREATORS_TO_SUB);
+    }
+    public static boolean hideCTJ() {
+        return Utils.getBooleanPerf(Settings.ADS_HIDE_COMM_TO_JOIN);
+    }
+    public static boolean hideRBMK() {
+        return Utils.getBooleanPerf(Settings.ADS_HIDE_REVISIT_BMK);
+    }
+    public static boolean hideDetailedPosts() {
+        return Utils.getBooleanPerf(Settings.ADS_HIDE_DETAILED_POSTS);
+    }
+
+    //end
 }

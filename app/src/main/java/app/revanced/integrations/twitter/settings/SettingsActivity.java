@@ -37,7 +37,7 @@ public class SettingsActivity extends Activity {
             context = getContext();
 
             PreferenceScreen screen = getPreferenceManager().createPreferenceScreen(context);
-            SettingsStatus.load();
+          //  SettingsStatus.load();
 
             if (SettingsStatus.changeDownloadEnabled) {
                 LegacyTwitterPreferenceCategory downloadPrefs = preferenceCategory("Download", screen);
@@ -56,6 +56,74 @@ public class SettingsActivity extends Activity {
             if(SettingsStatus.enableAdsSection()){
                 LegacyTwitterPreferenceCategory adsPrefs = preferenceCategory("Ads", screen);
 
+                if (SettingsStatus.hideAds) {
+                    adsPrefs.addPreference(
+                            switchPreference(
+                                    "Hide promoted posts",
+                                    "",
+                                    Settings.ADS_HIDE_PROMOTED_POSTS
+                            )
+                    );
+                }
+
+                if (SettingsStatus.hideGAds) {
+                    adsPrefs.addPreference(
+                            switchPreference(
+                                    "Hide google ads",
+                                    "",
+                                    Settings.ADS_HIDE_GOOGLE_ADS
+                            )
+                    );
+                }
+                if (SettingsStatus.hideWTF) {
+                    adsPrefs.addPreference(
+                            switchPreference(
+                                    "Hide \"Who to follow\" section",
+                                    "",
+                                    Settings.ADS_HIDE_WHO_TO_FOLLOW
+                            )
+                    );
+                }
+
+                if (SettingsStatus.hideCTS) {
+                    adsPrefs.addPreference(
+                            switchPreference(
+                                    "Hide \"Creators to subscribe\" section",
+                                    "",
+                                    Settings.ADS_HIDE_CREATORS_TO_SUB
+                            )
+                    );
+                }
+
+                if (SettingsStatus.hideCTJ) {
+                    adsPrefs.addPreference(
+                            switchPreference(
+                                    "Hide \"Community to join\" section",
+                                    "",
+                                    Settings.ADS_HIDE_COMM_TO_JOIN
+                            )
+                    );
+                }
+
+                if (SettingsStatus.hideRBMK) {
+                    adsPrefs.addPreference(
+                            switchPreference(
+                                    "Hide \"Revist your bookmark\" section",
+                                    "",
+                                    Settings.ADS_HIDE_REVISIT_BMK
+                            )
+                    );
+                }
+
+                if (SettingsStatus.hideDetailedPosts) {
+                    adsPrefs.addPreference(
+                            switchPreference(
+                                    "Hide detailed posts (in replies)",
+                                    "",
+                                    Settings.ADS_HIDE_DETAILED_POSTS
+                            )
+                    );
+                }
 
                 if (SettingsStatus.hidePromotedTrend) {
                     adsPrefs.addPreference(
