@@ -19,6 +19,7 @@ public class SettingsStatus {
     public static boolean hideCTJ = false;
     public static boolean hideDetailedPosts = false;
     public static boolean hideRBMK = false;
+    public static boolean hideRPinnedPosts = false;
 
 
     public static void enableDownloadFolder() { changeDownloadEnabled = true; }
@@ -39,6 +40,7 @@ public class SettingsStatus {
     public static void hideCommToJoin() { hideCTJ = true; }
     public static void hideDetailedPost() { hideDetailedPosts = true; }
     public static void hideRevistBookmark() { hideRBMK = true; }
+    public static void hideRevistPinnedPost() { hideRPinnedPosts = true; }
     public static void hidePromotedTrends() { hidePromotedTrend = true; }
 
     public static boolean enableTimelineSection(){ return (hideLiveThreads || hideBanner || hideForyou); }

@@ -115,6 +115,16 @@ public class SettingsActivity extends Activity {
                     );
                 }
 
+                if (SettingsStatus.hideRPinnedPosts) {
+                    adsPrefs.addPreference(
+                            switchPreference(
+                                    "Hide \"Pinned posts by followers\" section",
+                                    "",
+                                    Settings.ADS_HIDE_REVISIT_PINNED_POSTS
+                            )
+                    );
+                }
+
                 if (SettingsStatus.hideDetailedPosts) {
                     adsPrefs.addPreference(
                             switchPreference(
