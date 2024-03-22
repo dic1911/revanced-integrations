@@ -8,7 +8,7 @@ import java.lang.reflect.Field;
 
 
 public class TimelineEntry {
-    private static boolean hideAds,hideGAds,hideWTF,hideCTS,hideCTJ,hideDetailedPosts,hideRBMK;
+    private static boolean hideAds,hideGAds,hideWTF,hideCTS,hideCTJ,hideDetailedPosts,hideRBMK,hidePinnedPosts;
     static {
         SettingsStatus.load();
         hideAds = (Pref.hideAds() && SettingsStatus.hideAds);
@@ -18,6 +18,7 @@ public class TimelineEntry {
         hideCTJ = (Pref.hideCTJ() && SettingsStatus.hideCTJ);
         hideDetailedPosts = (Pref.hideDetailedPosts() && SettingsStatus.hideDetailedPosts);
         hideRBMK = (Pref.hideRBMK() && SettingsStatus.hideRBMK);
+        hidePinnedPosts = (Pref.hideRPinnedPosts() && SettingsStatus.hideRPinnedPosts);
     }
 
 
@@ -46,6 +47,9 @@ public class TimelineEntry {
                 return true;
             }
             if (entryId.startsWith("who-to-subscribe") && hideCTS) {
+                return true;
+            }
+            if (entryId.startsWith("pinned-tweets") && hidePinnedPosts) {
                 return true;
             }
         }

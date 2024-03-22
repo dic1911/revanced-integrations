@@ -68,6 +68,9 @@ public class Pref {
     public static boolean hideRBMK() {
         return Utils.getBooleanPerf(Settings.ADS_HIDE_REVISIT_BMK);
     }
+    public static boolean hideRPinnedPosts() {
+        return Utils.getBooleanPerf(Settings.ADS_HIDE_REVISIT_PINNED_POSTS);
+    }
     public static boolean hideDetailedPosts() {
         return Utils.getBooleanPerf(Settings.ADS_HIDE_DETAILED_POSTS);
     }
