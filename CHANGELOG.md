@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/crimera/revanced-integrations/compare/v1.6.0...v1.7.0) (2024-03-22)
+
+
+### Features
+
+* **Twitter:** Hide `Pinned posts by followers` ([db4c0af](https://github.com/crimera/revanced-integrations/commit/db4c0afd6d351e9deb167a6776c460a53ed90ea8))
+
 # [1.6.0](https://github.com/crimera/revanced-integrations/compare/v1.5.0...v1.6.0) (2024-03-22)
 
 
