@@ -1,9 +1,8 @@
 package app.revanced.integrations.twitter;
 
-import app.revanced.integrations.twitter.Utils;
 import app.revanced.integrations.twitter.settings.Settings;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Pref {
 
@@ -13,6 +12,11 @@ public class Pref {
 
     public static String getVideoFolder(String filename) {
         return Utils.getStringPref(Settings.VID_SUBFOLDER)+"/"+filename;
+    }
+
+    public  static ArrayList hideRecommendedUsers(ArrayList users) {
+        if (Utils.getBooleanPerf(Settings.MISC_HIDE_RECOMMENDED_USERS)) { return null; }
+        return users;
     }
 
     public static ArrayList liveThread(ArrayList fleets) {
@@ -28,5 +32,45 @@ public class Pref {
         return Utils.getBooleanPerf(Settings.TIMELINE_HIDE_FORYOU)?34:17;
     }
 
+    public static boolean hideFAB() {
+        return Utils.getBooleanPerf(Settings.MISC_HIDE_FAB);
+    }
 
+    public static boolean hideCommNotes() {
+        return Utils.getBooleanPerf(Settings.MISC_HIDE_COMM_NOTES);
+    }
+
+    public static boolean hideViewCount() {
+        return !Utils.getBooleanPerf(Settings.MISC_HIDE_VIEW_COUNT);
+    }
+
+    public static boolean hidePromotedTrend(Object data) {
+        if(data!=null && Utils.getBooleanPerf(Settings.ADS_HIDE_PROMOTED_TRENDS)){
+            return true;
+        }
+        return false;
+    }
+    public static boolean hideAds() {
+        return Utils.getBooleanPerf(Settings.ADS_HIDE_PROMOTED_POSTS);
+    }
+    public static boolean hideGoogleAds() {
+        return Utils.getBooleanPerf(Settings.ADS_HIDE_GOOGLE_ADS);
+    }
+    public static boolean hideWTF() {
+        return Utils.getBooleanPerf(Settings.ADS_HIDE_WHO_TO_FOLLOW);
+    }
+    public static boolean hideCTS() {
+        return Utils.getBooleanPerf(Settings.ADS_HIDE_CREATORS_TO_SUB);
+    }
+    public static boolean hideCTJ() {
+        return Utils.getBooleanPerf(Settings.ADS_HIDE_COMM_TO_JOIN);
+    }
+    public static boolean hideRBMK() {
+        return Utils.getBooleanPerf(Settings.ADS_HIDE_REVISIT_BMK);
+    }
+    public static boolean hideDetailedPosts() {
+        return Utils.getBooleanPerf(Settings.ADS_HIDE_DETAILED_POSTS);
+    }
+
+    //end
 }

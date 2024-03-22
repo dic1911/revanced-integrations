@@ -1,3 +1,45 @@
+# [1.6.0-dev.5](https://github.com/crimera/revanced-integrations/compare/v1.6.0-dev.4...v1.6.0-dev.5) (2024-03-22)
+
+
+### Features
+
+* **Twitter:** Added Ad block hooks ([1d44f8d](https://github.com/crimera/revanced-integrations/commit/1d44f8d443da475e6a925716606d221d945b949c))
+
+# [1.6.0-dev.4](https://github.com/crimera/revanced-integrations/compare/v1.6.0-dev.3...v1.6.0-dev.4) (2024-03-18)
+
+
+### Features
+
+* **Twitter:** Added `Hide Community Notes` to mod settings ([340bb62](https://github.com/crimera/revanced-integrations/commit/340bb62cad351a59922c6182a61476b211e212e0))
+* **Twitter:** Added `Hide Promoted Trends` to Mod Settings ([b613719](https://github.com/crimera/revanced-integrations/commit/b61371941cd8371da9479b7b1f392e5b9a191600))
+
+# [1.6.0-dev.3](https://github.com/crimera/revanced-integrations/compare/v1.6.0-dev.2...v1.6.0-dev.3) (2024-03-18)
+
+
+### Features
+
+* **Twitter:** Add settings for `Remove view count` patch ([0a1469f](https://github.com/crimera/revanced-integrations/commit/0a1469fdea4a8c90dd2f34ee9c40f64f5386ec1b))
+
+# [1.6.0-dev.2](https://github.com/crimera/revanced-integrations/compare/v1.6.0-dev.1...v1.6.0-dev.2) (2024-03-18)
+
+
+### Bug Fixes
+
+* **Twitter:** Use sentence case in settings ([6d05c55](https://github.com/crimera/revanced-integrations/commit/6d05c55d525ce3102ed1c1a9f5d8629a5ea29ca9))
+
+
+### Features
+
+* **Twitter:** Add settings for `Hide FAB` patch ([dfa58ce](https://github.com/crimera/revanced-integrations/commit/dfa58ce5a79f71c5bc0e17e39c3c456584fc1e22))
+
+# [1.6.0-dev.1](https://github.com/crimera/revanced-integrations/compare/v1.5.0...v1.6.0-dev.1) (2024-03-18)
+
+
+### Features
+
+* **fix:** Enable `Hide Recommended Users` by default ([0653731](https://github.com/crimera/revanced-integrations/commit/0653731be724ac21d21db712207c5ec31f65decc))
+* **Twitter:** Add Settings for `Hide Recommended Users` patch ([6d518dc](https://github.com/crimera/revanced-integrations/commit/6d518dcf4d016b15ce87831d517bd64a6c29c579))
+
 # [1.5.0](https://github.com/crimera/revanced-integrations/compare/v1.4.0...v1.5.0) (2024-03-17)
 
 

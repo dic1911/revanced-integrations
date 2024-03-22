@@ -37,30 +37,154 @@ public class SettingsActivity extends Activity {
             context = getContext();
 
             PreferenceScreen screen = getPreferenceManager().createPreferenceScreen(context);
-            SettingsStatus.load();
+          //  SettingsStatus.load();
 
             if (SettingsStatus.changeDownloadEnabled) {
                 LegacyTwitterPreferenceCategory downloadPrefs = preferenceCategory("Download", screen);
                 downloadPrefs.addPreference(listPreference(
-                        "Public Folder",
+                        "Public folder",
                         "The public folder to use for video downloads",
                         Settings.VID_PUBLIC_FOLDER
                 ));
                 downloadPrefs.addPreference(editTextPreference(
-                        "Download Subfolder",
+                        "Download subfolder",
                         "The subfolder to download videos to ([PublicFolder]/[Subfolder])",
                         Settings.VID_SUBFOLDER
                 ));
             }
 
-            if (SettingsStatus.enableFontMod) {
+            if(SettingsStatus.enableAdsSection()){
+                LegacyTwitterPreferenceCategory adsPrefs = preferenceCategory("Ads", screen);
+
+                if (SettingsStatus.hideAds) {
+                    adsPrefs.addPreference(
+                            switchPreference(
+                                    "Hide promoted posts",
+                                    "",
+                                    Settings.ADS_HIDE_PROMOTED_POSTS
+                            )
+                    );
+                }
+
+                if (SettingsStatus.hideGAds) {
+                    adsPrefs.addPreference(
+                            switchPreference(
+                                    "Hide google ads",
+                                    "",
+                                    Settings.ADS_HIDE_GOOGLE_ADS
+                            )
+                    );
+                }
+                if (SettingsStatus.hideWTF) {
+                    adsPrefs.addPreference(
+                            switchPreference(
+                                    "Hide \"Who to follow\" section",
+                                    "",
+                                    Settings.ADS_HIDE_WHO_TO_FOLLOW
+                            )
+                    );
+                }
+
+                if (SettingsStatus.hideCTS) {
+                    adsPrefs.addPreference(
+                            switchPreference(
+                                    "Hide \"Creators to subscribe\" section",
+                                    "",
+                                    Settings.ADS_HIDE_CREATORS_TO_SUB
+                            )
+                    );
+                }
+
+                if (SettingsStatus.hideCTJ) {
+                    adsPrefs.addPreference(
+                            switchPreference(
+                                    "Hide \"Community to join\" section",
+                                    "",
+                                    Settings.ADS_HIDE_COMM_TO_JOIN
+                            )
+                    );
+                }
+
+                if (SettingsStatus.hideRBMK) {
+                    adsPrefs.addPreference(
+                            switchPreference(
+                                    "Hide \"Revist your bookmark\" section",
+                                    "",
+                                    Settings.ADS_HIDE_REVISIT_BMK
+                            )
+                    );
+                }
+
+                if (SettingsStatus.hideDetailedPosts) {
+                    adsPrefs.addPreference(
+                            switchPreference(
+                                    "Hide detailed posts (in replies)",
+                                    "",
+                                    Settings.ADS_HIDE_DETAILED_POSTS
+                            )
+                    );
+                }
+
+                if (SettingsStatus.hidePromotedTrend) {
+                    adsPrefs.addPreference(
+                            switchPreference(
+                                    "Hide promoted trends",
+                                    "",
+                                    Settings.ADS_HIDE_PROMOTED_TRENDS
+                            )
+                    );
+                }
+
+
+
+            }
+
+            if (SettingsStatus.enableMiscSection()) {
                 LegacyTwitterPreferenceCategory miscPrefs = preferenceCategory("Misc", screen);
                 if (SettingsStatus.enableFontMod) {
                     miscPrefs.addPreference(
                             switchPreference(
-                                    "Enable Chirp Font",
+                                    "Enable chirp font",
                                     "",
                                     Settings.MISC_FONT
+                            )
+                    );
+                }
+                if (SettingsStatus.hideFAB) {
+                    miscPrefs.addPreference(
+                            switchPreference(
+                                    "Hide floating action button",
+                                    "",
+                                    Settings.MISC_HIDE_FAB
+                            )
+                    );
+                }
+
+                if (SettingsStatus.hideRecommendedUsers) {
+                    miscPrefs.addPreference(
+                            switchPreference(
+                                    "Hide recommended users",
+                                    "",
+                                    Settings.MISC_HIDE_RECOMMENDED_USERS
+                            )
+                    );
+                }
+
+                if (SettingsStatus.hideCommunityNote) {
+                    miscPrefs.addPreference(
+                            switchPreference(
+                                    "Hide community notes",
+                                    "",
+                                    Settings.MISC_HIDE_COMM_NOTES
+                            )
+                    );
+                }
+                if (SettingsStatus.hideViewCount) {
+                    miscPrefs.addPreference(
+                            switchPreference(
+                                    "Hide view count",
+                                    "",
+                                    Settings.MISC_HIDE_VIEW_COUNT
                             )
                     );
                 }
@@ -71,27 +195,25 @@ public class SettingsActivity extends Activity {
                 if (SettingsStatus.hideForyou) {
                     timelinePrefs.addPreference(
                             switchPreference(
-                                    "Hide For You",
+                                    "Hide for you tab",
                                     "",
                                     Settings.TIMELINE_HIDE_FORYOU
                             )
                     );
                 }
-
                 if (SettingsStatus.hideLiveThreads) {
                     timelinePrefs.addPreference(
                             switchPreference(
-                                    "Hide Live Threads",
+                                    "Hide live threads",
                                     "",
                                     Settings.TIMELINE_HIDE_LIVETHREADS
                             )
                     );
                 }
-
                 if (SettingsStatus.hideBanner) {
                     timelinePrefs.addPreference(
                             switchPreference(
-                                    "Hide Banner",
+                                    "Hide banner",
                                     "",
                                     Settings.TIMELINE_HIDE_BANNER
                             )
