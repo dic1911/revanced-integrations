@@ -38,9 +38,31 @@ public class SettingsActivity extends Activity {
 
             PreferenceScreen screen = getPreferenceManager().createPreferenceScreen(context);
           //  SettingsStatus.load();
+            if (SettingsStatus.enablePremiumSection()) {
+                LegacyTwitterPreferenceCategory premiumPrefs = preferenceCategory("Premium", screen);
+                if (SettingsStatus.enableReaderMode) {
+                    premiumPrefs.addPreference(
+                            switchPreference(
+                                    "Enable reader mode",
+                                    "Enables \"reader mode\" on long threads",
+                                    Settings.PREMIUM_READER_MODE
+                            )
+                    );
+                }
+            }
 
             if (SettingsStatus.changeDownloadEnabled) {
                 LegacyTwitterPreferenceCategory downloadPrefs = preferenceCategory("Download", screen);
+                downloadPrefs.addPreference(listPreference(
+                        "Public folder",
+                        "The public folder to use for video downloads",
+                        Settings.VID_PUBLIC_FOLDER
+                ));
+                downloadPrefs.addPreference(editTextPreference(
+                        "Download subfolder",
+                        "The subfolder to download videos to ([PublicFolder]/[Subfolder])",
+                        Settings.VID_SUBFOLDER
+                ));
                 downloadPrefs.addPreference(listPreference(
                         "Public folder",
                         "The public folder to use for video downloads",

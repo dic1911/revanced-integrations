@@ -21,6 +21,8 @@ public class SettingsStatus {
     public static boolean hideRBMK = false;
     public static boolean hideRPinnedPosts = false;
 
+    public static boolean enableReaderMode = false;
+
 
     public static void enableDownloadFolder() { changeDownloadEnabled = true; }
     public static void enableFont() { enableFontMod = true; }
@@ -43,9 +45,13 @@ public class SettingsStatus {
     public static void hideRevistPinnedPost() { hideRPinnedPosts = true; }
     public static void hidePromotedTrends() { hidePromotedTrend = true; }
 
+    public static void enableReaderMode() { enableReaderMode = true; }
+
     public static boolean enableTimelineSection(){ return (hideLiveThreads || hideBanner || hideForyou); }
     public static boolean enableMiscSection() { return (enableFontMod || hideRecommendedUsers || hideFAB || hideViewCount || hideCommunityNote); }
     public static boolean enableAdsSection() {return (hideAds|| hideGAds || hideWTF || hideCTS || hideCTJ || hideDetailedPosts || hideRBMK ||hidePromotedTrend); }
+
+    public static boolean enablePremiumSection() {return (enableReaderMode); }
 
     public static void load() {}
 }
