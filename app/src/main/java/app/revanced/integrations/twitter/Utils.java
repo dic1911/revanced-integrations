@@ -25,8 +25,23 @@ public class Utils {
         ctx.startActivity(intent);
     }
 
+    private static void startActivityFromClassName(String className){
+        try {
+            Class<?> clazz = Class.forName(className);
+            startActivity(clazz);
+        }catch (Exception unused) {
+
+        }
+    }
+
+
     public static void startSettingsActivity(){
         startActivity(SettingsActivity.class);
+    }
+
+    public static void startUndoPostActivity(){
+        String className = "com.twitter.feature.subscriptions.settings.undotweet.UndoTweetSettingsActivity";
+        startActivityFromClassName(className);
     }
 
     @SuppressWarnings("deprecation")

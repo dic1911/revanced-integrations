@@ -77,6 +77,9 @@ public class Pref {
     public static boolean enableReaderMode() {
         return Utils.getBooleanPerf(Settings.PREMIUM_READER_MODE);
     }
+    public static boolean enableUndoPosts() {
+        return Utils.getBooleanPerf(Settings.PREMIUM_UNDO_POSTS);
+    }
 
     //end
 }

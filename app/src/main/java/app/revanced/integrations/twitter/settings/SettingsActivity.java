@@ -28,7 +28,7 @@ public class SettingsActivity extends Activity {
         getFragmentManager().beginTransaction().add(Utils.getResourceIdentifier("fragment_container", "id"), new Screen()).commit();
     }
 
-    public static class Screen extends PreferenceFragment {
+    public static class Screen extends PreferenceFragment implements Preference.OnPreferenceClickListener{
         private Context context;
 
         @Override
@@ -46,6 +46,23 @@ public class SettingsActivity extends Activity {
                                     "Enable reader mode",
                                     "Enables \"reader mode\" on long threads",
                                     Settings.PREMIUM_READER_MODE
+                            )
+                    );
+                }
+                if (SettingsStatus.enableUndoPosts) {
+                    premiumPrefs.addPreference(
+                            switchPreference(
+                                    "Enable undo posts",
+                                    "Enables ability to undo posts before posting",
+                                    Settings.PREMIUM_UNDO_POSTS
+                            )
+                    );
+
+                    premiumPrefs.addPreference(
+                            buttonPreference(
+                                    "Undo posts settings",
+                                    "",
+                                    Settings.PREMIUM_UNDO_POSTS
                             )
                     );
                 }
@@ -277,6 +294,16 @@ public class SettingsActivity extends Activity {
             return preference;
         }
 
+        private Preference buttonPreference(String title, String summary, BooleanSetting setting) {
+            Preference preference = new Preference(context);
+            preference.setKey(setting.key);
+            preference.setTitle(title);
+            preference.setSummary(summary);
+            preference.setOnPreferenceClickListener(this);
+
+            return preference;
+        }
+
         private Preference listPreference(String title, String summary, StringSetting setting) {
             ListPreference preference = new ListPreference(context);
             preference.setTitle(title);
@@ -296,5 +323,16 @@ public class SettingsActivity extends Activity {
             screen.addPreference(preferenceCategory);
             return preferenceCategory;
         }
+
+        @Override
+        public boolean onPreferenceClick(Preference preference) {
+            String key = preference.getKey();
+            if(key.equals(Settings.PREMIUM_UNDO_POSTS.key.toString())){
+                app.revanced.integrations.twitter.Utils.startUndoPostActivity();
+            }
+            return true;
+        }
     }
+
+
 }
