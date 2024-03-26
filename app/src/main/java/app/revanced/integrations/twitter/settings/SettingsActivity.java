@@ -62,7 +62,16 @@ public class SettingsActivity extends Activity {
                             buttonPreference(
                                     "Undo posts settings",
                                     "",
-                                    Settings.PREMIUM_UNDO_POSTS
+                                    Settings.PREMIUM_UNDO_POSTS.key
+                            )
+                    );
+                }
+                if (SettingsStatus.enableAppIconNNavIcon) {
+                    premiumPrefs.addPreference(
+                            buttonPreference(
+                                    "App icon and navbar customisation settings",
+                                    "",
+                                    Settings.PREMIUM_ICONS
                             )
                     );
                 }
@@ -294,9 +303,9 @@ public class SettingsActivity extends Activity {
             return preference;
         }
 
-        private Preference buttonPreference(String title, String summary, BooleanSetting setting) {
+        private Preference buttonPreference(String title, String summary, String key) {
             Preference preference = new Preference(context);
-            preference.setKey(setting.key);
+            preference.setKey(key);
             preference.setTitle(title);
             preference.setSummary(summary);
             preference.setOnPreferenceClickListener(this);
@@ -329,6 +338,9 @@ public class SettingsActivity extends Activity {
             String key = preference.getKey();
             if(key.equals(Settings.PREMIUM_UNDO_POSTS.key.toString())){
                 app.revanced.integrations.twitter.Utils.startUndoPostActivity();
+            }
+            else if(key.equals(Settings.PREMIUM_ICONS)){
+                app.revanced.integrations.twitter.Utils.startAppIconNNavIconActivity();
             }
             return true;
         }

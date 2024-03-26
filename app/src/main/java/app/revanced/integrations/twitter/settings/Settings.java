@@ -30,4 +30,5 @@ public class Settings extends BaseSettings {
 
     public static final BooleanSetting PREMIUM_READER_MODE = new BooleanSetting("premium_reader_mode", false);
     public static final BooleanSetting PREMIUM_UNDO_POSTS = new BooleanSetting("premium_undo_posts", false);
+    public static final String PREMIUM_ICONS = "premium_app_icon_n_nav_icon";
 }

@@ -44,6 +44,11 @@ public class Utils {
         startActivityFromClassName(className);
     }
 
+    public static void startAppIconNNavIconActivity(){
+        String className = "com.twitter.feature.subscriptions.settings.extras.ExtrasSettingsActivity";
+        startActivityFromClassName(className);
+    }
+
     @SuppressWarnings("deprecation")
     public static String getStringPref(Setting<String> setting) {
         String value = sp.getString(setting.key, setting.defaultValue);
