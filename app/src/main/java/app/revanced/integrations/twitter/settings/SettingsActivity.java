@@ -89,16 +89,6 @@ public class SettingsActivity extends Activity {
                         "The subfolder to download videos to ([PublicFolder]/[Subfolder])",
                         Settings.VID_SUBFOLDER
                 ));
-                downloadPrefs.addPreference(listPreference(
-                        "Public folder",
-                        "The public folder to use for video downloads",
-                        Settings.VID_PUBLIC_FOLDER
-                ));
-                downloadPrefs.addPreference(editTextPreference(
-                        "Download subfolder",
-                        "The subfolder to download videos to ([PublicFolder]/[Subfolder])",
-                        Settings.VID_SUBFOLDER
-                ));
             }
 
             if(SettingsStatus.enableAdsSection()){
