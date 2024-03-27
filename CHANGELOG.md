@@ -1,3 +1,10 @@
+## [1.8.1-dev.1](https://github.com/crimera/revanced-integrations/compare/v1.8.0...v1.8.1-dev.1) (2024-03-27)
+
+
+### Bug Fixes
+
+* **Twitter:** Fix duplicate optionns for `Custom download folder` patch ([7ffbe43](https://github.com/crimera/revanced-integrations/commit/7ffbe4334889346269a12d8fd0d64f94faf973d3))
+
 # [1.8.0](https://github.com/crimera/revanced-integrations/compare/v1.7.0...v1.8.0) (2024-03-27)
 
 
