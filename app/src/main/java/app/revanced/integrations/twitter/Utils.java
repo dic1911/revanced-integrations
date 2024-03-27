@@ -3,13 +3,10 @@ package app.revanced.integrations.twitter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.preference.PreferenceManager;
 import app.revanced.integrations.shared.settings.Setting;
-import app.revanced.integrations.twitter.settings.Settings;
 import app.revanced.integrations.twitter.settings.SettingsActivity;
 import app.revanced.integrations.shared.settings.preference.SharedPrefCategory;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 @SuppressWarnings("unused")
@@ -49,7 +46,6 @@ public class Utils {
         startActivityFromClassName(className);
     }
 
-    @SuppressWarnings("deprecation")
     public static String getStringPref(Setting<String> setting) {
         String value = sp.getString(setting.key, setting.defaultValue);
         if (value.isBlank()) {
@@ -58,7 +54,6 @@ public class Utils {
         return value;
     }
 
-    @SuppressWarnings("deprecation")
     public static Boolean getBooleanPerf(Setting<Boolean> setting) {
         return sp.getBoolean(setting.key, setting.defaultValue);
     }
