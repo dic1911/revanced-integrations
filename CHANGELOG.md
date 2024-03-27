@@ -1,3 +1,11 @@
+# [1.8.0](https://github.com/crimera/revanced-integrations/compare/v1.7.0...v1.8.0) (2024-03-27)
+
+
+### Features
+
+* **Twitter:** Added `App Icon and NavBar Customisation` settings ([796a33d](https://github.com/crimera/revanced-integrations/commit/796a33dca86a31a96c268c9fb8fe6122d98b3d65))
+* **Twitter:** Added `Undo Post Patch` in mod settings ([e82d8bf](https://github.com/crimera/revanced-integrations/commit/e82d8bfcdd38c7d7de4b4bf2702c4a2982c9be94))
+
 # [1.8.0-dev.1](https://github.com/crimera/revanced-integrations/compare/v1.7.0...v1.8.0-dev.1) (2024-03-27)
 
 
