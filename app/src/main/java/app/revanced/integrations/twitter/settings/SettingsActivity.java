@@ -28,7 +28,7 @@ public class SettingsActivity extends Activity {
         getFragmentManager().beginTransaction().add(Utils.getResourceIdentifier("fragment_container", "id"), new Screen()).commit();
     }
 
-    public static class Screen extends PreferenceFragment {
+    public static class Screen extends PreferenceFragment implements Preference.OnPreferenceClickListener{
         private Context context;
 
         @Override
@@ -38,9 +38,57 @@ public class SettingsActivity extends Activity {
 
             PreferenceScreen screen = getPreferenceManager().createPreferenceScreen(context);
           //  SettingsStatus.load();
+            if (SettingsStatus.enablePremiumSection()) {
+                LegacyTwitterPreferenceCategory premiumPrefs = preferenceCategory("Premium", screen);
+                if (SettingsStatus.enableReaderMode) {
+                    premiumPrefs.addPreference(
+                            switchPreference(
+                                    "Enable reader mode",
+                                    "Enables \"reader mode\" on long threads",
+                                    Settings.PREMIUM_READER_MODE
+                            )
+                    );
+                }
+                if (SettingsStatus.enableUndoPosts) {
+                    premiumPrefs.addPreference(
+                            switchPreference(
+                                    "Enable undo posts",
+                                    "Enables ability to undo posts before posting",
+                                    Settings.PREMIUM_UNDO_POSTS
+                            )
+                    );
+
+                    premiumPrefs.addPreference(
+                            buttonPreference(
+                                    "Undo posts settings",
+                                    "",
+                                    Settings.PREMIUM_UNDO_POSTS.key
+                            )
+                    );
+                }
+                if (SettingsStatus.enableAppIconNNavIcon) {
+                    premiumPrefs.addPreference(
+                            buttonPreference(
+                                    "App icon and navbar customisation settings",
+                                    "",
+                                    Settings.PREMIUM_ICONS
+                            )
+                    );
+                }
+            }
 
             if (SettingsStatus.changeDownloadEnabled) {
                 LegacyTwitterPreferenceCategory downloadPrefs = preferenceCategory("Download", screen);
+                downloadPrefs.addPreference(listPreference(
+                        "Public folder",
+                        "The public folder to use for video downloads",
+                        Settings.VID_PUBLIC_FOLDER
+                ));
+                downloadPrefs.addPreference(editTextPreference(
+                        "Download subfolder",
+                        "The subfolder to download videos to ([PublicFolder]/[Subfolder])",
+                        Settings.VID_SUBFOLDER
+                ));
                 downloadPrefs.addPreference(listPreference(
                         "Public folder",
                         "The public folder to use for video downloads",
@@ -255,6 +303,16 @@ public class SettingsActivity extends Activity {
             return preference;
         }
 
+        private Preference buttonPreference(String title, String summary, String key) {
+            Preference preference = new Preference(context);
+            preference.setKey(key);
+            preference.setTitle(title);
+            preference.setSummary(summary);
+            preference.setOnPreferenceClickListener(this);
+
+            return preference;
+        }
+
         private Preference listPreference(String title, String summary, StringSetting setting) {
             ListPreference preference = new ListPreference(context);
             preference.setTitle(title);
@@ -274,5 +332,19 @@ public class SettingsActivity extends Activity {
             screen.addPreference(preferenceCategory);
             return preferenceCategory;
         }
+
+        @Override
+        public boolean onPreferenceClick(Preference preference) {
+            String key = preference.getKey();
+            if(key.equals(Settings.PREMIUM_UNDO_POSTS.key.toString())){
+                app.revanced.integrations.twitter.Utils.startUndoPostActivity();
+            }
+            else if(key.equals(Settings.PREMIUM_ICONS)){
+                app.revanced.integrations.twitter.Utils.startAppIconNNavIconActivity();
+            }
+            return true;
+        }
     }
+
+
 }

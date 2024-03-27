@@ -74,6 +74,12 @@ public class Pref {
     public static boolean hideDetailedPosts() {
         return Utils.getBooleanPerf(Settings.ADS_HIDE_DETAILED_POSTS);
     }
+    public static boolean enableReaderMode() {
+        return Utils.getBooleanPerf(Settings.PREMIUM_READER_MODE);
+    }
+    public static boolean enableUndoPosts() {
+        return Utils.getBooleanPerf(Settings.PREMIUM_UNDO_POSTS);
+    }
 
     //end
 }
