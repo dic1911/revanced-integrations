@@ -1,3 +1,10 @@
+# [1.9.0-dev.2](https://github.com/crimera/revanced-integrations/compare/v1.9.0-dev.1...v1.9.0-dev.2) (2024-03-31)
+
+
+### Bug Fixes
+
+* **Twitter - Custom sharing domain:** Use twitter as the default domain ([ef8f11a](https://github.com/crimera/revanced-integrations/commit/ef8f11a73e0fa2bfd20ff484a19e9a1cc4c123f0))
+
 # [1.9.0-dev.1](https://github.com/crimera/revanced-integrations/compare/v1.8.1...v1.9.0-dev.1) (2024-03-31)
 
 
