@@ -1,3 +1,10 @@
+# [1.9.0-dev.1](https://github.com/crimera/revanced-integrations/compare/v1.8.1...v1.9.0-dev.1) (2024-03-31)
+
+
+### Features
+
+* **Twitter:** Add `Custom sharing domain` patch ([b4b3b48](https://github.com/crimera/revanced-integrations/commit/b4b3b48dd4b5db7792662add81e98369418c16e6))
+
 ## [1.8.1](https://github.com/crimera/revanced-integrations/compare/v1.8.0...v1.8.1) (2024-03-27)
 
 
