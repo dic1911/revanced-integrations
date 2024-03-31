@@ -1,3 +1,10 @@
+# [1.9.0-dev.3](https://github.com/crimera/revanced-integrations/compare/v1.9.0-dev.2...v1.9.0-dev.3) (2024-03-31)
+
+
+### Bug Fixes
+
+* **Twitter:** Mod settings won't show up when offline ([0d47e8d](https://github.com/crimera/revanced-integrations/commit/0d47e8d36503a0aeb5a7799364c23fd5f510f15f))
+
 # [1.9.0-dev.2](https://github.com/crimera/revanced-integrations/compare/v1.9.0-dev.1...v1.9.0-dev.2) (2024-03-31)
 
 
