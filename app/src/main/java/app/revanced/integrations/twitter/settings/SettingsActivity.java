@@ -37,7 +37,8 @@ public class SettingsActivity extends Activity {
             context = getContext();
 
             PreferenceScreen screen = getPreferenceManager().createPreferenceScreen(context);
-          //  SettingsStatus.load();
+            SettingsStatus.load();
+
             if (SettingsStatus.enablePremiumSection()) {
                 LegacyTwitterPreferenceCategory premiumPrefs = preferenceCategory("Premium", screen);
                 if (SettingsStatus.enableReaderMode) {

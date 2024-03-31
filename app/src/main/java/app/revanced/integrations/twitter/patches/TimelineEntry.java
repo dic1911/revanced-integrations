@@ -10,15 +10,14 @@ import java.lang.reflect.Field;
 public class TimelineEntry {
     private static boolean hideAds,hideGAds,hideWTF,hideCTS,hideCTJ,hideDetailedPosts,hideRBMK,hidePinnedPosts;
     static {
-        SettingsStatus.load();
-        hideAds = (Pref.hideAds() && SettingsStatus.hideAds);
-        hideGAds = (Pref.hideGoogleAds() && SettingsStatus.hideGAds);
-        hideWTF = (Pref.hideWTF() && SettingsStatus.hideWTF);
-        hideCTS = (Pref.hideCTS() && SettingsStatus.hideCTS);
-        hideCTJ = (Pref.hideCTJ() && SettingsStatus.hideCTJ);
-        hideDetailedPosts = (Pref.hideDetailedPosts() && SettingsStatus.hideDetailedPosts);
-        hideRBMK = (Pref.hideRBMK() && SettingsStatus.hideRBMK);
-        hidePinnedPosts = (Pref.hideRPinnedPosts() && SettingsStatus.hideRPinnedPosts);
+        hideAds = Pref.hideAds();
+        hideGAds = Pref.hideGoogleAds();
+        hideWTF = Pref.hideWTF();
+        hideCTS = Pref.hideCTS();
+        hideCTJ = Pref.hideCTJ();
+        hideDetailedPosts = Pref.hideDetailedPosts();
+        hideRBMK = Pref.hideRBMK();
+        hidePinnedPosts = Pref.hideRPinnedPosts();
     }
 
 
