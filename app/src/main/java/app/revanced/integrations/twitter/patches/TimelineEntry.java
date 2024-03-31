@@ -1,23 +1,22 @@
 package app.revanced.integrations.twitter.patches;
 
 import app.revanced.integrations.twitter.Pref;
-import app.revanced.integrations.twitter.Utils;
 import app.revanced.integrations.twitter.settings.SettingsStatus;
-import android.util.Log;
+
 import java.lang.reflect.Field;
 
 
 public class TimelineEntry {
-    private static boolean hideAds,hideGAds,hideWTF,hideCTS,hideCTJ,hideDetailedPosts,hideRBMK,hidePinnedPosts;
+    private static final boolean hideAds,hideGAds,hideWTF,hideCTS,hideCTJ,hideDetailedPosts,hideRBMK,hidePinnedPosts;
     static {
-        hideAds = Pref.hideAds();
-        hideGAds = Pref.hideGoogleAds();
-        hideWTF = Pref.hideWTF();
-        hideCTS = Pref.hideCTS();
-        hideCTJ = Pref.hideCTJ();
-        hideDetailedPosts = Pref.hideDetailedPosts();
-        hideRBMK = Pref.hideRBMK();
-        hidePinnedPosts = Pref.hideRPinnedPosts();
+        hideAds = (Pref.hideAds() && SettingsStatus.hideAds);
+        hideGAds = (Pref.hideGoogleAds() && SettingsStatus.hideGAds);
+        hideWTF = (Pref.hideWTF() && SettingsStatus.hideWTF);
+        hideCTS = (Pref.hideCTS() && SettingsStatus.hideCTS);
+        hideCTJ = (Pref.hideCTJ() && SettingsStatus.hideCTJ);
+        hideDetailedPosts = (Pref.hideDetailedPosts() && SettingsStatus.hideDetailedPosts);
+        hideRBMK = (Pref.hideRBMK() && SettingsStatus.hideRBMK);
+        hidePinnedPosts = (Pref.hideRPinnedPosts() && SettingsStatus.hideRPinnedPosts);
     }
 
 
