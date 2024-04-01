@@ -1,3 +1,10 @@
+# [1.10.0-dev.1](https://github.com/crimera/revanced-integrations/compare/v1.9.0...v1.10.0-dev.1) (2024-04-01)
+
+
+### Features
+
+* **Twitter:** Added `Hide bookmark icon in timeline` ([6c0400c](https://github.com/crimera/revanced-integrations/commit/6c0400caaa1b19baa193d540a36da5226829e896))
+
 # [1.9.0](https://github.com/crimera/revanced-integrations/compare/v1.8.1...v1.9.0) (2024-04-01)
 
 
