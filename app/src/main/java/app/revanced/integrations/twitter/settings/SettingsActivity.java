@@ -236,6 +236,7 @@ public class SettingsActivity extends Activity {
                             )
                     );
                 }
+
                 if (SettingsStatus.hideViewCount) {
                     miscPrefs.addPreference(
                             switchPreference(
@@ -286,6 +287,16 @@ public class SettingsActivity extends Activity {
                             )
                     );
                 }
+                if (SettingsStatus.hideInlineBmk) {
+                    timelinePrefs.addPreference(
+                            switchPreference(
+                                    "Hide bookmark icon in timeline",
+                                    "",
+                                    Settings.TIMELINE_HIDE_BMK_ICON
+                            )
+                    );
+                }
+
             }
 
             setPreferenceScreen(screen);
