@@ -1,3 +1,26 @@
+# [1.9.0-dev.4](https://github.com/crimera/revanced-integrations/compare/v1.9.0-dev.3...v1.9.0-dev.4) (2024-04-01)
+
+# [1.9.0-dev.3](https://github.com/crimera/revanced-integrations/compare/v1.9.0-dev.2...v1.9.0-dev.3) (2024-03-31)
+
+
+### Bug Fixes
+
+* **Twitter:** Mod settings won't show up when offline ([0d47e8d](https://github.com/crimera/revanced-integrations/commit/0d47e8d36503a0aeb5a7799364c23fd5f510f15f))
+
+# [1.9.0-dev.2](https://github.com/crimera/revanced-integrations/compare/v1.9.0-dev.1...v1.9.0-dev.2) (2024-03-31)
+
+
+### Bug Fixes
+
+* **Twitter - Custom sharing domain:** Use twitter as the default domain ([ef8f11a](https://github.com/crimera/revanced-integrations/commit/ef8f11a73e0fa2bfd20ff484a19e9a1cc4c123f0))
+
+# [1.9.0-dev.1](https://github.com/crimera/revanced-integrations/compare/v1.8.1...v1.9.0-dev.1) (2024-03-31)
+
+
+### Features
+
+* **Twitter:** Add `Custom sharing domain` patch ([b4b3b48](https://github.com/crimera/revanced-integrations/commit/b4b3b48dd4b5db7792662add81e98369418c16e6))
+
 ## [1.8.1](https://github.com/crimera/revanced-integrations/compare/v1.8.0...v1.8.1) (2024-03-27)
 
 

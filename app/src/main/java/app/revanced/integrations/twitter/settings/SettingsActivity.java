@@ -37,7 +37,7 @@ public class SettingsActivity extends Activity {
             context = getContext();
 
             PreferenceScreen screen = getPreferenceManager().createPreferenceScreen(context);
-          //  SettingsStatus.load();
+
             if (SettingsStatus.enablePremiumSection()) {
                 LegacyTwitterPreferenceCategory premiumPrefs = preferenceCategory("Premium", screen);
                 if (SettingsStatus.enableReaderMode) {
@@ -207,6 +207,15 @@ public class SettingsActivity extends Activity {
                             )
                     );
                 }
+                if (SettingsStatus.hideFABBtns) {
+                    miscPrefs.addPreference(
+                            switchPreference(
+                                    "Hide floating action button menu",
+                                    "",
+                                    Settings.MISC_HIDE_FAB_BTN
+                            )
+                    );
+                }
 
                 if (SettingsStatus.hideRecommendedUsers) {
                     miscPrefs.addPreference(
@@ -233,6 +242,16 @@ public class SettingsActivity extends Activity {
                                     "Hide view count",
                                     "",
                                     Settings.MISC_HIDE_VIEW_COUNT
+                            )
+                    );
+                }
+
+                if (SettingsStatus.customSharingDomainEnabled) {
+                    miscPrefs.addPreference(
+                            editTextPreference(
+                                    "Custom sharing domain",
+                                    "The domain to use when sharing tweets",
+                                    Settings.CUSTOM_SHARING_DOMAIN
                             )
                     );
                 }

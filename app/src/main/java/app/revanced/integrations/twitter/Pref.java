@@ -14,6 +14,11 @@ public class Pref {
         return Utils.getStringPref(Settings.VID_SUBFOLDER)+"/"+filename;
     }
 
+    public static String getSharingLink(String link) {
+        String domain = Utils.getStringPref(Settings.CUSTOM_SHARING_DOMAIN);
+        return link.replace("x", domain);
+    }
+
     public  static ArrayList hideRecommendedUsers(ArrayList users) {
         if (Utils.getBooleanPerf(Settings.MISC_HIDE_RECOMMENDED_USERS)) { return null; }
         return users;
@@ -34,6 +39,10 @@ public class Pref {
 
     public static boolean hideFAB() {
         return Utils.getBooleanPerf(Settings.MISC_HIDE_FAB);
+    }
+
+    public static boolean hideFABBtn() {
+        return !Utils.getBooleanPerf(Settings.MISC_HIDE_FAB_BTN);
     }
 
     public static boolean hideCommNotes() {

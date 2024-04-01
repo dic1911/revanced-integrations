@@ -1,16 +1,14 @@
 package app.revanced.integrations.twitter.patches;
 
 import app.revanced.integrations.twitter.Pref;
-import app.revanced.integrations.twitter.Utils;
 import app.revanced.integrations.twitter.settings.SettingsStatus;
-import android.util.Log;
+
 import java.lang.reflect.Field;
 
 
 public class TimelineEntry {
-    private static boolean hideAds,hideGAds,hideWTF,hideCTS,hideCTJ,hideDetailedPosts,hideRBMK,hidePinnedPosts;
+    private static final boolean hideAds,hideGAds,hideWTF,hideCTS,hideCTJ,hideDetailedPosts,hideRBMK,hidePinnedPosts;
     static {
-        SettingsStatus.load();
         hideAds = (Pref.hideAds() && SettingsStatus.hideAds);
         hideGAds = (Pref.hideGoogleAds() && SettingsStatus.hideGAds);
         hideWTF = (Pref.hideWTF() && SettingsStatus.hideWTF);
