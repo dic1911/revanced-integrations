@@ -41,6 +41,10 @@ public class Pref {
         return Utils.getBooleanPerf(Settings.MISC_HIDE_FAB);
     }
 
+    public static boolean hideFABBtn() {
+        return !Utils.getBooleanPerf(Settings.MISC_HIDE_FAB_BTN);
+    }
+
     public static boolean hideCommNotes() {
         return Utils.getBooleanPerf(Settings.MISC_HIDE_COMM_NOTES);
     }

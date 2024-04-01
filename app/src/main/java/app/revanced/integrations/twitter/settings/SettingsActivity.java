@@ -207,6 +207,15 @@ public class SettingsActivity extends Activity {
                             )
                     );
                 }
+                if (SettingsStatus.hideFABBtns) {
+                    miscPrefs.addPreference(
+                            switchPreference(
+                                    "Hide floating action button menu",
+                                    "",
+                                    Settings.MISC_HIDE_FAB_BTN
+                            )
+                    );
+                }
 
                 if (SettingsStatus.hideRecommendedUsers) {
                     miscPrefs.addPreference(
