@@ -10,6 +10,7 @@ public class SettingsStatus {
     public static boolean hideFAB = false;
     public static boolean hideFABBtns = false;
     public static boolean hideViewCount = false;
+    public static boolean hideInlineBmk = false;
     public static boolean hideLiveThreads = false;
     public static boolean hideBanner = false;
     public static boolean hideForyou = false;
@@ -37,6 +38,7 @@ public class SettingsStatus {
     public static void hideFAB() { hideFAB = true; }
     public static void hideFABBtns() { hideFABBtns = true; }
     public static void hideViewCount() { hideViewCount = true; }
+    public static void hideInlineBmk() { hideInlineBmk = true; }
     public static void hideLiveThreads() { hideLiveThreads = true; }
     public static void hideBanner() { hideBanner = true; }
     public static void hideForYou() { hideForyou = true; }
@@ -55,7 +57,7 @@ public class SettingsStatus {
     public static void enableUndoPosts() { enableUndoPosts = true; }
     public static void enableAppIconNNavIcon() { enableAppIconNNavIcon = true; }
 
-    public static boolean enableTimelineSection(){ return (hideLiveThreads || hideBanner || hideForyou); }
+    public static boolean enableTimelineSection(){ return (hideLiveThreads || hideBanner || hideForyou || hideInlineBmk); }
     public static boolean enableMiscSection() { return (enableFontMod || hideRecommendedUsers || hideFAB || hideViewCount || hideCommunityNote || customSharingDomainEnabled || hideFABBtns); }
     public static boolean enableAdsSection() {return (hideAds|| hideGAds || hideWTF || hideCTS || hideCTJ || hideDetailedPosts || hideRBMK ||hidePromotedTrend); }
 
