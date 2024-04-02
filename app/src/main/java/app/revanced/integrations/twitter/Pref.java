@@ -53,6 +53,10 @@ public class Pref {
         return !Utils.getBooleanPerf(Settings.MISC_HIDE_VIEW_COUNT);
     }
 
+    public static boolean hideInlineBookmark() {
+        return !Utils.getBooleanPerf(Settings.TIMELINE_HIDE_BMK_ICON);
+    }
+
     public static boolean hidePromotedTrend(Object data) {
         if(data!=null && Utils.getBooleanPerf(Settings.ADS_HIDE_PROMOTED_TRENDS)){
             return true;
