@@ -1,7 +1,5 @@
 package app.revanced.integrations.twitter.patches.links;
 
-import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 
 import java.lang.reflect.Field;
