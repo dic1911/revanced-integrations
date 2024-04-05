@@ -1,3 +1,10 @@
+## [1.10.1-dev.1](https://github.com/crimera/revanced-integrations/compare/v1.10.0...v1.10.1-dev.1) (2024-04-05)
+
+
+### Bug Fixes
+
+* **Hide FAB:** Turned off by default ([4312f32](https://github.com/crimera/revanced-integrations/commit/4312f3250f3014c722b482e2d65b196387019f6a))
+
 # [1.10.0](https://github.com/crimera/revanced-integrations/compare/v1.9.0...v1.10.0) (2024-04-02)
 
 
