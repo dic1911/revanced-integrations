@@ -1,3 +1,10 @@
+## [1.10.1-dev.2](https://github.com/crimera/revanced-integrations/compare/v1.10.1-dev.1...v1.10.1-dev.2) (2024-04-06)
+
+
+### Bug Fixes
+
+* **Custom sharing domain:** Now works on "Copy Link" ([4e9fc83](https://github.com/crimera/revanced-integrations/commit/4e9fc835f7713cc79c193686d32f7f2bf4c31299))
+
 ## [1.10.1-dev.1](https://github.com/crimera/revanced-integrations/compare/v1.10.0...v1.10.1-dev.1) (2024-04-05)
 
 
