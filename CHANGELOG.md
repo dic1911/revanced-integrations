@@ -1,3 +1,10 @@
+# [1.11.0-dev.1](https://github.com/crimera/revanced-integrations/compare/v1.10.1-dev.2...v1.11.0-dev.1) (2024-04-07)
+
+
+### Features
+
+* Show poll results ([f788bde](https://github.com/crimera/revanced-integrations/commit/f788bde7895b2b1cdf5f36719cff5a1b94a8113a))
+
 ## [1.10.1-dev.2](https://github.com/crimera/revanced-integrations/compare/v1.10.1-dev.1...v1.10.1-dev.2) (2024-04-06)
 
 
