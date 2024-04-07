@@ -83,8 +83,6 @@ public class Pref {
             newMap.put(key, idk);
         }
 
-        System.out.println("gamer totalvotes: " + totalVotes);
-
         return newMap;
     }
 
