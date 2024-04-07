@@ -1,3 +1,5 @@
+# [1.11.0-dev.4](https://github.com/crimera/revanced-integrations/compare/v1.11.0-dev.3...v1.11.0-dev.4) (2024-04-07)
+
 # [1.11.0-dev.3](https://github.com/crimera/revanced-integrations/compare/v1.11.0-dev.2...v1.11.0-dev.3) (2024-04-07)
 
 
