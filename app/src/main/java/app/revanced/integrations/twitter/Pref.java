@@ -1,8 +1,8 @@
 package app.revanced.integrations.twitter;
 
+import android.util.Log;
 import app.revanced.integrations.twitter.settings.Settings;
 
-import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -44,46 +44,54 @@ public class Pref {
     }
 
     public static Map polls(Map map) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, InstantiationException, NoSuchFieldException {
-        HashMap newMap = new HashMap();
+        try {
+            HashMap newMap = new HashMap();
 
-        ArrayList<String> labels = new ArrayList(Arrays.asList("choice1_label", "choice2_label", "choice3_label", "choice4_label"));
-        String[] counts = {"choice1_count", "choice2_count", "choice3_count", "choice4_count"};
+            ArrayList<String> labels = new ArrayList(Arrays.asList("choice1_label", "choice2_label", "choice3_label", "choice4_label"));
+            String[] counts = {"choice1_count", "choice2_count", "choice3_count", "choice4_count"};
 
-        // get sum
-        int totalVotes = 0;
-        for (String count : counts) {
-            if (!map.containsKey(count)) {
-                break;
+            // get sum
+            int totalVotes = 0;
+            for (String count : counts) {
+                if (!map.containsKey(count)) {
+                    break;
+                }
+
+                totalVotes += Integer.parseInt(map.get(count).toString());
             }
 
-            totalVotes += Integer.parseInt(map.get(count).toString());
-        }
+            for (Object key : map.keySet()) {
+                Object idk = map.get(key);
 
-        for (Object key : map.keySet()) {
-            key = key.toString();
-            Object idk = map.get(key);
-            Field fieldA = idk.getClass().getField("a");
+                if (labels.contains(key.toString())) {
+                    String countLabel = counts[labels.indexOf(key.toString())];
 
-            if (labels.contains(key)) {
-                String countLabel = counts[labels.indexOf(key)];
+                    int count = 0;
+                    if (map.get(countLabel) != null) {
+                        count = Integer.parseInt(map.get(countLabel).toString());
+                    }
 
-                int count = Integer.parseInt(map.get(countLabel).toString());
-                int percentage = (int) (count*100.0f/totalVotes);
+                    int percentage = Math.round(count * 100.0f / totalVotes);
 
-                newMap.put(
-                        key,
-                        idk.getClass().getConstructor(Object.class, String.class).newInstance(
-                                idk + " - " + percentage + "%",
-                                null
-                        )
-                );
-                continue;
+                    newMap.put(
+                            key,
+                            idk.getClass().getConstructor(Object.class, String.class).newInstance(
+                                    idk + " - " + percentage + "%",
+                                    null
+                            )
+                    );
+
+                    continue;
+                }
+
+                newMap.put(key, idk);
             }
 
-            newMap.put(key, idk);
+            return newMap;
+        } catch (Exception e) {
+            Log.d("POLL_ERROR", map.toString());
+            return map;
         }
-
-        return newMap;
     }
 
     public static boolean hideBanner() {
