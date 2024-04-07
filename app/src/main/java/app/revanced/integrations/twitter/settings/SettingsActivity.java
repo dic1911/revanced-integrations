@@ -297,6 +297,15 @@ public class SettingsActivity extends Activity {
                     );
                 }
 
+                if (SettingsStatus.showPollResultsEnabled) {
+                    timelinePrefs.addPreference(
+                            switchPreference(
+                                    "Show poll results",
+                                    "View poll results without voting",
+                                    Settings.TIMELINE_SHOW_POLL_RESULTS
+                            )
+                    );
+                }
             }
 
             setPreferenceScreen(screen);
