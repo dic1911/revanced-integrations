@@ -1,3 +1,10 @@
+# [1.11.0-dev.3](https://github.com/crimera/revanced-integrations/compare/v1.11.0-dev.2...v1.11.0-dev.3) (2024-04-07)
+
+
+### Bug Fixes
+
+* **Show poll results:** Add toggle in mod settings, Now checks if the poll has finished before modifying labels ([6b29231](https://github.com/crimera/revanced-integrations/commit/6b292310e0cda22e9d8ae77adcce15634a01eab2))
+
 # [1.11.0-dev.2](https://github.com/crimera/revanced-integrations/compare/v1.11.0-dev.1...v1.11.0-dev.2) (2024-04-07)
 
 
