@@ -45,7 +45,6 @@ public class Pref {
     public static Map polls(Map map) {
         if (Utils.getBooleanPerf(Settings.TIMELINE_SHOW_POLL_RESULTS)) {
             try {
-                Log.d("POLL", map.toString());
                 if (map.containsKey("counts_are_final")) {
                     if (map.get("counts_are_final").toString().equals("true")) {
                         return map;
