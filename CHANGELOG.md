@@ -8,6 +8,7 @@
 ## [1.11.0-dev.5](https://github.com/crimera/revanced-integrations/compare/v1.11.0-dev.4...v1.11.0-dev.5) (2024-04-08)
 
 
+
 ### Updates
 
 * Add update section to changelog ([801a735](https://github.com/crimera/revanced-integrations/commit/801a735458f1e3cf59c130bec5bd9ec55bd1ffca))
@@ -48,8 +49,6 @@
 ### Bug Fixes
 
 * **Hide FAB:** Turned off by default ([4312f32](https://github.com/crimera/revanced-integrations/commit/4312f3250f3014c722b482e2d65b196387019f6a))
-
-# [1.10.0](https://github.com/crimera/revanced-integrations/compare/v1.9.0...v1.10.0) (2024-04-02)
 
 
 ### Features
