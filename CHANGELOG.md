@@ -1,11 +1,54 @@
-## [1.10.1](https://github.com/crimera/revanced-integrations/compare/v1.10.0...v1.10.1) (2024-04-08)
+## [1.11.0-dev.6](https://github.com/crimera/revanced-integrations/compare/v1.11.0-dev.5...v1.11.0-dev.6) (2024-04-08)
+
+
+### Updates
+
+* Add commit tags and sections ([c9c8bc2](https://github.com/crimera/revanced-integrations/commit/c9c8bc2b29e05b25976feafcb753df404dba6450))
+
+## [1.11.0-dev.5](https://github.com/crimera/revanced-integrations/compare/v1.11.0-dev.4...v1.11.0-dev.5) (2024-04-08)
+
 
 
 ### Updates
 
 * Add update section to changelog ([801a735](https://github.com/crimera/revanced-integrations/commit/801a735458f1e3cf59c130bec5bd9ec55bd1ffca))
 
-# [1.10.0](https://github.com/crimera/revanced-integrations/compare/v1.9.0...v1.10.0) (2024-04-02)
+# [1.11.0-dev.4](https://github.com/crimera/revanced-integrations/compare/v1.11.0-dev.3...v1.11.0-dev.4) (2024-04-07)
+
+# [1.11.0-dev.3](https://github.com/crimera/revanced-integrations/compare/v1.11.0-dev.2...v1.11.0-dev.3) (2024-04-07)
+
+
+### Bug Fixes
+
+* **Show poll results:** Add toggle in mod settings, Now checks if the poll has finished before modifying labels ([6b29231](https://github.com/crimera/revanced-integrations/commit/6b292310e0cda22e9d8ae77adcce15634a01eab2))
+
+# [1.11.0-dev.2](https://github.com/crimera/revanced-integrations/compare/v1.11.0-dev.1...v1.11.0-dev.2) (2024-04-07)
+
+
+### Bug Fixes
+
+* **Show poll results:** Add null check on count and wrap the function in try ([5245559](https://github.com/crimera/revanced-integrations/commit/5245559fdac48cfa417dd220d54d9fc27b040c54))
+
+# [1.11.0-dev.1](https://github.com/crimera/revanced-integrations/compare/v1.10.1-dev.2...v1.11.0-dev.1) (2024-04-07)
+
+
+### Features
+
+* Show poll results ([f788bde](https://github.com/crimera/revanced-integrations/commit/f788bde7895b2b1cdf5f36719cff5a1b94a8113a))
+
+## [1.10.1-dev.2](https://github.com/crimera/revanced-integrations/compare/v1.10.1-dev.1...v1.10.1-dev.2) (2024-04-06)
+
+
+### Bug Fixes
+
+* **Custom sharing domain:** Now works on "Copy Link" ([4e9fc83](https://github.com/crimera/revanced-integrations/commit/4e9fc835f7713cc79c193686d32f7f2bf4c31299))
+
+## [1.10.1-dev.1](https://github.com/crimera/revanced-integrations/compare/v1.10.0...v1.10.1-dev.1) (2024-04-05)
+
+
+### Bug Fixes
+
+* **Hide FAB:** Turned off by default ([4312f32](https://github.com/crimera/revanced-integrations/commit/4312f3250f3014c722b482e2d65b196387019f6a))
 
 
 ### Features

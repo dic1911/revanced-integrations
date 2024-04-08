@@ -1,10 +1,9 @@
 package app.revanced.integrations.twitter.patches;
 
+import com.twitter.model.json.timeline.urt.JsonTimelineEntry;
+
 import app.revanced.integrations.twitter.Pref;
 import app.revanced.integrations.twitter.settings.SettingsStatus;
-
-import java.lang.reflect.Field;
-
 
 public class TimelineEntry {
     private static final boolean hideAds,hideGAds,hideWTF,hideCTS,hideCTJ,hideDetailedPosts,hideRBMK,hidePinnedPosts;
@@ -18,7 +17,6 @@ public class TimelineEntry {
         hideRBMK = (Pref.hideRBMK() && SettingsStatus.hideRBMK);
         hidePinnedPosts = (Pref.hideRPinnedPosts() && SettingsStatus.hideRPinnedPosts);
     }
-
 
 
     private static boolean isEntryIdRemove(String entryId) {
@@ -54,23 +52,16 @@ public class TimelineEntry {
         return false;
     }
 
-    public static boolean checkEntry(Object jsonTimelineEntry) {
+    public static JsonTimelineEntry checkEntry(JsonTimelineEntry jsonTimelineEntry) {
         try {
-            String className = "com.twitter.model.json.timeline.urt.JsonTimelineEntry"; // Replace with your fully qualified class name
-            Class<?> clazz = Class.forName(className);
-
-            if (!clazz.isInstance(jsonTimelineEntry)) {
-                return false;
+            String entryId = jsonTimelineEntry.a;
+            if(isEntryIdRemove(entryId)){
+                return null;
             }
-
-            clazz.cast(jsonTimelineEntry);
-            Field a = clazz.getDeclaredField("a");
-            String entryId = (String) a.get(jsonTimelineEntry);
-            return isEntryIdRemove(entryId);
         } catch (Exception unused) {
 
         }
-        return false;
+        return jsonTimelineEntry;
     }
 
 //end

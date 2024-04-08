@@ -14,6 +14,7 @@ public class SettingsStatus {
     public static boolean hideLiveThreads = false;
     public static boolean hideBanner = false;
     public static boolean hideForyou = false;
+    public static boolean showPollResultsEnabled = false;
 
     public static boolean hideAds = false;
     public static boolean hideGAds = false;
@@ -42,6 +43,7 @@ public class SettingsStatus {
     public static void hideLiveThreads() { hideLiveThreads = true; }
     public static void hideBanner() { hideBanner = true; }
     public static void hideForYou() { hideForyou = true; }
+    public static void enableShowPollResults() { showPollResultsEnabled = true; }
 
     public static void hideAds() { hideAds = true; }
     public static void hideGAds() { hideGAds = true; }
@@ -57,7 +59,7 @@ public class SettingsStatus {
     public static void enableUndoPosts() { enableUndoPosts = true; }
     public static void enableAppIconNNavIcon() { enableAppIconNNavIcon = true; }
 
-    public static boolean enableTimelineSection(){ return (hideLiveThreads || hideBanner || hideForyou || hideInlineBmk); }
+    public static boolean enableTimelineSection(){ return (hideLiveThreads || hideBanner || hideForyou || hideInlineBmk || showPollResultsEnabled); }
     public static boolean enableMiscSection() { return (enableFontMod || hideRecommendedUsers || hideFAB || hideViewCount || hideCommunityNote || customSharingDomainEnabled || hideFABBtns); }
     public static boolean enableAdsSection() {return (hideAds|| hideGAds || hideWTF || hideCTS || hideCTJ || hideDetailedPosts || hideRBMK ||hidePromotedTrend); }
 
