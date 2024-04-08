@@ -1,3 +1,10 @@
+## [1.11.0-dev.6](https://github.com/crimera/revanced-integrations/compare/v1.11.0-dev.5...v1.11.0-dev.6) (2024-04-08)
+
+
+### Updates
+
+* Add commit tags and sections ([c9c8bc2](https://github.com/crimera/revanced-integrations/commit/c9c8bc2b29e05b25976feafcb753df404dba6450))
+
 ## [1.11.0-dev.5](https://github.com/crimera/revanced-integrations/compare/v1.11.0-dev.4...v1.11.0-dev.5) (2024-04-08)
 
 
