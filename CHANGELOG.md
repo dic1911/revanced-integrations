@@ -1,3 +1,26 @@
+## [1.11.0](https://github.com/crimera/revanced-integrations/compare/v1.10.1...v1.11.0) (2024-04-08)
+
+
+### Bug Fixes
+
+* **Custom sharing domain:** Now works on "Copy Link" ([4e9fc83](https://github.com/crimera/revanced-integrations/commit/4e9fc835f7713cc79c193686d32f7f2bf4c31299))
+* **Hide FAB:** Turned off by default ([4312f32](https://github.com/crimera/revanced-integrations/commit/4312f3250f3014c722b482e2d65b196387019f6a))
+* **Show poll results:** Add null check on count and wrap the function in try ([5245559](https://github.com/crimera/revanced-integrations/commit/5245559fdac48cfa417dd220d54d9fc27b040c54))
+* **Show poll results:** Add toggle in mod settings, Now checks if the poll has finished before modifying labels ([6b29231](https://github.com/crimera/revanced-integrations/commit/6b292310e0cda22e9d8ae77adcce15634a01eab2))
+
+
+### Features
+
+* Show poll results ([f788bde](https://github.com/crimera/revanced-integrations/commit/f788bde7895b2b1cdf5f36719cff5a1b94a8113a))
+
+
+### Updates
+
+* Add commit tags and sections ([c9c8bc2](https://github.com/crimera/revanced-integrations/commit/c9c8bc2b29e05b25976feafcb753df404dba6450))
+* Remove debug code ([f06eb31](https://github.com/crimera/revanced-integrations/commit/f06eb310125200c19d37175c5805215463ec9c67))
+* **Twitter:** Added stubs to `No shortened URL` patch ([b818f9a](https://github.com/crimera/revanced-integrations/commit/b818f9a037ce7992c8d48e063c2f48d649b402d3))
+* **Twitter:** use stubs for Timeline entry Hook ([38dbec7](https://github.com/crimera/revanced-integrations/commit/38dbec7bfe5cf7d64c702b02f80f55aea1cac71c))
+
 ## [1.11.0-dev.6](https://github.com/crimera/revanced-integrations/compare/v1.11.0-dev.5...v1.11.0-dev.6) (2024-04-08)
 
 
