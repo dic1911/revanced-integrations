@@ -1,3 +1,10 @@
+## [1.11.0-dev.5](https://github.com/crimera/revanced-integrations/compare/v1.11.0-dev.4...v1.11.0-dev.5) (2024-04-08)
+
+
+### Updates
+
+* Add update section to changelog ([801a735](https://github.com/crimera/revanced-integrations/commit/801a735458f1e3cf59c130bec5bd9ec55bd1ffca))
+
 # [1.11.0-dev.4](https://github.com/crimera/revanced-integrations/compare/v1.11.0-dev.3...v1.11.0-dev.4) (2024-04-07)
 
 # [1.11.0-dev.3](https://github.com/crimera/revanced-integrations/compare/v1.11.0-dev.2...v1.11.0-dev.3) (2024-04-07)
