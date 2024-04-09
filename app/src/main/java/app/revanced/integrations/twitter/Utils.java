@@ -7,6 +7,7 @@ import app.revanced.integrations.shared.settings.Setting;
 import app.revanced.integrations.shared.settings.preference.SharedPrefCategory;
 import app.revanced.integrations.twitter.settings.SettingsActivity;
 import app.revanced.integrations.twitter.settings.SettingsStatus;
+import app.revanced.integrations.twitter.patches.FeatureSwitchPatch;
 
 import java.util.Arrays;
 
@@ -18,6 +19,7 @@ public class Utils {
 
     static {
         SettingsStatus.load();
+        FeatureSwitchPatch.load();
     }
 
 
