@@ -26,6 +26,10 @@ public class FeatureSwitchPatch {
         addFlag("bookmarks_in_timelines_enabled", Pref.hideInlineBookmark());
     }
 
+    private static void immersivePlayer() {
+        addFlag("explore_relaunch_enable_immersive_player_across_twitter", Pref.hideImmersivePlayer());
+    }
+
     public static Object flagInfo(String flag,Object def){
         try{
             if (FLAGS.containsKey(flag)){

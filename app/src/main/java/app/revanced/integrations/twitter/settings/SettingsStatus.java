@@ -29,6 +29,8 @@ public class SettingsStatus {
     public static boolean enableUndoPosts = false;
     public static boolean enableAppIconNNavIcon = false;
 
+    public static boolean hideImmersivePlayer = false;
+
 
     public static void enableDownloadFolder() { changeDownloadEnabled = true; }
     public static void enableCustomSharingDomain() { customSharingDomainEnabled = true; }
@@ -58,8 +60,9 @@ public class SettingsStatus {
     public static void enableReaderMode() { enableReaderMode = true; }
     public static void enableUndoPosts() { enableUndoPosts = true; }
     public static void enableAppIconNNavIcon() { enableAppIconNNavIcon = true; }
+    public static void hideImmersivePlayer() { hideImmersivePlayer = true; }
 
-    public static boolean enableTimelineSection(){ return (hideLiveThreads || hideBanner || hideForyou || hideInlineBmk || showPollResultsEnabled); }
+    public static boolean enableTimelineSection(){ return (hideLiveThreads || hideBanner || hideForyou || hideInlineBmk || showPollResultsEnabled || hideImmersivePlayer); }
     public static boolean enableMiscSection() { return (enableFontMod || hideRecommendedUsers || hideFAB || hideViewCount || hideCommunityNote || customSharingDomainEnabled || hideFABBtns); }
     public static boolean enableAdsSection() {return (hideAds|| hideGAds || hideWTF || hideCTS || hideCTJ || hideDetailedPosts || hideRBMK ||hidePromotedTrend); }
 

@@ -306,6 +306,17 @@ public class SettingsActivity extends Activity {
                             )
                     );
                 }
+
+                if (SettingsStatus.hideImmersivePlayer) {
+                    timelinePrefs.addPreference(
+                            switchPreference(
+                                    "Hide immersive player",
+                                    "Removes swipe up for more videos in video player",
+                                    Settings.TIMELINE_HIDE_IMMERSIVE_PLAYER
+                            )
+                    );
+                }
+
             }
 
             setPreferenceScreen(screen);
