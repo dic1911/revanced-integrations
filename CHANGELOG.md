@@ -1,3 +1,16 @@
+## [1.12.0-dev.1](https://github.com/crimera/revanced-integrations/compare/v1.11.0...v1.12.0-dev.1) (2024-04-09)
+
+
+### Features
+
+* **Twitter:** Added `Feature Flag Hook` ([fd1c439](https://github.com/crimera/revanced-integrations/commit/fd1c4390ce2a63f13f38a81c7d66471a510ee71f))
+* **Twitter:** Added `Hide immersive player` patch ([86e09a8](https://github.com/crimera/revanced-integrations/commit/86e09a8dc0f24040ddd05e78eecc5bb2a21f7675))
+
+
+### Updates
+
+* **Twitter:** Made some features to use flags ([e4bb878](https://github.com/crimera/revanced-integrations/commit/e4bb87834258f95fbb1a58a98d9292865c4a2748))
+
 ## [1.11.0](https://github.com/crimera/revanced-integrations/compare/v1.10.1...v1.11.0) (2024-04-08)
 
 
