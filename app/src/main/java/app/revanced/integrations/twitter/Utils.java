@@ -6,8 +6,6 @@ import android.content.Intent;
 import app.revanced.integrations.shared.settings.Setting;
 import app.revanced.integrations.shared.settings.preference.SharedPrefCategory;
 import app.revanced.integrations.twitter.settings.SettingsActivity;
-import app.revanced.integrations.twitter.settings.SettingsStatus;
-import app.revanced.integrations.twitter.patches.FeatureSwitchPatch;
 
 import java.util.Arrays;
 
@@ -16,13 +14,6 @@ public class Utils {
     @SuppressLint("StaticFieldLeak")
     private static final Context ctx = app.revanced.integrations.shared.Utils.getContext();
     private static SharedPrefCategory sp = new SharedPrefCategory("com.twitter.android_preferences");
-
-    static {
-        SettingsStatus.load();
-        FeatureSwitchPatch.load();
-    }
-
-
     private static void startActivity(Class cls) {
         Intent intent = new Intent(ctx, cls);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
