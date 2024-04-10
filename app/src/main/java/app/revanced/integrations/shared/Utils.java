@@ -37,6 +37,9 @@ import java.util.concurrent.TimeUnit;
 import app.revanced.integrations.shared.settings.BooleanSetting;
 import kotlin.text.Regex;
 
+import app.revanced.integrations.twitter.settings.SettingsStatus;
+import app.revanced.integrations.twitter.patches.FeatureSwitchPatch;
+
 public class Utils {
 
     @SuppressLint("StaticFieldLeak")
@@ -46,6 +49,11 @@ public class Utils {
 
     private Utils() {
     } // utility class
+
+    public static void load() {
+        SettingsStatus.load();
+        FeatureSwitchPatch.load();
+    }
 
     public static String getVersionName() {
         if (versionName != null) return versionName;
