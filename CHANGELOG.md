@@ -1,3 +1,10 @@
+## [1.12.0-dev.2](https://github.com/crimera/revanced-integrations/compare/v1.12.0-dev.1...v1.12.0-dev.2) (2024-04-11)
+
+
+### Features
+
+* Added resource file for strings ([cc3583d](https://github.com/crimera/revanced-integrations/commit/cc3583d88396d1e0f0f63ce6a42a53dfd9fc8df7))
+
 ## [1.12.0-dev.1](https://github.com/crimera/revanced-integrations/compare/v1.11.0...v1.12.0-dev.1) (2024-04-09)
 
 
