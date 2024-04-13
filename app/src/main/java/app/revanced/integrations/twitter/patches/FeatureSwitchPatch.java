@@ -2,6 +2,8 @@ package app.revanced.integrations.twitter.patches;
 
 import java.util.*;
 import app.revanced.integrations.twitter.Pref;
+import app.revanced.integrations.twitter.Utils;
+import app.revanced.integrations.twitter.settings.Settings;
 
 public class FeatureSwitchPatch {
     private static HashMap<String,Object> FLAGS = new HashMap<String,Object>();
@@ -44,5 +46,37 @@ public class FeatureSwitchPatch {
     }
 
 
-    public static void load() {}
+    public static void load() {
+            for (Map.Entry<String, Boolean> item : getFLAGS().entrySet()) {
+                String flag = item.getKey();
+                Boolean value = item.getValue();
+                addFlag(flag, value);
+            }
+    }
+
+
+    public static String[] getFlagsString() {
+        String[] out = new String[]{};
+        String flags = Utils.getStringPref(Settings.MISC_FEATURE_FLAGS);
+        if (!flags.isEmpty()) {
+            out = flags.split(",");
+        }
+        return out;
+    }
+
+    public static HashMap<String, Boolean> getFLAGS() {
+        HashMap<String, Boolean> out = new HashMap<>();
+
+        String flags = Utils.getStringPref(Settings.MISC_FEATURE_FLAGS);
+
+        if (!flags.isEmpty()) {
+            for (String item : flags.split(",")) {
+                    String[] flag = item.split(":");
+                    out.put(flag[0], Boolean.getBoolean(flag[1]));
+            }
+        }
+
+        return out;
+    }
+
 }

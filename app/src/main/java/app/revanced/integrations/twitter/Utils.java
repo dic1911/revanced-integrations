@@ -52,6 +52,10 @@ public class Utils {
         return value;
     }
 
+    public static void setStringPref(Setting<String> setting, String value) {
+        sp.saveString(setting.key, value);
+    }
+
     public static Boolean getBooleanPerf(Setting<Boolean> setting) {
         return sp.getBoolean(setting.key, setting.defaultValue);
     }
