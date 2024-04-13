@@ -5,11 +5,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.preference.*;
+import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import app.revanced.integrations.shared.Utils;
 import app.revanced.integrations.shared.settings.BooleanSetting;
 import app.revanced.integrations.shared.settings.StringSetting;
+import app.revanced.integrations.twitter.settings.featureflags.FeatureFlag;
 import app.revanced.integrations.twitter.settings.featureflags.FeatureFlagsFragment;
 import com.twitter.ui.widget.LegacyTwitterPreferenceCategory;
 
@@ -55,6 +57,8 @@ public class SettingsActivity extends Activity {
             context = getContext();
 
             PreferenceScreen screen = getPreferenceManager().createPreferenceScreen(context);
+
+            Toast.makeText(getContext(), app.revanced.integrations.twitter.Utils.getStringPref(Settings.MISC_FEATURE_FLAGS), Toast.LENGTH_SHORT).show();
 
             screen.addPreference(
                     buttonPreference(

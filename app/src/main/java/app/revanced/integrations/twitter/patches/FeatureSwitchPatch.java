@@ -1,15 +1,18 @@
 package app.revanced.integrations.twitter.patches;
 
 import java.util.*;
+
+import android.util.Log;
 import app.revanced.integrations.twitter.Pref;
 import app.revanced.integrations.twitter.Utils;
 import app.revanced.integrations.twitter.settings.Settings;
+import app.revanced.integrations.twitter.settings.featureflags.FeatureFlag;
 
 public class FeatureSwitchPatch {
-    private static HashMap<String,Object> FLAGS = new HashMap<String,Object>();
+    private static HashMap<String, Boolean> FLAGS = new HashMap<>();
 
-    private static void addFlag(String flag, Object val){
-        FLAGS.put(flag,val);
+    private static void addFlag(String flag, Boolean val) {
+        FLAGS.put(flag, val);
     }
 
     private static void fabMenu() {
@@ -32,14 +35,13 @@ public class FeatureSwitchPatch {
         addFlag("explore_relaunch_enable_immersive_player_across_twitter", Pref.hideImmersivePlayer());
     }
 
-    public static Object flagInfo(String flag,Object def){
-        try{
-            if (FLAGS.containsKey(flag)){
+    public static Object flagInfo(String flag, Object def) {
+        try {
+            if (FLAGS.containsKey(flag)) {
                 Object val = FLAGS.get(flag);
                 return val;
             }
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
 
         }
         return def;
@@ -47,36 +49,12 @@ public class FeatureSwitchPatch {
 
 
     public static void load() {
-            for (Map.Entry<String, Boolean> item : getFLAGS().entrySet()) {
-                String flag = item.getKey();
-                Boolean value = item.getValue();
-                addFlag(flag, value);
-            }
-    }
-
-
-    public static String[] getFlagsString() {
-        String[] out = new String[]{};
         String flags = Utils.getStringPref(Settings.MISC_FEATURE_FLAGS);
         if (!flags.isEmpty()) {
-            out = flags.split(",");
-        }
-        return out;
-    }
-
-    public static HashMap<String, Boolean> getFLAGS() {
-        HashMap<String, Boolean> out = new HashMap<>();
-
-        String flags = Utils.getStringPref(Settings.MISC_FEATURE_FLAGS);
-
-        if (!flags.isEmpty()) {
-            for (String item : flags.split(",")) {
-                    String[] flag = item.split(":");
-                    out.put(flag[0], Boolean.getBoolean(flag[1]));
+            for (String flag : flags.split(",")) {
+                String[] item = flag.split(":");
+                addFlag(item[0], Boolean.valueOf(item[1]));
             }
         }
-
-        return out;
     }
-
 }

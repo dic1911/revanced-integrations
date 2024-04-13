@@ -23,13 +23,24 @@ public class RecyclerView extends ViewGroup {
     public static abstract class c0 {
         public c0(View view) {
         }
+
+        // getAdapterPosition
+        public final int a0() {
+            return -1;
+        }
     }
 
     // Adapter
     public static abstract class e<VH extends c0> {
         public abstract int k();
+
         public abstract c0 I(int i, RecyclerView recyclerView);
+
         public abstract void F(VH vh, int i);
+
+        // notifyItemChanged
+        public final void D(int i) {
+        }
     }
 
     public void setLayoutManager(m m) {

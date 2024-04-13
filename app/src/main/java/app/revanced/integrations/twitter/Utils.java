@@ -3,6 +3,7 @@ package app.revanced.integrations.twitter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import app.revanced.integrations.shared.settings.Setting;
 import app.revanced.integrations.shared.settings.preference.SharedPrefCategory;
 import app.revanced.integrations.twitter.settings.SettingsActivity;
@@ -53,7 +54,9 @@ public class Utils {
     }
 
     public static void setStringPref(Setting<String> setting, String value) {
-        sp.saveString(setting.key, value);
+        SharedPreferences.Editor editor =  sp.preferences.edit();
+        editor.putString(setting.key, value);
+        editor.apply();
     }
 
     public static Boolean getBooleanPerf(Setting<Boolean> setting) {
