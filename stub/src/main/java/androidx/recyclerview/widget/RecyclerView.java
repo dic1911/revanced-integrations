@@ -39,8 +39,11 @@ public class RecyclerView extends ViewGroup {
         public abstract void F(VH vh, int i);
 
         // notifyItemChanged
-        public final void D(int i) {
+        public final void A(int i) {
         }
+
+        // notifyItemRemoved wRONG IdK
+        public final void D(int i) {}
     }
 
     public void setLayoutManager(m m) {

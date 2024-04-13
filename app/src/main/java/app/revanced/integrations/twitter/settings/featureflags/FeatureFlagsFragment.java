@@ -1,15 +1,19 @@
 package app.revanced.integrations.twitter.settings.featureflags;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import app.revanced.integrations.shared.Utils;
 import app.revanced.integrations.twitter.settings.Settings;
 import app.revanced.integrations.twitter.settings.SettingsActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
@@ -35,16 +39,81 @@ public class FeatureFlagsFragment extends Fragment {
         SettingsActivity.toolbar.setTitle("Feature Flags");
     }
 
+    public void modifyFlag(CustomAdapter adapter, int position) {
+        FeatureFlag flag = flags.get(position);
+
+        AlertDialog.Builder dia = new AlertDialog.Builder(getContext());
+        dia.setTitle("Edit feature switch");
+
+        LinearLayout ln = new LinearLayout(getContext());
+        ln.setPadding(50, 50, 50, 50);
+
+        EditText flagEditText = new EditText(getContext());
+        flagEditText.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        flagEditText.setText(flag.getName());
+        ln.addView(flagEditText);
+
+        dia.setPositiveButton("Save", (dialogInterface, i) -> {
+            String editTextValue = flagEditText.getText().toString();
+            if (!editTextValue.equals(flag.getName())) {
+                flags.set(position, new FeatureFlag(flagEditText.getText().toString(), flag.getEnabled()));
+                adapter.A(position);
+            }
+        });
+
+        dia.setNeutralButton("Remove", ((dialogInterface, i) -> {
+            flags.remove(position);
+            adapter.A(position);
+        }));
+
+        dia.setNegativeButton("Cancel", null);
+
+        dia.setView(ln);
+
+        dia.create().show();
+    }
+
+    public void addFlag(CustomAdapter adapter) {
+        AlertDialog.Builder dia = new AlertDialog.Builder(getContext());
+        dia.setTitle("Edit feature switch");
+
+        LinearLayout ln = new LinearLayout(getContext());
+        ln.setPadding(50, 50, 50, 50);
+
+        EditText flagEditText = new EditText(getContext());
+        flagEditText.setHint("flag");
+        flagEditText.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        ln.addView(flagEditText);
+
+        dia.setPositiveButton("Save", (dialogInterface, i) -> {
+            String editTextValue = flagEditText.getText().toString();
+            flags.add(new FeatureFlag(editTextValue, true));
+            adapter.A(flags.size());
+        });
+
+        dia.setNegativeButton("Cancel", null);
+
+        dia.setView(ln);
+
+        dia.create().show();
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(Utils.getResourceIdentifier("feature_flags_view", "layout"), container, false);
+        FloatingActionButton floatingActionButton = view.findViewById(Utils.getResourceIdentifier("add_flag", "id"));
 
         RecyclerView rc = view.findViewById(Utils.getResourceIdentifier("list", "id"));
         rc.setLayoutManager(new LinearLayoutManager(1));
 
         CustomAdapter adapter = new CustomAdapter(flags);
 
+        floatingActionButton.setOnClickListener(view1 -> {
+            addFlag(adapter);
+        });
+
         adapter.setItemClickListener(position -> {
+            modifyFlag(adapter, position);
         });
 
         adapter.setItemCheckedChangeListener((checked, position) -> {

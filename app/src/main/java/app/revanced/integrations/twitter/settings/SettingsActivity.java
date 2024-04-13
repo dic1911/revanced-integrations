@@ -58,8 +58,6 @@ public class SettingsActivity extends Activity {
 
             PreferenceScreen screen = getPreferenceManager().createPreferenceScreen(context);
 
-            Toast.makeText(getContext(), app.revanced.integrations.twitter.Utils.getStringPref(Settings.MISC_FEATURE_FLAGS), Toast.LENGTH_SHORT).show();
-
             screen.addPreference(
                     buttonPreference(
                             "Feature flags",
