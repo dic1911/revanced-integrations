@@ -1,3 +1,44 @@
+## [1.12.0-dev.5](https://github.com/crimera/revanced-integrations/compare/v1.12.0-dev.4...v1.12.0-dev.5) (2024-04-14)
+
+
+### Updates
+
+* **Hook feature flag:** Save flags on modify list ([3537091](https://github.com/crimera/revanced-integrations/commit/3537091036b29a9eed27fcad8dbe00d36b8de6aa))
+
+## [1.12.0-dev.4](https://github.com/crimera/revanced-integrations/compare/v1.12.0-dev.3...v1.12.0-dev.4) (2024-04-14)
+
+
+### Features
+
+* Add support for adding custom feature flags [#28](https://github.com/crimera/revanced-integrations/issues/28) ([fe9ca52](https://github.com/crimera/revanced-integrations/commit/fe9ca527cbc1c93d7df674d69876fe0d22219e42))
+
+## [1.12.0-dev.3](https://github.com/crimera/revanced-integrations/compare/v1.12.0-dev.2...v1.12.0-dev.3) (2024-04-14)
+
+
+### Features
+
+* Switched preferences to custom file ([3f197da](https://github.com/crimera/revanced-integrations/commit/3f197da08a13fe5a542ba3b2ee321774726f0a1c))
+
+## [1.12.0-dev.2](https://github.com/crimera/revanced-integrations/compare/v1.12.0-dev.1...v1.12.0-dev.2) (2024-04-11)
+
+
+### Features
+
+* Added resource file for strings ([cc3583d](https://github.com/crimera/revanced-integrations/commit/cc3583d88396d1e0f0f63ce6a42a53dfd9fc8df7))
+
+## [1.12.0-dev.1](https://github.com/crimera/revanced-integrations/compare/v1.11.0...v1.12.0-dev.1) (2024-04-09)
+
+
+### Features
+
+* **Twitter:** Added `Feature Flag Hook` ([fd1c439](https://github.com/crimera/revanced-integrations/commit/fd1c4390ce2a63f13f38a81c7d66471a510ee71f))
+* **Twitter:** Added `Hide immersive player` patch ([86e09a8](https://github.com/crimera/revanced-integrations/commit/86e09a8dc0f24040ddd05e78eecc5bb2a21f7675))
+
+
+### Updates
+
+* **Twitter:** Made some features to use flags ([e4bb878](https://github.com/crimera/revanced-integrations/commit/e4bb87834258f95fbb1a58a98d9292865c4a2748))
+
 ## [1.11.0](https://github.com/crimera/revanced-integrations/compare/v1.10.1...v1.11.0) (2024-04-08)
 
 

@@ -6,7 +6,6 @@ import android.content.Intent;
 import app.revanced.integrations.shared.settings.Setting;
 import app.revanced.integrations.shared.settings.preference.SharedPrefCategory;
 import app.revanced.integrations.twitter.settings.SettingsActivity;
-import app.revanced.integrations.twitter.settings.SettingsStatus;
 
 import java.util.Arrays;
 
@@ -14,12 +13,7 @@ import java.util.Arrays;
 public class Utils {
     @SuppressLint("StaticFieldLeak")
     private static final Context ctx = app.revanced.integrations.shared.Utils.getContext();
-    private static SharedPrefCategory sp = new SharedPrefCategory("com.twitter.android_preferences");
-
-    static {
-        SettingsStatus.load();
-    }
-
+    private static SharedPrefCategory sp = new SharedPrefCategory("piko_settings");
 
     private static void startActivity(Class cls) {
         Intent intent = new Intent(ctx, cls);
@@ -31,8 +25,8 @@ public class Utils {
         try {
             Class<?> clazz = Class.forName(className);
             startActivity(clazz);
-        }catch (Exception unused) {
-
+        }catch (Exception ex) {
+            toast(ex.toString());
         }
     }
 
@@ -51,6 +45,28 @@ public class Utils {
         startActivityFromClassName(className);
     }
 
+    public static Boolean putBooleanPerf(String key,Boolean val) {
+        try{
+            sp.saveBoolean(key, val);
+            return true;
+        }
+        catch(Exception ex){
+            toast(ex.toString());
+        }
+        return false;
+    }
+
+    public static Boolean putStringPerf(String key,String val) {
+        try{
+            sp.saveString(key,val);
+            return true;
+        }
+        catch(Exception ex){
+            toast(ex.toString());
+        }
+        return false;
+    }
+
     public static String getStringPref(Setting<String> setting) {
         String value = sp.getString(setting.key, setting.defaultValue);
         if (value.isBlank()) {
@@ -67,6 +83,10 @@ public class Utils {
         String[] bigger = Arrays.copyOf(prefs, prefs.length+1);
         bigger[prefs.length] = pref;
         return bigger;
+    }
+
+    private static void toast(String msg){
+        app.revanced.integrations.shared.Utils.showToastShort(msg);
     }
 
 }

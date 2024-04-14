@@ -129,6 +129,10 @@ public class Pref {
         return !Utils.getBooleanPerf(Settings.TIMELINE_HIDE_BMK_ICON);
     }
 
+    public static boolean hideImmersivePlayer() {
+        return !Utils.getBooleanPerf(Settings.TIMELINE_HIDE_IMMERSIVE_PLAYER);
+    }
+
     public static boolean hidePromotedTrend(Object data) {
         if (data != null && Utils.getBooleanPerf(Settings.ADS_HIDE_PROMOTED_TRENDS)) {
             return true;
