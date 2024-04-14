@@ -11,6 +11,7 @@ import app.revanced.integrations.shared.Utils;
 
 import java.util.ArrayList;
 
+@SuppressWarnings("unused")
 public class CustomAdapter extends RecyclerView.e<CustomAdapter.ViewHolder> {
     TextView flagTextView;
     @SuppressLint("UseSwitchCompatOrMaterialCode")
