@@ -1,3 +1,10 @@
+## [1.12.0-dev.3](https://github.com/crimera/revanced-integrations/compare/v1.12.0-dev.2...v1.12.0-dev.3) (2024-04-14)
+
+
+### Features
+
+* Switched preferences to custom file ([3f197da](https://github.com/crimera/revanced-integrations/commit/3f197da08a13fe5a542ba3b2ee321774726f0a1c))
+
 ## [1.12.0-dev.2](https://github.com/crimera/revanced-integrations/compare/v1.12.0-dev.1...v1.12.0-dev.2) (2024-04-11)
 
 

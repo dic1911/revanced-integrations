@@ -14,7 +14,8 @@ import java.util.Arrays;
 public class Utils {
     @SuppressLint("StaticFieldLeak")
     private static final Context ctx = app.revanced.integrations.shared.Utils.getContext();
-    private static SharedPrefCategory sp = new SharedPrefCategory("com.twitter.android_preferences");
+    private static SharedPrefCategory sp = new SharedPrefCategory("piko_settings");
+
     private static void startActivity(Class cls) {
         Intent intent = new Intent(ctx, cls);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -25,8 +26,8 @@ public class Utils {
         try {
             Class<?> clazz = Class.forName(className);
             startActivity(clazz);
-        }catch (Exception unused) {
-
+        }catch (Exception ex) {
+            toast(ex.toString());
         }
     }
 
@@ -43,6 +44,28 @@ public class Utils {
     public static void startAppIconNNavIconActivity(){
         String className = "com.twitter.feature.subscriptions.settings.extras.ExtrasSettingsActivity";
         startActivityFromClassName(className);
+    }
+
+    public static Boolean putBooleanPerf(String key,Boolean val) {
+        try{
+            sp.saveBoolean(key, val);
+            return true;
+        }
+        catch(Exception ex){
+            toast(ex.toString());
+        }
+        return false;
+    }
+
+    public static Boolean putStringPerf(String key,String val) {
+        try{
+            sp.saveString(key,val);
+            return true;
+        }
+        catch(Exception ex){
+            toast(ex.toString());
+        }
+        return false;
     }
 
     public static String getStringPref(Setting<String> setting) {
@@ -67,6 +90,10 @@ public class Utils {
         String[] bigger = Arrays.copyOf(prefs, prefs.length+1);
         bigger[prefs.length] = pref;
         return bigger;
+    }
+
+    private static void toast(String msg){
+        app.revanced.integrations.shared.Utils.showToastShort(msg);
     }
 
 }

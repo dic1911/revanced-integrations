@@ -14,7 +14,6 @@ import app.revanced.integrations.shared.settings.StringSetting;
 import app.revanced.integrations.twitter.settings.featureflags.FeatureFlag;
 import app.revanced.integrations.twitter.settings.featureflags.FeatureFlagsFragment;
 import com.twitter.ui.widget.LegacyTwitterPreferenceCategory;
-
 @SuppressWarnings("deprecation")
 public class SettingsActivity extends Activity {
     public static Toolbar toolbar;
@@ -27,7 +26,7 @@ public class SettingsActivity extends Activity {
         setContentView(Utils.getResourceIdentifier("preference_fragment_activity", "layout"));
         toolbar = findViewById(Utils.getResourceIdentifier("toolbar", "id"));
         toolbar.setNavigationIcon(Utils.getResourceIdentifier("ic_vector_arrow_left", "drawable"));
-        toolbar.setTitle(Utils.getResourceString("piko_settings_title"));
+        toolbar.setTitle(Utils.getResourceString("piko_title_settings"));
         toolbar.setNavigationOnClickListener(view -> onBackPressed());
 
         getFragmentManager().beginTransaction().replace(Utils.getResourceIdentifier("fragment_container", "id"), new Screen()).commit();
@@ -356,7 +355,7 @@ public class SettingsActivity extends Activity {
             preference.setSummary(summary);
             preference.setKey(setting.key);
             preference.setDefaultValue(setting.defaultValue);
-
+            setOnPreferenceChangeListener(preference);
             return preference;
         }
 
@@ -366,7 +365,7 @@ public class SettingsActivity extends Activity {
             preference.setSummary(summary);
             preference.setKey(setting.key);
             preference.setDefaultValue(setting.defaultValue);
-
+            setOnPreferenceChangeListener(preference);
             return preference;
         }
 
@@ -376,7 +375,6 @@ public class SettingsActivity extends Activity {
             preference.setTitle(title);
             preference.setSummary(summary);
             preference.setOnPreferenceClickListener(this);
-
             return preference;
         }
 
@@ -389,7 +387,7 @@ public class SettingsActivity extends Activity {
             preference.setDefaultValue(setting.defaultValue);
             preference.setEntries(new CharSequence[]{"Movies", "DCIM", "Pictures", "Download"});
             preference.setEntryValues(new CharSequence[]{"Movies", "DCIM", "Pictures", "Download"});
-
+            setOnPreferenceChangeListener(preference);
             return preference;
         }
 
@@ -412,6 +410,31 @@ public class SettingsActivity extends Activity {
             }
             return true;
         }
+
+        private void setOnPreferenceChangeListener(Preference preference) {
+            String key = preference.getKey();
+            preference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    try{
+                        if (newValue!=null){
+                            if(newValue.getClass() == Boolean.class){
+                                app.revanced.integrations.twitter.Utils.putBooleanPerf(key,(Boolean)newValue);
+                            }
+                            else if(newValue.getClass() == String.class){
+                                app.revanced.integrations.twitter.Utils.putStringPerf(key,(String)newValue);
+                            }
+                        }
+
+                    }catch (Exception ex){
+                        Utils.showToastShort(ex.toString());
+                    }
+                    return true;
+                }
+            });
+        }
+
+        //end
     }
 
 
