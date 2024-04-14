@@ -55,14 +55,6 @@ public class SettingsActivity extends Activity {
 
             PreferenceScreen screen = getPreferenceManager().createPreferenceScreen(context);
 
-            screen.addPreference(
-                    buttonPreference(
-                            "Feature flags",
-                            "",
-                            Settings.MISC_FEATURE_FLAGS.key
-                    )
-            );
-
             if (SettingsStatus.enablePremiumSection()) {
                 LegacyTwitterPreferenceCategory premiumPrefs = preferenceCategory(Utils.getResourceString("piko_title_premium"), screen);
                 if (SettingsStatus.enableReaderMode) {
@@ -147,8 +139,7 @@ public class SettingsActivity extends Activity {
                             )
                     );
                 }
-
-                if (SettingsStatus.hideCTS) {
+   if (SettingsStatus.hideCTS) {
                     adsPrefs.addPreference(
                             switchPreference(
                                     Utils.getResourceString("piko_pref_cts_section"),
@@ -277,6 +268,16 @@ public class SettingsActivity extends Activity {
                                     Utils.getResourceString("piko_pref_custom_share_domain"),
                                     Utils.getResourceString("piko_pref_custom_share_domain_desc"),
                                     Settings.CUSTOM_SHARING_DOMAIN
+                            )
+                    );
+                }
+
+                if (SettingsStatus.featureFlags) {
+                    miscPrefs.addPreference(
+                            buttonPreference(
+                                    "Feature flags",
+                                    "",
+                                    Settings.MISC_FEATURE_FLAGS.key
                             )
                     );
                 }
