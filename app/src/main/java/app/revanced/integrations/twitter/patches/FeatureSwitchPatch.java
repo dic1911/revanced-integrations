@@ -1,13 +1,16 @@
 package app.revanced.integrations.twitter.patches;
 
 import java.util.*;
+
 import app.revanced.integrations.twitter.Pref;
+import app.revanced.integrations.twitter.Utils;
+import app.revanced.integrations.twitter.settings.Settings;
 
 public class FeatureSwitchPatch {
-    private static HashMap<String,Object> FLAGS = new HashMap<String,Object>();
+    private static HashMap<String, Object> FLAGS = new HashMap<>();
 
-    private static void addFlag(String flag, Object val){
-        FLAGS.put(flag,val);
+    private static void addFlag(String flag, Object val) {
+        FLAGS.put(flag, val);
     }
 
     private static void fabMenu() {
@@ -30,19 +33,26 @@ public class FeatureSwitchPatch {
         addFlag("explore_relaunch_enable_immersive_player_across_twitter", Pref.hideImmersivePlayer());
     }
 
-    public static Object flagInfo(String flag,Object def){
-        try{
-            if (FLAGS.containsKey(flag)){
+    public static Object flagInfo(String flag, Object def) {
+        try {
+            if (FLAGS.containsKey(flag)) {
                 Object val = FLAGS.get(flag);
                 return val;
             }
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
 
         }
         return def;
     }
 
 
-    public static void load() {}
+    public static void load() {
+        String flags = Utils.getStringPref(Settings.MISC_FEATURE_FLAGS);
+        if (!flags.isEmpty()) {
+            for (String flag : flags.split(",")) {
+                String[] item = flag.split(":");
+                addFlag(item[0], Boolean.valueOf(item[1]));
+            }
+        }
+    }
 }

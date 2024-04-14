@@ -15,6 +15,7 @@ public class SettingsStatus {
     public static boolean hideBanner = false;
     public static boolean hideForyou = false;
     public static boolean showPollResultsEnabled = false;
+    public static boolean featureFlags = false;
 
     public static boolean hideAds = false;
     public static boolean hideGAds = false;
@@ -35,6 +36,7 @@ public class SettingsStatus {
     public static void enableDownloadFolder() { changeDownloadEnabled = true; }
     public static void enableCustomSharingDomain() { customSharingDomainEnabled = true; }
     public static void enableFont() { enableFontMod = true; }
+    public static void enableFeatureFlags() { featureFlags = true; }
 
     public static void hideRecommendedUsers() { hideRecommendedUsers = true; }
     public static void hideCommunityNotes() { hideCommunityNote = true; }

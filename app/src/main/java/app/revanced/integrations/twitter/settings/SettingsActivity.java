@@ -10,25 +10,43 @@ import androidx.appcompat.widget.Toolbar;
 import app.revanced.integrations.shared.Utils;
 import app.revanced.integrations.shared.settings.BooleanSetting;
 import app.revanced.integrations.shared.settings.StringSetting;
+import app.revanced.integrations.twitter.settings.featureflags.FeatureFlagsFragment;
 import com.twitter.ui.widget.LegacyTwitterPreferenceCategory;
 @SuppressWarnings("deprecation")
 public class SettingsActivity extends Activity {
+    public static Toolbar toolbar;
+
     @SuppressLint("ResourceType")
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(Utils.getResourceIdentifier("preference_fragment_activity", "layout"));
-        Toolbar toolbar = findViewById(Utils.getResourceIdentifier("toolbar", "id"));
+        toolbar = findViewById(Utils.getResourceIdentifier("toolbar", "id"));
         toolbar.setNavigationIcon(Utils.getResourceIdentifier("ic_vector_arrow_left", "drawable"));
         toolbar.setTitle(Utils.getResourceString("piko_title_settings"));
         toolbar.setNavigationOnClickListener(view -> onBackPressed());
 
-        getFragmentManager().beginTransaction().add(Utils.getResourceIdentifier("fragment_container", "id"), new Screen()).commit();
+        getFragmentManager().beginTransaction().replace(Utils.getResourceIdentifier("fragment_container", "id"), new Screen()).commit();
     }
 
-    public static class Screen extends PreferenceFragment implements Preference.OnPreferenceClickListener{
+    @Override
+    public void onBackPressed() {
+        if (getFragmentManager().getBackStackEntryCount()>0) {
+            getFragmentManager().popBackStack();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    public static class Screen extends PreferenceFragment implements Preference.OnPreferenceClickListener {
         private Context context;
+
+        @Override
+        public void onResume() {
+            super.onResume();
+            SettingsActivity.toolbar.setTitle(Utils.getResourceString("piko_title_settings"));
+        }
 
         @Override
         public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -90,7 +108,7 @@ public class SettingsActivity extends Activity {
                 ));
             }
 
-            if(SettingsStatus.enableAdsSection()){
+            if (SettingsStatus.enableAdsSection()) {
                 LegacyTwitterPreferenceCategory adsPrefs = preferenceCategory(Utils.getResourceString("piko_title_ads"), screen);
 
                 if (SettingsStatus.hideAds) {
@@ -121,8 +139,7 @@ public class SettingsActivity extends Activity {
                             )
                     );
                 }
-
-                if (SettingsStatus.hideCTS) {
+   if (SettingsStatus.hideCTS) {
                     adsPrefs.addPreference(
                             switchPreference(
                                     Utils.getResourceString("piko_pref_cts_section"),
@@ -181,7 +198,6 @@ public class SettingsActivity extends Activity {
                             )
                     );
                 }
-
 
 
             }
@@ -252,6 +268,16 @@ public class SettingsActivity extends Activity {
                                     Utils.getResourceString("piko_pref_custom_share_domain"),
                                     Utils.getResourceString("piko_pref_custom_share_domain_desc"),
                                     Settings.CUSTOM_SHARING_DOMAIN
+                            )
+                    );
+                }
+
+                if (SettingsStatus.featureFlags) {
+                    miscPrefs.addPreference(
+                            buttonPreference(
+                                    "Feature flags",
+                                    "",
+                                    Settings.MISC_FEATURE_FLAGS.key
                             )
                     );
                 }
@@ -374,11 +400,12 @@ public class SettingsActivity extends Activity {
         @Override
         public boolean onPreferenceClick(Preference preference) {
             String key = preference.getKey();
-            if(key.equals(Settings.PREMIUM_UNDO_POSTS.key.toString())){
+            if (key.equals(Settings.PREMIUM_UNDO_POSTS.key.toString())) {
                 app.revanced.integrations.twitter.Utils.startUndoPostActivity();
-            }
-            else if(key.equals(Settings.PREMIUM_ICONS)){
+            } else if (key.equals(Settings.PREMIUM_ICONS)) {
                 app.revanced.integrations.twitter.Utils.startAppIconNNavIconActivity();
+            } else if (key.equals(Settings.MISC_FEATURE_FLAGS.key)) {
+                getFragmentManager().beginTransaction().replace(Utils.getResourceIdentifier("fragment_container", "id"), new FeatureFlagsFragment()).addToBackStack(null).commit();
             }
             return true;
         }
