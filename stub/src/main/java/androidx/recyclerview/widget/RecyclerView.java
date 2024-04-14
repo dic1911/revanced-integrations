@@ -5,6 +5,7 @@ import android.database.Observable;
 import android.view.View;
 import android.view.ViewGroup;
 
+@SuppressWarnings("unused")
 public class RecyclerView extends ViewGroup {
     public RecyclerView(Context context) {
         super(context);

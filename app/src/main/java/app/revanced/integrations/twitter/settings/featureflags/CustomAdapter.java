@@ -8,10 +8,8 @@ import android.widget.Switch;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import app.revanced.integrations.shared.Utils;
-import app.revanced.integrations.twitter.patches.FeatureSwitchPatch;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class CustomAdapter extends RecyclerView.e<CustomAdapter.ViewHolder> {
     TextView flagTextView;

@@ -17,6 +17,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
+@SuppressWarnings("deprecation")
 public class FeatureFlagsFragment extends Fragment {
     ArrayList<FeatureFlag> flags;
 
@@ -108,13 +109,9 @@ public class FeatureFlagsFragment extends Fragment {
 
         CustomAdapter adapter = new CustomAdapter(flags);
 
-        floatingActionButton.setOnClickListener(view1 -> {
-            addFlag(adapter);
-        });
+        floatingActionButton.setOnClickListener(view1 -> addFlag(adapter));
 
-        adapter.setItemClickListener(position -> {
-            modifyFlag(adapter, position);
-        });
+        adapter.setItemClickListener(position -> modifyFlag(adapter, position));
 
         adapter.setItemCheckedChangeListener((checked, position) -> {
             FeatureFlag flag = flags.get(position);
