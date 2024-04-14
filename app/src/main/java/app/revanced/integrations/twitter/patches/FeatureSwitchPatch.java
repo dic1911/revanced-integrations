@@ -2,16 +2,14 @@ package app.revanced.integrations.twitter.patches;
 
 import java.util.*;
 
-import android.util.Log;
 import app.revanced.integrations.twitter.Pref;
 import app.revanced.integrations.twitter.Utils;
 import app.revanced.integrations.twitter.settings.Settings;
-import app.revanced.integrations.twitter.settings.featureflags.FeatureFlag;
 
 public class FeatureSwitchPatch {
-    private static HashMap<String, Boolean> FLAGS = new HashMap<>();
+    private static HashMap<String, Object> FLAGS = new HashMap<>();
 
-    private static void addFlag(String flag, Boolean val) {
+    private static void addFlag(String flag, Object val) {
         FLAGS.put(flag, val);
     }
 
