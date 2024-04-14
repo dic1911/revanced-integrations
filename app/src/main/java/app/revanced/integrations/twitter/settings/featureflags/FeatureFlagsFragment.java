@@ -129,6 +129,6 @@ public class FeatureFlagsFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        app.revanced.integrations.twitter.Utils.setStringPref(Settings.MISC_FEATURE_FLAGS, FeatureFlag.toStringPref(flags));
+        app.revanced.integrations.twitter.Utils.putStringPerf(Settings.MISC_FEATURE_FLAGS.key, FeatureFlag.toStringPref(flags));
     }
 }

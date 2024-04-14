@@ -76,12 +76,6 @@ public class Utils {
         return value;
     }
 
-    public static void setStringPref(Setting<String> setting, String value) {
-        SharedPreferences.Editor editor =  sp.preferences.edit();
-        editor.putString(setting.key, value);
-        editor.apply();
-    }
-
     public static Boolean getBooleanPerf(Setting<Boolean> setting) {
         return sp.getBoolean(setting.key, setting.defaultValue);
     }
