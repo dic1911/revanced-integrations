@@ -63,7 +63,7 @@ public class FeatureFlagsFragment extends Fragment {
 
         dia.setNeutralButton(Utils.getResourceString("remove"), ((dialogInterface, i) -> {
             flags.remove(position);
-            adapter.A(position);
+            adapter.c.f(position, 1);
         }));
 
         dia.setNegativeButton(Utils.getResourceString("cancel"), null);
