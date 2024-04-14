@@ -1,3 +1,10 @@
+## [1.12.0-dev.4](https://github.com/crimera/revanced-integrations/compare/v1.12.0-dev.3...v1.12.0-dev.4) (2024-04-14)
+
+
+### Features
+
+* Add support for adding custom feature flags [#28](https://github.com/crimera/revanced-integrations/issues/28) ([fe9ca52](https://github.com/crimera/revanced-integrations/commit/fe9ca527cbc1c93d7df674d69876fe0d22219e42))
+
 ## [1.12.0-dev.3](https://github.com/crimera/revanced-integrations/compare/v1.12.0-dev.2...v1.12.0-dev.3) (2024-04-14)
 
 
