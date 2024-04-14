@@ -36,14 +36,14 @@ public class FeatureFlagsFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        SettingsActivity.toolbar.setTitle("Feature Flags");
+        SettingsActivity.toolbar.setTitle(Utils.getResourceString("piko_title_feature_flags"));
     }
 
     public void modifyFlag(CustomAdapter adapter, int position) {
         FeatureFlag flag = flags.get(position);
 
         AlertDialog.Builder dia = new AlertDialog.Builder(getContext());
-        dia.setTitle("Edit feature switch");
+        dia.setTitle(Utils.getResourceString("piko_pref_edit_flag_title"));
 
         LinearLayout ln = new LinearLayout(getContext());
         ln.setPadding(50, 50, 50, 50);
@@ -53,7 +53,7 @@ public class FeatureFlagsFragment extends Fragment {
         flagEditText.setText(flag.getName());
         ln.addView(flagEditText);
 
-        dia.setPositiveButton("Save", (dialogInterface, i) -> {
+        dia.setPositiveButton(Utils.getResourceString("save"), (dialogInterface, i) -> {
             String editTextValue = flagEditText.getText().toString();
             if (!editTextValue.equals(flag.getName())) {
                 flags.set(position, new FeatureFlag(flagEditText.getText().toString(), flag.getEnabled()));
@@ -61,12 +61,12 @@ public class FeatureFlagsFragment extends Fragment {
             }
         });
 
-        dia.setNeutralButton("Remove", ((dialogInterface, i) -> {
+        dia.setNeutralButton(Utils.getResourceString("remove"), ((dialogInterface, i) -> {
             flags.remove(position);
             adapter.A(position);
         }));
 
-        dia.setNegativeButton("Cancel", null);
+        dia.setNegativeButton(Utils.getResourceString("cancel"), null);
 
         dia.setView(ln);
 
@@ -75,7 +75,7 @@ public class FeatureFlagsFragment extends Fragment {
 
     public void addFlag(CustomAdapter adapter) {
         AlertDialog.Builder dia = new AlertDialog.Builder(getContext());
-        dia.setTitle("Edit feature switch");
+        dia.setTitle(Utils.getResourceString("piko_pref_add_flag_title"));
 
         LinearLayout ln = new LinearLayout(getContext());
         ln.setPadding(50, 50, 50, 50);
@@ -85,13 +85,13 @@ public class FeatureFlagsFragment extends Fragment {
         flagEditText.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         ln.addView(flagEditText);
 
-        dia.setPositiveButton("Save", (dialogInterface, i) -> {
+        dia.setPositiveButton(Utils.getResourceString("save"), (dialogInterface, i) -> {
             String editTextValue = flagEditText.getText().toString();
             flags.add(new FeatureFlag(editTextValue, true));
             adapter.A(flags.size());
         });
 
-        dia.setNegativeButton("Cancel", null);
+        dia.setNegativeButton(Utils.getResourceString("cancel"), null);
 
         dia.setView(ln);
 
