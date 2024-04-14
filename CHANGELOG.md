@@ -1,3 +1,10 @@
+## [1.12.0-dev.5](https://github.com/crimera/revanced-integrations/compare/v1.12.0-dev.4...v1.12.0-dev.5) (2024-04-14)
+
+
+### Updates
+
+* **Hook feature flag:** Save flags on modify list ([3537091](https://github.com/crimera/revanced-integrations/commit/3537091036b29a9eed27fcad8dbe00d36b8de6aa))
+
 ## [1.12.0-dev.4](https://github.com/crimera/revanced-integrations/compare/v1.12.0-dev.3...v1.12.0-dev.4) (2024-04-14)
 
 
