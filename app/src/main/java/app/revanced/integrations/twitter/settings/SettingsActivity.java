@@ -5,13 +5,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.preference.*;
-import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import app.revanced.integrations.shared.Utils;
 import app.revanced.integrations.shared.settings.BooleanSetting;
 import app.revanced.integrations.shared.settings.StringSetting;
-import app.revanced.integrations.twitter.settings.featureflags.FeatureFlag;
 import app.revanced.integrations.twitter.settings.featureflags.FeatureFlagsFragment;
 import com.twitter.ui.widget.LegacyTwitterPreferenceCategory;
 @SuppressWarnings("deprecation")
@@ -47,7 +45,7 @@ public class SettingsActivity extends Activity {
         @Override
         public void onResume() {
             super.onResume();
-            SettingsActivity.toolbar.setTitle(Utils.getResourceString("piko_settings_title"));
+            SettingsActivity.toolbar.setTitle(Utils.getResourceString("piko_title_settings"));
         }
 
         @Override
