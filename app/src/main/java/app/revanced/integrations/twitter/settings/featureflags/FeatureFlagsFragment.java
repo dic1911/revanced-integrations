@@ -40,6 +40,10 @@ public class FeatureFlagsFragment extends Fragment {
         SettingsActivity.toolbar.setTitle(Utils.getResourceString("piko_title_feature_flags"));
     }
 
+    private void saveFlags() {
+        app.revanced.integrations.twitter.Utils.putStringPerf(Settings.MISC_FEATURE_FLAGS.key, FeatureFlag.toStringPref(flags));
+    }
+
     public void modifyFlag(CustomAdapter adapter, int position) {
         FeatureFlag flag = flags.get(position);
 
@@ -59,12 +63,14 @@ public class FeatureFlagsFragment extends Fragment {
             if (!editTextValue.equals(flag.getName())) {
                 flags.set(position, new FeatureFlag(flagEditText.getText().toString(), flag.getEnabled()));
                 adapter.A(position);
+                saveFlags();
             }
         });
 
         dia.setNeutralButton(Utils.getResourceString("remove"), ((dialogInterface, i) -> {
             flags.remove(position);
             adapter.c.f(position, 1);
+            saveFlags();
         }));
 
         dia.setNegativeButton(Utils.getResourceString("cancel"), null);
@@ -90,6 +96,7 @@ public class FeatureFlagsFragment extends Fragment {
             String editTextValue = flagEditText.getText().toString();
             flags.add(new FeatureFlag(editTextValue, true));
             adapter.A(flags.size());
+            saveFlags();
         });
 
         dia.setNegativeButton(Utils.getResourceString("cancel"), null);
@@ -116,16 +123,11 @@ public class FeatureFlagsFragment extends Fragment {
         adapter.setItemCheckedChangeListener((checked, position) -> {
             FeatureFlag flag = flags.get(position);
             flags.set(position, new FeatureFlag(flag.getName(), checked));
+            saveFlags();
         });
 
         rc.setAdapter(adapter);
 
         return view;
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        app.revanced.integrations.twitter.Utils.putStringPerf(Settings.MISC_FEATURE_FLAGS.key, FeatureFlag.toStringPref(flags));
     }
 }
