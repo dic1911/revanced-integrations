@@ -1,3 +1,10 @@
+## [1.12.1-dev.1](https://github.com/crimera/revanced-integrations/compare/v1.12.0...v1.12.1-dev.1) (2024-04-15)
+
+
+### Bug Fixes
+
+* Use `piko_pref_feature_flags` for the Feature Flags button ([2afce73](https://github.com/crimera/revanced-integrations/commit/2afce734d7ce7d0d713beda1b9e82d6a11818698))
+
 ## [1.12.0](https://github.com/crimera/revanced-integrations/compare/v1.11.0...v1.12.0) (2024-04-14)
 
 
