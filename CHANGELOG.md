@@ -1,3 +1,11 @@
+## [1.13.0-dev.1](https://github.com/crimera/revanced-integrations/compare/v1.12.1-dev.1...v1.13.0-dev.1) (2024-04-15)
+
+
+### Features
+
+* **Twitter:** Added ability to export and import prefs & feature flags ([f87d4ed](https://github.com/crimera/revanced-integrations/commit/f87d4edfedeb77cd459e02f3513b498fc9b461db))
+* **Twitter:** Added ability to export and import prefs & feature flags ([e13fc7e](https://github.com/crimera/revanced-integrations/commit/e13fc7ef7a7c99634b3b7ccbcf836428556fccc9))
+
 ## [1.12.1-dev.1](https://github.com/crimera/revanced-integrations/compare/v1.12.0...v1.12.1-dev.1) (2024-04-15)
 
 
