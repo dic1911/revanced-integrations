@@ -7,8 +7,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import app.revanced.integrations.shared.Logger;
 import app.revanced.integrations.shared.Utils;
-
-import java.util.Objects;
+import org.json.JSONObject;
+import java.util.*;
 
 /**
  * Shared categories, and helper methods.
@@ -146,6 +146,15 @@ public class SharedPrefCategory {
                 removeConflictingPreferenceKeyValue(key);
                 return _default;
             }
+        }
+    }
+
+    public JSONObject getAll(){
+        try{
+            Map<String, ?> allEntries = preferences.getAll();
+            return new JSONObject(allEntries);
+        }catch (Exception ex){
+            return new JSONObject();
         }
     }
 

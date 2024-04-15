@@ -41,7 +41,7 @@ public class FeatureFlagsFragment extends Fragment {
     }
 
     private void saveFlags() {
-        app.revanced.integrations.twitter.Utils.putStringPerf(Settings.MISC_FEATURE_FLAGS.key, FeatureFlag.toStringPref(flags));
+        app.revanced.integrations.twitter.Utils.setStringPref(Settings.MISC_FEATURE_FLAGS.key, FeatureFlag.toStringPref(flags));
     }
 
     public void modifyFlag(CustomAdapter adapter, int position) {
