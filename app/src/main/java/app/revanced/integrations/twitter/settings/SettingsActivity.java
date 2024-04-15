@@ -45,7 +45,7 @@ public class SettingsActivity extends Activity {
         @Override
         public void onResume() {
             super.onResume();
-            SettingsActivity.toolbar.setTitle(Utils.getResourceString("piko_title_settings"));
+            SettingsActivity.toolbar.setTitle(strRes("piko_title_settings"));
         }
 
         @Override
@@ -53,15 +53,17 @@ public class SettingsActivity extends Activity {
             super.onCreate(savedInstanceState);
             context = getContext();
 
-            PreferenceScreen screen = getPreferenceManager().createPreferenceScreen(context);
+            PreferenceManager preferenceManager = getPreferenceManager();
+            PreferenceScreen screen = preferenceManager.createPreferenceScreen(context);
+            preferenceManager.setSharedPreferencesName(Settings.SHARED_PREF_NAME);
 
             if (SettingsStatus.enablePremiumSection()) {
-                LegacyTwitterPreferenceCategory premiumPrefs = preferenceCategory(Utils.getResourceString("piko_title_premium"), screen);
+                LegacyTwitterPreferenceCategory premiumPrefs = preferenceCategory(strRes("piko_title_premium"), screen);
                 if (SettingsStatus.enableReaderMode) {
                     premiumPrefs.addPreference(
                             switchPreference(
-                                    Utils.getResourceString("piko_pref_reader_mode"),
-                                    Utils.getResourceString("piko_pref_reader_mode_desc"),
+                                    strRes("piko_pref_reader_mode"),
+                                    strRes("piko_pref_reader_mode_desc"),
                                     Settings.PREMIUM_READER_MODE
                             )
                     );
@@ -69,15 +71,15 @@ public class SettingsActivity extends Activity {
                 if (SettingsStatus.enableUndoPosts) {
                     premiumPrefs.addPreference(
                             switchPreference(
-                                    Utils.getResourceString("piko_pref_undo_posts"),
-                                    Utils.getResourceString("piko_pref_undo_posts_desc"),
+                                    strRes("piko_pref_undo_posts"),
+                                    strRes("piko_pref_undo_posts_desc"),
                                     Settings.PREMIUM_UNDO_POSTS
                             )
                     );
 
                     premiumPrefs.addPreference(
                             buttonPreference(
-                                    Utils.getResourceString("piko_pref_undo_posts_btn"),
+                                    strRes("piko_pref_undo_posts_btn"),
                                     "",
                                     Settings.PREMIUM_UNDO_POSTS.key
                             )
@@ -86,35 +88,35 @@ public class SettingsActivity extends Activity {
                 if (SettingsStatus.enableAppIconNNavIcon) {
                     premiumPrefs.addPreference(
                             buttonPreference(
-                                    Utils.getResourceString("piko_pref_icon_n_navbar_btn"),
+                                    strRes("piko_pref_icon_n_navbar_btn"),
                                     "",
-                                    Settings.PREMIUM_ICONS
+                                    Settings.PREMIUM_ICONS.key
                             )
                     );
                 }
             }
 
             if (SettingsStatus.changeDownloadEnabled) {
-                LegacyTwitterPreferenceCategory downloadPrefs = preferenceCategory(Utils.getResourceString("piko_title_download"), screen);
+                LegacyTwitterPreferenceCategory downloadPrefs = preferenceCategory(strRes("piko_title_download"), screen);
                 downloadPrefs.addPreference(listPreference(
-                        Utils.getResourceString("piko_pref_download_path"),
-                        Utils.getResourceString("piko_pref_download_path_desc"),
+                        strRes("piko_pref_download_path"),
+                        strRes("piko_pref_download_path_desc"),
                         Settings.VID_PUBLIC_FOLDER
                 ));
                 downloadPrefs.addPreference(editTextPreference(
-                        Utils.getResourceString("piko_pref_download_folder"),
-                        Utils.getResourceString("piko_pref_download_folder_desc"),
+                        strRes("piko_pref_download_folder"),
+                        strRes("piko_pref_download_folder_desc"),
                         Settings.VID_SUBFOLDER
                 ));
             }
 
             if (SettingsStatus.enableAdsSection()) {
-                LegacyTwitterPreferenceCategory adsPrefs = preferenceCategory(Utils.getResourceString("piko_title_ads"), screen);
+                LegacyTwitterPreferenceCategory adsPrefs = preferenceCategory(strRes("piko_title_ads"), screen);
 
                 if (SettingsStatus.hideAds) {
                     adsPrefs.addPreference(
                             switchPreference(
-                                    Utils.getResourceString("piko_pref_hide_promoted_posts"),
+                                    strRes("piko_pref_hide_promoted_posts"),
                                     "",
                                     Settings.ADS_HIDE_PROMOTED_POSTS
                             )
@@ -124,7 +126,7 @@ public class SettingsActivity extends Activity {
                 if (SettingsStatus.hideGAds) {
                     adsPrefs.addPreference(
                             switchPreference(
-                                    Utils.getResourceString("piko_pref_hide_g_ads"),
+                                    strRes("piko_pref_hide_g_ads"),
                                     "",
                                     Settings.ADS_HIDE_GOOGLE_ADS
                             )
@@ -133,16 +135,16 @@ public class SettingsActivity extends Activity {
                 if (SettingsStatus.hideWTF) {
                     adsPrefs.addPreference(
                             switchPreference(
-                                    Utils.getResourceString("piko_pref_wtf_section"),
+                                    strRes("piko_pref_wtf_section"),
                                     "",
                                     Settings.ADS_HIDE_WHO_TO_FOLLOW
                             )
                     );
                 }
-   if (SettingsStatus.hideCTS) {
+                if (SettingsStatus.hideCTS) {
                     adsPrefs.addPreference(
                             switchPreference(
-                                    Utils.getResourceString("piko_pref_cts_section"),
+                                    strRes("piko_pref_cts_section"),
                                     "",
                                     Settings.ADS_HIDE_CREATORS_TO_SUB
                             )
@@ -152,7 +154,7 @@ public class SettingsActivity extends Activity {
                 if (SettingsStatus.hideCTJ) {
                     adsPrefs.addPreference(
                             switchPreference(
-                                    Utils.getResourceString("piko_pref_ctj_section"),
+                                    strRes("piko_pref_ctj_section"),
                                     "",
                                     Settings.ADS_HIDE_COMM_TO_JOIN
                             )
@@ -162,7 +164,7 @@ public class SettingsActivity extends Activity {
                 if (SettingsStatus.hideRBMK) {
                     adsPrefs.addPreference(
                             switchPreference(
-                                    Utils.getResourceString("piko_pref_ryb_section"),
+                                    strRes("piko_pref_ryb_section"),
                                     "",
                                     Settings.ADS_HIDE_REVISIT_BMK
                             )
@@ -172,7 +174,7 @@ public class SettingsActivity extends Activity {
                 if (SettingsStatus.hideRPinnedPosts) {
                     adsPrefs.addPreference(
                             switchPreference(
-                                    Utils.getResourceString("piko_pref_pinned_posts_section"),
+                                    strRes("piko_pref_pinned_posts_section"),
                                     "",
                                     Settings.ADS_HIDE_REVISIT_PINNED_POSTS
                             )
@@ -182,7 +184,7 @@ public class SettingsActivity extends Activity {
                 if (SettingsStatus.hideDetailedPosts) {
                     adsPrefs.addPreference(
                             switchPreference(
-                                    Utils.getResourceString("piko_pref_hide_detailed_posts"),
+                                    strRes("piko_pref_hide_detailed_posts"),
                                     "",
                                     Settings.ADS_HIDE_DETAILED_POSTS
                             )
@@ -192,7 +194,7 @@ public class SettingsActivity extends Activity {
                 if (SettingsStatus.hidePromotedTrend) {
                     adsPrefs.addPreference(
                             switchPreference(
-                                    Utils.getResourceString("piko_pref_hide_trends"),
+                                    strRes("piko_pref_hide_trends"),
                                     "",
                                     Settings.ADS_HIDE_PROMOTED_TRENDS
                             )
@@ -203,11 +205,11 @@ public class SettingsActivity extends Activity {
             }
 
             if (SettingsStatus.enableMiscSection()) {
-                LegacyTwitterPreferenceCategory miscPrefs = preferenceCategory(Utils.getResourceString("piko_title_misc"), screen);
+                LegacyTwitterPreferenceCategory miscPrefs = preferenceCategory(strRes("piko_title_misc"), screen);
                 if (SettingsStatus.enableFontMod) {
                     miscPrefs.addPreference(
                             switchPreference(
-                                    Utils.getResourceString("piko_pref_chirp_font"),
+                                    strRes("piko_pref_chirp_font"),
                                     "",
                                     Settings.MISC_FONT
                             )
@@ -216,7 +218,7 @@ public class SettingsActivity extends Activity {
                 if (SettingsStatus.hideFAB) {
                     miscPrefs.addPreference(
                             switchPreference(
-                                    Utils.getResourceString("piko_pref_hide_fab"),
+                                    strRes("piko_pref_hide_fab"),
                                     "",
                                     Settings.MISC_HIDE_FAB
                             )
@@ -225,7 +227,7 @@ public class SettingsActivity extends Activity {
                 if (SettingsStatus.hideFABBtns) {
                     miscPrefs.addPreference(
                             switchPreference(
-                                    Utils.getResourceString("piko_pref_hide_fab_menu"),
+                                    strRes("piko_pref_hide_fab_menu"),
                                     "",
                                     Settings.MISC_HIDE_FAB_BTN
                             )
@@ -235,7 +237,7 @@ public class SettingsActivity extends Activity {
                 if (SettingsStatus.hideRecommendedUsers) {
                     miscPrefs.addPreference(
                             switchPreference(
-                                    Utils.getResourceString("piko_pref_rec_users"),
+                                    strRes("piko_pref_rec_users"),
                                     "",
                                     Settings.MISC_HIDE_RECOMMENDED_USERS
                             )
@@ -245,7 +247,7 @@ public class SettingsActivity extends Activity {
                 if (SettingsStatus.hideCommunityNote) {
                     miscPrefs.addPreference(
                             switchPreference(
-                                    Utils.getResourceString("piko_pref_comm_notes"),
+                                    strRes("piko_pref_comm_notes"),
                                     "",
                                     Settings.MISC_HIDE_COMM_NOTES
                             )
@@ -255,7 +257,7 @@ public class SettingsActivity extends Activity {
                 if (SettingsStatus.hideViewCount) {
                     miscPrefs.addPreference(
                             switchPreference(
-                                    Utils.getResourceString("piko_pref_hide_view_count"),
+                                    strRes("piko_pref_hide_view_count"),
                                     "",
                                     Settings.MISC_HIDE_VIEW_COUNT
                             )
@@ -265,8 +267,8 @@ public class SettingsActivity extends Activity {
                 if (SettingsStatus.customSharingDomainEnabled) {
                     miscPrefs.addPreference(
                             editTextPreference(
-                                    Utils.getResourceString("piko_pref_custom_share_domain"),
-                                    Utils.getResourceString("piko_pref_custom_share_domain_desc"),
+                                    strRes("piko_pref_custom_share_domain"),
+                                    strRes("piko_pref_custom_share_domain_desc"),
                                     Settings.CUSTOM_SHARING_DOMAIN
                             )
                     );
@@ -275,7 +277,7 @@ public class SettingsActivity extends Activity {
                 if (SettingsStatus.featureFlags) {
                     miscPrefs.addPreference(
                             buttonPreference(
-                                    Utils.getResourceString("piko_pref_feature_flags"),
+                                    strRes("piko_pref_feature_flags"),
                                     "",
                                     Settings.MISC_FEATURE_FLAGS.key
                             )
@@ -284,11 +286,11 @@ public class SettingsActivity extends Activity {
             }
 
             if (SettingsStatus.enableTimelineSection()) {
-                LegacyTwitterPreferenceCategory timelinePrefs = preferenceCategory(Utils.getResourceString("piko_title_timeline"), screen);
+                LegacyTwitterPreferenceCategory timelinePrefs = preferenceCategory(strRes("piko_title_timeline"), screen);
                 if (SettingsStatus.hideForyou) {
                     timelinePrefs.addPreference(
                             switchPreference(
-                                    Utils.getResourceString("piko_pref_hide_for_you"),
+                                    strRes("piko_pref_hide_for_you"),
                                     "",
                                     Settings.TIMELINE_HIDE_FORYOU
                             )
@@ -297,8 +299,8 @@ public class SettingsActivity extends Activity {
                 if (SettingsStatus.hideLiveThreads) {
                     timelinePrefs.addPreference(
                             switchPreference(
-                                    Utils.getResourceString("piko_pref_hide_live_threads"),
-                                    Utils.getResourceString("piko_pref_hide_live_threads_desc"),
+                                    strRes("piko_pref_hide_live_threads"),
+                                    strRes("piko_pref_hide_live_threads_desc"),
                                     Settings.TIMELINE_HIDE_LIVETHREADS
                             )
                     );
@@ -306,8 +308,8 @@ public class SettingsActivity extends Activity {
                 if (SettingsStatus.hideBanner) {
                     timelinePrefs.addPreference(
                             switchPreference(
-                                    Utils.getResourceString("piko_pref_hide_banner"),
-                                    Utils.getResourceString("piko_pref_hide_banner_desc"),
+                                    strRes("piko_pref_hide_banner"),
+                                    strRes("piko_pref_hide_banner_desc"),
                                     Settings.TIMELINE_HIDE_BANNER
                             )
                     );
@@ -315,7 +317,7 @@ public class SettingsActivity extends Activity {
                 if (SettingsStatus.hideInlineBmk) {
                     timelinePrefs.addPreference(
                             switchPreference(
-                                    Utils.getResourceString("piko_pref_hide_bmk_timeline"),
+                                    strRes("piko_pref_hide_bmk_timeline"),
                                     "",
                                     Settings.TIMELINE_HIDE_BMK_ICON
                             )
@@ -325,8 +327,8 @@ public class SettingsActivity extends Activity {
                 if (SettingsStatus.showPollResultsEnabled) {
                     timelinePrefs.addPreference(
                             switchPreference(
-                                    Utils.getResourceString("piko_pref_show_poll_result"),
-                                    Utils.getResourceString("piko_pref_show_poll_result_desc"),
+                                    strRes("piko_pref_show_poll_result"),
+                                    strRes("piko_pref_show_poll_result_desc"),
                                     Settings.TIMELINE_SHOW_POLL_RESULTS
                             )
                     );
@@ -335,14 +337,44 @@ public class SettingsActivity extends Activity {
                 if (SettingsStatus.hideImmersivePlayer) {
                     timelinePrefs.addPreference(
                             switchPreference(
-                                    Utils.getResourceString("piko_pref_hide_immersive_player"),
-                                    Utils.getResourceString("piko_pref_hide_immersive_player_desc"),
+                                    strRes("piko_pref_hide_immersive_player"),
+                                    strRes("piko_pref_hide_immersive_player_desc"),
                                     Settings.TIMELINE_HIDE_IMMERSIVE_PLAYER
                             )
                     );
                 }
 
             }
+
+            LegacyTwitterPreferenceCategory backupPref = preferenceCategory(strRes("piko_title_backup"), screen);
+            backupPref.addPreference(
+                    buttonPreference(
+                            strRes("piko_pref_export"),
+                            "",
+                            Settings.EXPORT_PREF.key
+                    )
+            );
+            backupPref.addPreference(
+                    buttonPreference(
+                            strRes("piko_pref_export_flags"),
+                            "",
+                            Settings.EXPORT_FLAGS.key
+                    )
+            );
+            backupPref.addPreference(
+                    buttonPreference(
+                            strRes("piko_pref_import"),
+                            strRes("piko_pref_import_warn"),
+                            Settings.IMPORT_PREF.key
+                    )
+            );
+            backupPref.addPreference(
+                    buttonPreference(
+                            strRes("piko_pref_import_flags"),
+                            strRes("piko_pref_import_warn"),
+                            Settings.IMPORT_FLAGS.key
+                    )
+            );
 
             setPreferenceScreen(screen);
         }
@@ -402,11 +434,20 @@ public class SettingsActivity extends Activity {
             String key = preference.getKey();
             if (key.equals(Settings.PREMIUM_UNDO_POSTS.key.toString())) {
                 app.revanced.integrations.twitter.Utils.startUndoPostActivity();
-            } else if (key.equals(Settings.PREMIUM_ICONS)) {
+            } else if (key.equals(Settings.PREMIUM_ICONS.key)) {
                 app.revanced.integrations.twitter.Utils.startAppIconNNavIconActivity();
             } else if (key.equals(Settings.MISC_FEATURE_FLAGS.key)) {
                 getFragmentManager().beginTransaction().replace(Utils.getResourceIdentifier("fragment_container", "id"), new FeatureFlagsFragment()).addToBackStack(null).commit();
+            } else if (key.equals(Settings.EXPORT_PREF.key)) {
+                app.revanced.integrations.twitter.Utils.startBackupActivity(false);
+            } else if (key.equals(Settings.EXPORT_FLAGS.key)) {
+                app.revanced.integrations.twitter.Utils.startBackupActivity(true);
+            }else if (key.equals(Settings.IMPORT_PREF.key)) {
+                app.revanced.integrations.twitter.Utils.startRestoreActivity(false);
+            }else if (key.equals(Settings.IMPORT_FLAGS.key)) {
+                app.revanced.integrations.twitter.Utils.startRestoreActivity(true);
             }
+
             return true;
         }
 
@@ -418,10 +459,10 @@ public class SettingsActivity extends Activity {
                     try{
                         if (newValue!=null){
                             if(newValue.getClass() == Boolean.class){
-                                app.revanced.integrations.twitter.Utils.putBooleanPerf(key,(Boolean)newValue);
+                                app.revanced.integrations.twitter.Utils.setBooleanPerf(key,(Boolean)newValue);
                             }
                             else if(newValue.getClass() == String.class){
-                                app.revanced.integrations.twitter.Utils.putStringPerf(key,(String)newValue);
+                                app.revanced.integrations.twitter.Utils.setStringPref(key,(String)newValue);
                             }
                         }
 
@@ -432,6 +473,11 @@ public class SettingsActivity extends Activity {
                 }
             });
         }
+
+        private static String strRes(String tag){
+            return Utils.getResourceString(tag);
+        }
+
 
         //end
     }
