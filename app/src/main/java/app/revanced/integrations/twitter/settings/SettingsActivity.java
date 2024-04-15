@@ -275,7 +275,7 @@ public class SettingsActivity extends Activity {
                 if (SettingsStatus.featureFlags) {
                     miscPrefs.addPreference(
                             buttonPreference(
-                                    "Feature flags",
+                                    Utils.getResourceString("piko_pref_feature_flags"),
                                     "",
                                     Settings.MISC_FEATURE_FLAGS.key
                             )
