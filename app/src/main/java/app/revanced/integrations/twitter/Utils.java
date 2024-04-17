@@ -1,11 +1,11 @@
 package app.revanced.integrations.twitter;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import app.revanced.integrations.shared.settings.Setting;
 import app.revanced.integrations.shared.settings.preference.SharedPrefCategory;
-import app.revanced.integrations.twitter.settings.SettingsActivity;
 
 import java.util.Arrays;
 
@@ -21,18 +21,13 @@ public class Utils {
         ctx.startActivity(intent);
     }
 
-    private static void startActivityFromClassName(String className){
+    public static void startActivityFromClassName(String className){
         try {
             Class<?> clazz = Class.forName(className);
             startActivity(clazz);
         }catch (Exception ex) {
             toast(ex.toString());
         }
-    }
-
-
-    public static void startSettingsActivity(){
-        startActivity(SettingsActivity.class);
     }
 
     public static void startUndoPostActivity(){

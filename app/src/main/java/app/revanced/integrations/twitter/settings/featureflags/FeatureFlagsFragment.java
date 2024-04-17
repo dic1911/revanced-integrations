@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import app.revanced.integrations.shared.Utils;
 import app.revanced.integrations.twitter.settings.Settings;
-import app.revanced.integrations.twitter.settings.SettingsActivity;
+import app.revanced.integrations.twitter.settings.ActivityHook;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -37,7 +37,7 @@ public class FeatureFlagsFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        SettingsActivity.toolbar.setTitle(Utils.getResourceString("piko_title_feature_flags"));
+        ActivityHook.toolbar.setTitle(Utils.getResourceString("piko_title_feature_flags"));
     }
 
     private void saveFlags() {
