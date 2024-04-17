@@ -1,3 +1,10 @@
+## [1.13.0-dev.2](https://github.com/crimera/revanced-integrations/compare/v1.13.0-dev.1...v1.13.0-dev.2) (2024-04-17)
+
+
+### Updates
+
+* Use `piko_pref_feature_flags` in toolbar ([9e11984](https://github.com/crimera/revanced-integrations/commit/9e11984563b8edea410ecfbecb1e6f6646cb07e7))
+
 ## [1.13.0-dev.1](https://github.com/crimera/revanced-integrations/compare/v1.12.1-dev.1...v1.13.0-dev.1) (2024-04-15)
 
 
