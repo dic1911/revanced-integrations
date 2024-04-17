@@ -37,7 +37,7 @@ public class FeatureFlagsFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        SettingsActivity.toolbar.setTitle(Utils.getResourceString("piko_title_feature_flags"));
+        SettingsActivity.toolbar.setTitle(Utils.getResourceString("piko_pref_feature_flags"));
     }
 
     private void saveFlags() {
