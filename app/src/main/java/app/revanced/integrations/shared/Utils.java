@@ -51,8 +51,6 @@ public class Utils {
     } // utility class
 
     public static void load() {
-        SettingsStatus.load();
-        FeatureSwitchPatch.load();
     }
 
     public static String getVersionName() {
