@@ -1,3 +1,10 @@
+## [1.13.0-dev.4](https://github.com/crimera/revanced-integrations/compare/v1.13.0-dev.3...v1.13.0-dev.4) (2024-04-18)
+
+
+### Refactors
+
+* **Twitter:** load `Utils.load()` dynamically ([6cddfa7](https://github.com/crimera/revanced-integrations/commit/6cddfa714088a081b6de75fcfbb8a8cee1445f22))
+
 ## [1.13.0-dev.3](https://github.com/crimera/revanced-integrations/compare/v1.13.0-dev.2...v1.13.0-dev.3) (2024-04-18)
 
 
