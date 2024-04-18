@@ -62,7 +62,7 @@ public class FeatureFlagsFragment extends Fragment {
             String editTextValue = flagEditText.getText().toString();
             if (!editTextValue.equals(flag.getName())) {
                 flags.set(position, new FeatureFlag(flagEditText.getText().toString(), flag.getEnabled()));
-                adapter.A(position);
+                adapter.notifyItemChanged(position);
                 saveFlags();
             }
         });
@@ -95,7 +95,7 @@ public class FeatureFlagsFragment extends Fragment {
         dia.setPositiveButton(Utils.getResourceString("save"), (dialogInterface, i) -> {
             String editTextValue = flagEditText.getText().toString();
             flags.add(new FeatureFlag(editTextValue, true));
-            adapter.A(flags.size());
+            adapter.notifyItemChanged(flags.size());
             saveFlags();
         });
 
