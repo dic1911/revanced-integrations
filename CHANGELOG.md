@@ -1,3 +1,10 @@
+## [1.13.0-dev.3](https://github.com/crimera/revanced-integrations/compare/v1.13.0-dev.2...v1.13.0-dev.3) (2024-04-18)
+
+
+### Bug Fixes
+
+* Make the methods `notifyItemChanged` and `getAdapterPosition` search for the functions dynamically ([ff144f7](https://github.com/crimera/revanced-integrations/commit/ff144f79ce2e9645f8bd680f12a3329c2f74e3e2))
+
 ## [1.13.0-dev.2](https://github.com/crimera/revanced-integrations/compare/v1.13.0-dev.1...v1.13.0-dev.2) (2024-04-17)
 
 
