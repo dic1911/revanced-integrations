@@ -1,3 +1,39 @@
+## [1.13.0-dev.4](https://github.com/crimera/revanced-integrations/compare/v1.13.0-dev.3...v1.13.0-dev.4) (2024-04-18)
+
+
+### Refactors
+
+* **Twitter:** load `Utils.load()` dynamically ([6cddfa7](https://github.com/crimera/revanced-integrations/commit/6cddfa714088a081b6de75fcfbb8a8cee1445f22))
+
+## [1.13.0-dev.3](https://github.com/crimera/revanced-integrations/compare/v1.13.0-dev.2...v1.13.0-dev.3) (2024-04-18)
+
+
+### Bug Fixes
+
+* Make the methods `notifyItemChanged` and `getAdapterPosition` search for the functions dynamically ([ff144f7](https://github.com/crimera/revanced-integrations/commit/ff144f79ce2e9645f8bd680f12a3329c2f74e3e2))
+
+## [1.13.0-dev.2](https://github.com/crimera/revanced-integrations/compare/v1.13.0-dev.1...v1.13.0-dev.2) (2024-04-17)
+
+
+### Updates
+
+* Use `piko_pref_feature_flags` in toolbar ([9e11984](https://github.com/crimera/revanced-integrations/commit/9e11984563b8edea410ecfbecb1e6f6646cb07e7))
+
+## [1.13.0-dev.1](https://github.com/crimera/revanced-integrations/compare/v1.12.1-dev.1...v1.13.0-dev.1) (2024-04-15)
+
+
+### Features
+
+* **Twitter:** Added ability to export and import prefs & feature flags ([f87d4ed](https://github.com/crimera/revanced-integrations/commit/f87d4edfedeb77cd459e02f3513b498fc9b461db))
+* **Twitter:** Added ability to export and import prefs & feature flags ([e13fc7e](https://github.com/crimera/revanced-integrations/commit/e13fc7ef7a7c99634b3b7ccbcf836428556fccc9))
+
+## [1.12.1-dev.1](https://github.com/crimera/revanced-integrations/compare/v1.12.0...v1.12.1-dev.1) (2024-04-15)
+
+
+### Bug Fixes
+
+* Use `piko_pref_feature_flags` for the Feature Flags button ([2afce73](https://github.com/crimera/revanced-integrations/commit/2afce734d7ce7d0d713beda1b9e82d6a11818698))
+
 ## [1.12.0](https://github.com/crimera/revanced-integrations/compare/v1.11.0...v1.12.0) (2024-04-14)
 
 

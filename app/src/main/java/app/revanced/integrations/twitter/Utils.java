@@ -6,14 +6,17 @@ import android.content.Intent;
 import app.revanced.integrations.shared.settings.Setting;
 import app.revanced.integrations.shared.settings.preference.SharedPrefCategory;
 import app.revanced.integrations.twitter.settings.SettingsActivity;
-
-import java.util.Arrays;
+import app.revanced.integrations.twitter.settings.Settings;
+import app.revanced.integrations.twitter.settings.BackupPrefActivity;
+import app.revanced.integrations.twitter.settings.RestorePrefActivity;
+import org.json.JSONObject;
+import java.util.*;
 
 @SuppressWarnings("unused")
 public class Utils {
     @SuppressLint("StaticFieldLeak")
     private static final Context ctx = app.revanced.integrations.shared.Utils.getContext();
-    private static SharedPrefCategory sp = new SharedPrefCategory("piko_settings");
+    private static SharedPrefCategory sp = new SharedPrefCategory(Settings.SHARED_PREF_NAME);
 
     private static void startActivity(Class cls) {
         Intent intent = new Intent(ctx, cls);
@@ -45,7 +48,20 @@ public class Utils {
         startActivityFromClassName(className);
     }
 
-    public static Boolean putBooleanPerf(String key,Boolean val) {
+    public static void startBackupActivity(boolean featureFlag){
+        Intent intent = new Intent(ctx, BackupPrefActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("featureFlag", featureFlag);
+        ctx.startActivity(intent);
+    }
+    public static void startRestoreActivity(boolean featureFlag){
+        Intent intent = new Intent(ctx, RestorePrefActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("featureFlag", featureFlag);
+        ctx.startActivity(intent);
+    }
+
+    public static Boolean setBooleanPerf(String key,Boolean val) {
         try{
             sp.saveBoolean(key, val);
             return true;
@@ -56,7 +72,7 @@ public class Utils {
         return false;
     }
 
-    public static Boolean putStringPerf(String key,String val) {
+    public static Boolean setStringPref(String key,String val) {
         try{
             sp.saveString(key,val);
             return true;
@@ -78,6 +94,35 @@ public class Utils {
     public static Boolean getBooleanPerf(Setting<Boolean> setting) {
         return sp.getBoolean(setting.key, setting.defaultValue);
     }
+    public static String getAll(boolean no_flags){
+        JSONObject prefs = sp.getAll();
+        if (no_flags) {
+            prefs.remove(Settings.MISC_FEATURE_FLAGS.key);
+        }
+        return prefs.toString();
+    }
+
+    public static boolean setAll(String jsonString){
+        boolean sts = false;
+        try{
+            JSONObject jsonObject = new JSONObject(jsonString);
+            Iterator<String> keys = jsonObject.keys();
+            while(keys.hasNext()) {
+                String key = keys.next();
+                Object value = jsonObject.get(key);
+                if(value instanceof Boolean){
+                    setBooleanPerf(key,(Boolean)value);
+                } else if (value instanceof String) {
+                    setStringPref(key,(String)value);
+                }
+            }
+            sts = true;
+        }
+        catch (Exception ex){
+            toast(ex.toString());
+        }
+        return sts;
+    }
 
     public static String[] addPref(String[] prefs, String pref) {
         String[] bigger = Arrays.copyOf(prefs, prefs.length+1);
@@ -85,7 +130,7 @@ public class Utils {
         return bigger;
     }
 
-    private static void toast(String msg){
+    public static void toast(String msg){
         app.revanced.integrations.shared.Utils.showToastShort(msg);
     }
 
