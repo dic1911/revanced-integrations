@@ -1,3 +1,10 @@
+## [1.14.0-dev.1](https://github.com/crimera/revanced-integrations/compare/v1.13.0...v1.14.0-dev.1) (2024-04-19)
+
+
+### Features
+
+* **Twitter:** Added `Profile tabs customisation` ([2a498d3](https://github.com/crimera/revanced-integrations/commit/2a498d365390d467d54d6073fba1bd2a71e39f91))
+
 ## [1.13.0](https://github.com/crimera/revanced-integrations/compare/v1.12.0...v1.13.0) (2024-04-19)
 
 
