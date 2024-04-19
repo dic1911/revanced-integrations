@@ -101,7 +101,20 @@ public class Utils {
         }
         return prefs.toString();
     }
+    public static Set<String> getSetPerf(String key,Set<String> defaultValue) {
+        return sp.getSet(key, defaultValue);
+    }
 
+    public static Boolean setSetPerf(String key,Set<String> defaultValue) {
+        try{
+            sp.saveSet(key, defaultValue);
+            return true;
+        }
+        catch(Exception ex){
+            toast(ex.toString());
+        }
+        return false;
+    }
     public static boolean setAll(String jsonString){
         boolean sts = false;
         try{

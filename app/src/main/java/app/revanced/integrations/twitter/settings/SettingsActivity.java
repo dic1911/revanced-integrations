@@ -12,6 +12,8 @@ import app.revanced.integrations.shared.settings.BooleanSetting;
 import app.revanced.integrations.shared.settings.StringSetting;
 import app.revanced.integrations.twitter.settings.featureflags.FeatureFlagsFragment;
 import com.twitter.ui.widget.LegacyTwitterPreferenceCategory;
+import java.util.*;
+import app.revanced.integrations.twitter.Pref;
 @SuppressWarnings("deprecation")
 public class SettingsActivity extends Activity {
     public static Toolbar toolbar;
@@ -57,6 +59,7 @@ public class SettingsActivity extends Activity {
             PreferenceScreen screen = preferenceManager.createPreferenceScreen(context);
             preferenceManager.setSharedPreferencesName(Settings.SHARED_PREF_NAME);
 
+            //premium section
             if (SettingsStatus.enablePremiumSection()) {
                 LegacyTwitterPreferenceCategory premiumPrefs = preferenceCategory(strRes("piko_title_premium"), screen);
                 if (SettingsStatus.enableReaderMode) {
@@ -96,6 +99,7 @@ public class SettingsActivity extends Activity {
                 }
             }
 
+            //download section
             if (SettingsStatus.changeDownloadEnabled) {
                 LegacyTwitterPreferenceCategory downloadPrefs = preferenceCategory(strRes("piko_title_download"), screen);
                 downloadPrefs.addPreference(listPreference(
@@ -110,6 +114,7 @@ public class SettingsActivity extends Activity {
                 ));
             }
 
+            //ads section
             if (SettingsStatus.enableAdsSection()) {
                 LegacyTwitterPreferenceCategory adsPrefs = preferenceCategory(strRes("piko_title_ads"), screen);
 
@@ -204,6 +209,7 @@ public class SettingsActivity extends Activity {
 
             }
 
+            //Misc Section
             if (SettingsStatus.enableMiscSection()) {
                 LegacyTwitterPreferenceCategory miscPrefs = preferenceCategory(strRes("piko_title_misc"), screen);
                 if (SettingsStatus.enableFontMod) {
@@ -285,6 +291,21 @@ public class SettingsActivity extends Activity {
                 }
             }
 
+            //customise Section
+            if (SettingsStatus.enableCustomisationSection()) {
+                LegacyTwitterPreferenceCategory customisationPrefs = preferenceCategory(strRes("piko_title_customisation"), screen);
+                if (SettingsStatus.profileTabCustomisation) {
+                    customisationPrefs.addPreference(
+                            multiSelectListPreference(
+                                    strRes("piko_pref_customisation_profiletabs"),
+                                    "",
+                                    Settings.CUSTOM_PROFILE_TABS
+                            )
+                    );
+                }
+            }
+
+            //Timeline Section
             if (SettingsStatus.enableTimelineSection()) {
                 LegacyTwitterPreferenceCategory timelinePrefs = preferenceCategory(strRes("piko_title_timeline"), screen);
                 if (SettingsStatus.hideForyou) {
@@ -346,6 +367,8 @@ public class SettingsActivity extends Activity {
 
             }
 
+
+            //export section
             LegacyTwitterPreferenceCategory backupPref = preferenceCategory(strRes("piko_title_backup"), screen);
             backupPref.addPreference(
                     buttonPreference(
@@ -411,13 +434,32 @@ public class SettingsActivity extends Activity {
 
         private Preference listPreference(String title, String summary, StringSetting setting) {
             ListPreference preference = new ListPreference(context);
+            String key = setting.key;
             preference.setTitle(title);
             preference.setDialogTitle(title);
             preference.setSummary(summary);
-            preference.setKey(setting.key);
+            preference.setKey(key);
             preference.setDefaultValue(setting.defaultValue);
-            preference.setEntries(new CharSequence[]{"Movies", "DCIM", "Pictures", "Download"});
-            preference.setEntryValues(new CharSequence[]{"Movies", "DCIM", "Pictures", "Download"});
+            if(key == Settings.VID_PUBLIC_FOLDER.key) {
+                CharSequence[] vals = new CharSequence[]{"Movies", "DCIM", "Pictures", "Download"};
+                preference.setEntries(vals);
+                preference.setEntryValues(vals);
+            }
+            setOnPreferenceChangeListener(preference);
+            return preference;
+        }
+
+        private Preference multiSelectListPreference(String title, String summary, StringSetting setting) {
+            MultiSelectListPreference preference = new MultiSelectListPreference(context);
+            String key = setting.key;
+            preference.setTitle(title);
+            preference.setDialogTitle(title);
+            preference.setSummary(summary);
+            preference.setKey(key);
+            if(key == Settings.CUSTOM_PROFILE_TABS.key){
+                preference.setEntries(Utils.getResourceStringArray("piko_array_profiletabs"));
+                preference.setEntryValues(new CharSequence[]{"tweets", "tweets_replies","affiliated", "subs","highlights", "articles", "media", "likes"});
+            }
             setOnPreferenceChangeListener(preference);
             return preference;
         }
@@ -458,11 +500,16 @@ public class SettingsActivity extends Activity {
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
                     try{
                         if (newValue!=null){
-                            if(newValue.getClass() == Boolean.class){
-                                app.revanced.integrations.twitter.Utils.setBooleanPerf(key,(Boolean)newValue);
+                            String newValClass = newValue.getClass().getSimpleName();
+
+                            if(newValClass.equals("Boolean")){
+                                setBooleanPerf(key,(Boolean)newValue);
                             }
-                            else if(newValue.getClass() == String.class){
-                                app.revanced.integrations.twitter.Utils.setStringPref(key,(String)newValue);
+                            else if(newValClass.equals("String")){
+                                setStringPref(key,(String)newValue);
+                            }
+                            else if(newValClass.equals("HashSet")){
+                                setSetPref(key,(Set)newValue);
                             }
                         }
 
@@ -475,9 +522,25 @@ public class SettingsActivity extends Activity {
         }
 
         private static String strRes(String tag){
-            return Utils.getResourceString(tag);
+            try {
+                return Utils.getResourceString(tag);
+            }
+            catch (Exception e){
+
+                Utils.showToastShort(tag+" not found");
+            }
+            return tag;
         }
 
+        private static void setBooleanPerf(String key,Boolean val){
+            app.revanced.integrations.twitter.Utils.setBooleanPerf(key,val);
+        }
+        private static void setStringPref(String key,String val){
+            app.revanced.integrations.twitter.Utils.setStringPref(key,val);
+        }
+        private static void setSetPref(String key,Set<String> val){
+            app.revanced.integrations.twitter.Utils.setSetPerf(key,val);
+        }
 
         //end
     }
