@@ -37,11 +37,11 @@ public class FeatureFlagsFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        ActivityHook.toolbar.setTitle(Utils.getResourceString("piko_title_feature_flags"));
+        SettingsActivity.toolbar.setTitle(Utils.getResourceString("piko_pref_feature_flags"));
     }
 
     private void saveFlags() {
-        app.revanced.integrations.twitter.Utils.putStringPerf(Settings.MISC_FEATURE_FLAGS.key, FeatureFlag.toStringPref(flags));
+        app.revanced.integrations.twitter.Utils.setStringPref(Settings.MISC_FEATURE_FLAGS.key, FeatureFlag.toStringPref(flags));
     }
 
     public void modifyFlag(CustomAdapter adapter, int position) {
@@ -62,7 +62,7 @@ public class FeatureFlagsFragment extends Fragment {
             String editTextValue = flagEditText.getText().toString();
             if (!editTextValue.equals(flag.getName())) {
                 flags.set(position, new FeatureFlag(flagEditText.getText().toString(), flag.getEnabled()));
-                adapter.A(position);
+                adapter.notifyItemChanged(position);
                 saveFlags();
             }
         });
@@ -95,7 +95,7 @@ public class FeatureFlagsFragment extends Fragment {
         dia.setPositiveButton(Utils.getResourceString("save"), (dialogInterface, i) -> {
             String editTextValue = flagEditText.getText().toString();
             flags.add(new FeatureFlag(editTextValue, true));
-            adapter.A(flags.size());
+            adapter.notifyItemChanged(flags.size());
             saveFlags();
         });
 

@@ -27,7 +27,7 @@ public class RecyclerView extends ViewGroup {
         }
 
         // getAdapterPosition
-        public final int a0() {
+        public final int Z() {
             return -1;
         }
     }
@@ -56,12 +56,6 @@ public class RecyclerView extends ViewGroup {
 
         public abstract void F(VH vh, int i);
 
-        public final void C(int i, Object obj) {}
-
-            // notifyItemChanged
-        public final void A(int i) {}
-
-        // notifyItemRemoved wRONG IdK
         public final void D(int i) {}
     }
 

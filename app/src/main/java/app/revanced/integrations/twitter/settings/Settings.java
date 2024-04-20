@@ -5,6 +5,8 @@ import app.revanced.integrations.shared.settings.BooleanSetting;
 import app.revanced.integrations.shared.settings.StringSetting;
 
 public class Settings extends BaseSettings {
+    public static final String SHARED_PREF_NAME = "piko_settings";
+
     public static final StringSetting VID_PUBLIC_FOLDER = new StringSetting("vid_public_folder", "Movies");
     public static final StringSetting VID_SUBFOLDER = new StringSetting("vid_subfolder", "Twitter");
     public static final StringSetting CUSTOM_SHARING_DOMAIN = new StringSetting("misc_custom_sharing_domain", "twitter");
@@ -35,5 +37,12 @@ public class Settings extends BaseSettings {
 
     public static final BooleanSetting PREMIUM_READER_MODE = new BooleanSetting("premium_reader_mode", false);
     public static final BooleanSetting PREMIUM_UNDO_POSTS = new BooleanSetting("premium_undo_posts", false);
-    public static final String PREMIUM_ICONS = "premium_app_icon_n_nav_icon";
+    public static final StringSetting PREMIUM_ICONS = new StringSetting("premium_app_icon_n_nav_icon", "");
+
+    public static final StringSetting CUSTOM_PROFILE_TABS = new StringSetting("customisation_profile_tabs", "");
+
+    public static final StringSetting EXPORT_PREF = new StringSetting("export_pref", "");
+    public static final StringSetting EXPORT_FLAGS = new StringSetting("export_flags", "");
+    public static final StringSetting IMPORT_PREF = new StringSetting("import_pref", "");
+    public static final StringSetting IMPORT_FLAGS = new StringSetting("import_flags", "");
 }
