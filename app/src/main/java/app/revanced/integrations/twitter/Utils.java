@@ -1,15 +1,13 @@
 package app.revanced.integrations.twitter;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import app.revanced.integrations.shared.settings.Setting;
 import app.revanced.integrations.shared.settings.preference.SharedPrefCategory;
-import app.revanced.integrations.twitter.settings.SettingsActivity;
 import app.revanced.integrations.twitter.settings.Settings;
-import app.revanced.integrations.twitter.settings.BackupPrefActivity;
-import app.revanced.integrations.twitter.settings.RestorePrefActivity;
+import app.revanced.integrations.twitter.settings.BackupPrefFragment;
+import app.revanced.integrations.twitter.settings.RestorePrefFragment;
 import org.json.JSONObject;
 import java.util.*;
 
@@ -47,13 +45,13 @@ public class Utils {
     }
 
     public static void startBackupActivity(boolean featureFlag){
-        Intent intent = new Intent(ctx, BackupPrefActivity.class);
+        Intent intent = new Intent(ctx, BackupPrefFragment.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("featureFlag", featureFlag);
         ctx.startActivity(intent);
     }
     public static void startRestoreActivity(boolean featureFlag){
-        Intent intent = new Intent(ctx, RestorePrefActivity.class);
+        Intent intent = new Intent(ctx, RestorePrefFragment.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("featureFlag", featureFlag);
         ctx.startActivity(intent);

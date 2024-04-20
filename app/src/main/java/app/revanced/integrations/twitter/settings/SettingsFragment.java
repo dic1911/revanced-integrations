@@ -1,5 +1,6 @@
 package app.revanced.integrations.twitter.settings;
 
+import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.preference.*;
@@ -10,6 +11,8 @@ import app.revanced.integrations.shared.settings.StringSetting;
 import app.revanced.integrations.twitter.settings.featureflags.FeatureFlagsFragment;
 import com.twitter.ui.widget.LegacyTwitterPreferenceCategory;
 
+import java.util.*;
+
 @SuppressWarnings("deprecation")
 public class SettingsFragment extends PreferenceFragment implements Preference.OnPreferenceClickListener {
     private Context context;
@@ -17,7 +20,7 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
     @Override
     public void onResume() {
         super.onResume();
-        ActivityHook.toolbar.setTitle(Utils.getResourceString("piko_title_settings"));
+        ActivityHook.toolbar.setTitle(strRes("piko_title_settings"));
     }
 
     @Override
@@ -25,15 +28,18 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
         super.onCreate(savedInstanceState);
         context = getContext();
 
-        PreferenceScreen screen = getPreferenceManager().createPreferenceScreen(context);
+        PreferenceManager preferenceManager = getPreferenceManager();
+        PreferenceScreen screen = preferenceManager.createPreferenceScreen(context);
+        preferenceManager.setSharedPreferencesName(Settings.SHARED_PREF_NAME);
 
+        //premium section
         if (SettingsStatus.enablePremiumSection()) {
-            LegacyTwitterPreferenceCategory premiumPrefs = preferenceCategory(Utils.getResourceString("piko_title_premium"), screen);
+            LegacyTwitterPreferenceCategory premiumPrefs = preferenceCategory(strRes("piko_title_premium"), screen);
             if (SettingsStatus.enableReaderMode) {
                 premiumPrefs.addPreference(
                         switchPreference(
-                                Utils.getResourceString("piko_pref_reader_mode"),
-                                Utils.getResourceString("piko_pref_reader_mode_desc"),
+                                strRes("piko_pref_reader_mode"),
+                                strRes("piko_pref_reader_mode_desc"),
                                 Settings.PREMIUM_READER_MODE
                         )
                 );
@@ -41,15 +47,15 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
             if (SettingsStatus.enableUndoPosts) {
                 premiumPrefs.addPreference(
                         switchPreference(
-                                Utils.getResourceString("piko_pref_undo_posts"),
-                                Utils.getResourceString("piko_pref_undo_posts_desc"),
+                                strRes("piko_pref_undo_posts"),
+                                strRes("piko_pref_undo_posts_desc"),
                                 Settings.PREMIUM_UNDO_POSTS
                         )
                 );
 
                 premiumPrefs.addPreference(
                         buttonPreference(
-                                Utils.getResourceString("piko_pref_undo_posts_btn"),
+                                strRes("piko_pref_undo_posts_btn"),
                                 "",
                                 Settings.PREMIUM_UNDO_POSTS.key
                         )
@@ -58,35 +64,37 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
             if (SettingsStatus.enableAppIconNNavIcon) {
                 premiumPrefs.addPreference(
                         buttonPreference(
-                                Utils.getResourceString("piko_pref_icon_n_navbar_btn"),
+                                strRes("piko_pref_icon_n_navbar_btn"),
                                 "",
-                                Settings.PREMIUM_ICONS
+                                Settings.PREMIUM_ICONS.key
                         )
                 );
             }
         }
 
+        //download section
         if (SettingsStatus.changeDownloadEnabled) {
-            LegacyTwitterPreferenceCategory downloadPrefs = preferenceCategory(Utils.getResourceString("piko_title_download"), screen);
+            LegacyTwitterPreferenceCategory downloadPrefs = preferenceCategory(strRes("piko_title_download"), screen);
             downloadPrefs.addPreference(listPreference(
-                    Utils.getResourceString("piko_pref_download_path"),
-                    Utils.getResourceString("piko_pref_download_path_desc"),
+                    strRes("piko_pref_download_path"),
+                    strRes("piko_pref_download_path_desc"),
                     Settings.VID_PUBLIC_FOLDER
             ));
             downloadPrefs.addPreference(editTextPreference(
-                    Utils.getResourceString("piko_pref_download_folder"),
-                    Utils.getResourceString("piko_pref_download_folder_desc"),
+                    strRes("piko_pref_download_folder"),
+                    strRes("piko_pref_download_folder_desc"),
                     Settings.VID_SUBFOLDER
             ));
         }
 
+        //ads section
         if (SettingsStatus.enableAdsSection()) {
-            LegacyTwitterPreferenceCategory adsPrefs = preferenceCategory(Utils.getResourceString("piko_title_ads"), screen);
+            LegacyTwitterPreferenceCategory adsPrefs = preferenceCategory(strRes("piko_title_ads"), screen);
 
             if (SettingsStatus.hideAds) {
                 adsPrefs.addPreference(
                         switchPreference(
-                                Utils.getResourceString("piko_pref_hide_promoted_posts"),
+                                strRes("piko_pref_hide_promoted_posts"),
                                 "",
                                 Settings.ADS_HIDE_PROMOTED_POSTS
                         )
@@ -96,7 +104,7 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
             if (SettingsStatus.hideGAds) {
                 adsPrefs.addPreference(
                         switchPreference(
-                                Utils.getResourceString("piko_pref_hide_g_ads"),
+                                strRes("piko_pref_hide_g_ads"),
                                 "",
                                 Settings.ADS_HIDE_GOOGLE_ADS
                         )
@@ -105,7 +113,7 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
             if (SettingsStatus.hideWTF) {
                 adsPrefs.addPreference(
                         switchPreference(
-                                Utils.getResourceString("piko_pref_wtf_section"),
+                                strRes("piko_pref_wtf_section"),
                                 "",
                                 Settings.ADS_HIDE_WHO_TO_FOLLOW
                         )
@@ -114,7 +122,7 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
             if (SettingsStatus.hideCTS) {
                 adsPrefs.addPreference(
                         switchPreference(
-                                Utils.getResourceString("piko_pref_cts_section"),
+                                strRes("piko_pref_cts_section"),
                                 "",
                                 Settings.ADS_HIDE_CREATORS_TO_SUB
                         )
@@ -124,7 +132,7 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
             if (SettingsStatus.hideCTJ) {
                 adsPrefs.addPreference(
                         switchPreference(
-                                Utils.getResourceString("piko_pref_ctj_section"),
+                                strRes("piko_pref_ctj_section"),
                                 "",
                                 Settings.ADS_HIDE_COMM_TO_JOIN
                         )
@@ -134,7 +142,7 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
             if (SettingsStatus.hideRBMK) {
                 adsPrefs.addPreference(
                         switchPreference(
-                                Utils.getResourceString("piko_pref_ryb_section"),
+                                strRes("piko_pref_ryb_section"),
                                 "",
                                 Settings.ADS_HIDE_REVISIT_BMK
                         )
@@ -144,7 +152,7 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
             if (SettingsStatus.hideRPinnedPosts) {
                 adsPrefs.addPreference(
                         switchPreference(
-                                Utils.getResourceString("piko_pref_pinned_posts_section"),
+                                strRes("piko_pref_pinned_posts_section"),
                                 "",
                                 Settings.ADS_HIDE_REVISIT_PINNED_POSTS
                         )
@@ -154,7 +162,7 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
             if (SettingsStatus.hideDetailedPosts) {
                 adsPrefs.addPreference(
                         switchPreference(
-                                Utils.getResourceString("piko_pref_hide_detailed_posts"),
+                                strRes("piko_pref_hide_detailed_posts"),
                                 "",
                                 Settings.ADS_HIDE_DETAILED_POSTS
                         )
@@ -164,7 +172,7 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
             if (SettingsStatus.hidePromotedTrend) {
                 adsPrefs.addPreference(
                         switchPreference(
-                                Utils.getResourceString("piko_pref_hide_trends"),
+                                strRes("piko_pref_hide_trends"),
                                 "",
                                 Settings.ADS_HIDE_PROMOTED_TRENDS
                         )
@@ -174,12 +182,13 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
 
         }
 
+        //Misc Section
         if (SettingsStatus.enableMiscSection()) {
-            LegacyTwitterPreferenceCategory miscPrefs = preferenceCategory(Utils.getResourceString("piko_title_misc"), screen);
+            LegacyTwitterPreferenceCategory miscPrefs = preferenceCategory(strRes("piko_title_misc"), screen);
             if (SettingsStatus.enableFontMod) {
                 miscPrefs.addPreference(
                         switchPreference(
-                                Utils.getResourceString("piko_pref_chirp_font"),
+                                strRes("piko_pref_chirp_font"),
                                 "",
                                 Settings.MISC_FONT
                         )
@@ -188,7 +197,7 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
             if (SettingsStatus.hideFAB) {
                 miscPrefs.addPreference(
                         switchPreference(
-                                Utils.getResourceString("piko_pref_hide_fab"),
+                                strRes("piko_pref_hide_fab"),
                                 "",
                                 Settings.MISC_HIDE_FAB
                         )
@@ -197,7 +206,7 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
             if (SettingsStatus.hideFABBtns) {
                 miscPrefs.addPreference(
                         switchPreference(
-                                Utils.getResourceString("piko_pref_hide_fab_menu"),
+                                strRes("piko_pref_hide_fab_menu"),
                                 "",
                                 Settings.MISC_HIDE_FAB_BTN
                         )
@@ -207,7 +216,7 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
             if (SettingsStatus.hideRecommendedUsers) {
                 miscPrefs.addPreference(
                         switchPreference(
-                                Utils.getResourceString("piko_pref_rec_users"),
+                                strRes("piko_pref_rec_users"),
                                 "",
                                 Settings.MISC_HIDE_RECOMMENDED_USERS
                         )
@@ -217,7 +226,7 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
             if (SettingsStatus.hideCommunityNote) {
                 miscPrefs.addPreference(
                         switchPreference(
-                                Utils.getResourceString("piko_pref_comm_notes"),
+                                strRes("piko_pref_comm_notes"),
                                 "",
                                 Settings.MISC_HIDE_COMM_NOTES
                         )
@@ -227,7 +236,7 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
             if (SettingsStatus.hideViewCount) {
                 miscPrefs.addPreference(
                         switchPreference(
-                                Utils.getResourceString("piko_pref_hide_view_count"),
+                                strRes("piko_pref_hide_view_count"),
                                 "",
                                 Settings.MISC_HIDE_VIEW_COUNT
                         )
@@ -237,8 +246,8 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
             if (SettingsStatus.customSharingDomainEnabled) {
                 miscPrefs.addPreference(
                         editTextPreference(
-                                Utils.getResourceString("piko_pref_custom_share_domain"),
-                                Utils.getResourceString("piko_pref_custom_share_domain_desc"),
+                                strRes("piko_pref_custom_share_domain"),
+                                strRes("piko_pref_custom_share_domain_desc"),
                                 Settings.CUSTOM_SHARING_DOMAIN
                         )
                 );
@@ -247,7 +256,7 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
             if (SettingsStatus.featureFlags) {
                 miscPrefs.addPreference(
                         buttonPreference(
-                                "Feature flags",
+                                strRes("piko_pref_feature_flags"),
                                 "",
                                 Settings.MISC_FEATURE_FLAGS.key
                         )
@@ -255,12 +264,27 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
             }
         }
 
+        //customise Section
+        if (SettingsStatus.enableCustomisationSection()) {
+            LegacyTwitterPreferenceCategory customisationPrefs = preferenceCategory(strRes("piko_title_customisation"), screen);
+            if (SettingsStatus.profileTabCustomisation) {
+                customisationPrefs.addPreference(
+                        multiSelectListPreference(
+                                strRes("piko_pref_customisation_profiletabs"),
+                                "",
+                                Settings.CUSTOM_PROFILE_TABS
+                        )
+                );
+            }
+        }
+
+        //Timeline Section
         if (SettingsStatus.enableTimelineSection()) {
-            LegacyTwitterPreferenceCategory timelinePrefs = preferenceCategory(Utils.getResourceString("piko_title_timeline"), screen);
+            LegacyTwitterPreferenceCategory timelinePrefs = preferenceCategory(strRes("piko_title_timeline"), screen);
             if (SettingsStatus.hideForyou) {
                 timelinePrefs.addPreference(
                         switchPreference(
-                                Utils.getResourceString("piko_pref_hide_for_you"),
+                                strRes("piko_pref_hide_for_you"),
                                 "",
                                 Settings.TIMELINE_HIDE_FORYOU
                         )
@@ -269,8 +293,8 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
             if (SettingsStatus.hideLiveThreads) {
                 timelinePrefs.addPreference(
                         switchPreference(
-                                Utils.getResourceString("piko_pref_hide_live_threads"),
-                                Utils.getResourceString("piko_pref_hide_live_threads_desc"),
+                                strRes("piko_pref_hide_live_threads"),
+                                strRes("piko_pref_hide_live_threads_desc"),
                                 Settings.TIMELINE_HIDE_LIVETHREADS
                         )
                 );
@@ -278,8 +302,8 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
             if (SettingsStatus.hideBanner) {
                 timelinePrefs.addPreference(
                         switchPreference(
-                                Utils.getResourceString("piko_pref_hide_banner"),
-                                Utils.getResourceString("piko_pref_hide_banner_desc"),
+                                strRes("piko_pref_hide_banner"),
+                                strRes("piko_pref_hide_banner_desc"),
                                 Settings.TIMELINE_HIDE_BANNER
                         )
                 );
@@ -287,7 +311,7 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
             if (SettingsStatus.hideInlineBmk) {
                 timelinePrefs.addPreference(
                         switchPreference(
-                                Utils.getResourceString("piko_pref_hide_bmk_timeline"),
+                                strRes("piko_pref_hide_bmk_timeline"),
                                 "",
                                 Settings.TIMELINE_HIDE_BMK_ICON
                         )
@@ -297,8 +321,8 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
             if (SettingsStatus.showPollResultsEnabled) {
                 timelinePrefs.addPreference(
                         switchPreference(
-                                Utils.getResourceString("piko_pref_show_poll_result"),
-                                Utils.getResourceString("piko_pref_show_poll_result_desc"),
+                                strRes("piko_pref_show_poll_result"),
+                                strRes("piko_pref_show_poll_result_desc"),
                                 Settings.TIMELINE_SHOW_POLL_RESULTS
                         )
                 );
@@ -307,14 +331,46 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
             if (SettingsStatus.hideImmersivePlayer) {
                 timelinePrefs.addPreference(
                         switchPreference(
-                                Utils.getResourceString("piko_pref_hide_immersive_player"),
-                                Utils.getResourceString("piko_pref_hide_immersive_player_desc"),
+                                strRes("piko_pref_hide_immersive_player"),
+                                strRes("piko_pref_hide_immersive_player_desc"),
                                 Settings.TIMELINE_HIDE_IMMERSIVE_PLAYER
                         )
                 );
             }
 
         }
+
+
+        //export section
+        LegacyTwitterPreferenceCategory backupPref = preferenceCategory(strRes("piko_title_backup"), screen);
+        backupPref.addPreference(
+                buttonPreference(
+                        strRes("piko_pref_export"),
+                        "",
+                        Settings.EXPORT_PREF.key
+                )
+        );
+        backupPref.addPreference(
+                buttonPreference(
+                        strRes("piko_pref_export_flags"),
+                        "",
+                        Settings.EXPORT_FLAGS.key
+                )
+        );
+        backupPref.addPreference(
+                buttonPreference(
+                        strRes("piko_pref_import"),
+                        strRes("piko_pref_import_warn"),
+                        Settings.IMPORT_PREF.key
+                )
+        );
+        backupPref.addPreference(
+                buttonPreference(
+                        strRes("piko_pref_import_flags"),
+                        strRes("piko_pref_import_warn"),
+                        Settings.IMPORT_FLAGS.key
+                )
+        );
 
         setPreferenceScreen(screen);
     }
@@ -351,13 +407,32 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
 
     private Preference listPreference(String title, String summary, StringSetting setting) {
         ListPreference preference = new ListPreference(context);
+        String key = setting.key;
         preference.setTitle(title);
         preference.setDialogTitle(title);
         preference.setSummary(summary);
-        preference.setKey(setting.key);
+        preference.setKey(key);
         preference.setDefaultValue(setting.defaultValue);
-        preference.setEntries(new CharSequence[]{"Movies", "DCIM", "Pictures", "Download"});
-        preference.setEntryValues(new CharSequence[]{"Movies", "DCIM", "Pictures", "Download"});
+        if (key == Settings.VID_PUBLIC_FOLDER.key) {
+            CharSequence[] vals = new CharSequence[]{"Movies", "DCIM", "Pictures", "Download"};
+            preference.setEntries(vals);
+            preference.setEntryValues(vals);
+        }
+        setOnPreferenceChangeListener(preference);
+        return preference;
+    }
+
+    private Preference multiSelectListPreference(String title, String summary, StringSetting setting) {
+        MultiSelectListPreference preference = new MultiSelectListPreference(context);
+        String key = setting.key;
+        preference.setTitle(title);
+        preference.setDialogTitle(title);
+        preference.setSummary(summary);
+        preference.setKey(key);
+        if (key == Settings.CUSTOM_PROFILE_TABS.key) {
+            preference.setEntries(Utils.getResourceStringArray("piko_array_profiletabs"));
+            preference.setEntryValues(new CharSequence[]{"tweets", "tweets_replies", "affiliated", "subs", "highlights", "articles", "media", "likes"});
+        }
         setOnPreferenceChangeListener(preference);
         return preference;
     }
@@ -372,14 +447,30 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
     @Override
     public boolean onPreferenceClick(Preference preference) {
         String key = preference.getKey();
-        if (key.equals(Settings.PREMIUM_UNDO_POSTS.key)) {
+        if (key.equals(Settings.PREMIUM_UNDO_POSTS.key.toString())) {
             app.revanced.integrations.twitter.Utils.startUndoPostActivity();
-        } else if (key.equals(Settings.PREMIUM_ICONS)) {
+        } else if (key.equals(Settings.PREMIUM_ICONS.key)) {
             app.revanced.integrations.twitter.Utils.startAppIconNNavIconActivity();
         } else if (key.equals(Settings.MISC_FEATURE_FLAGS.key)) {
             getFragmentManager().beginTransaction().replace(Utils.getResourceIdentifier("fragment_container", "id"), new FeatureFlagsFragment()).addToBackStack(null).commit();
+        } else if (key.equals(Settings.EXPORT_PREF.key)) {
+            startBackupFragment(new BackupPrefFragment(), false);
+        } else if (key.equals(Settings.EXPORT_FLAGS.key)) {
+            startBackupFragment(new BackupPrefFragment(), true);
+        } else if (key.equals(Settings.IMPORT_PREF.key)) {
+            startBackupFragment(new RestorePrefFragment(), false);
+        } else if (key.equals(Settings.IMPORT_FLAGS.key)) {
+            startBackupFragment(new RestorePrefFragment(), true);
         }
+
         return true;
+    }
+
+    private void startBackupFragment(Fragment fragment, boolean featureFlag) {
+        Bundle bundle = new Bundle();
+        bundle.putBoolean("featureFlag", featureFlag);
+        fragment.setArguments(bundle);
+        getFragmentManager().beginTransaction().replace(Utils.getResourceIdentifier("fragment_container", "id"), fragment).addToBackStack(null).commit();
     }
 
     private void setOnPreferenceChangeListener(Preference preference) {
@@ -389,10 +480,14 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 try {
                     if (newValue != null) {
-                        if (newValue.getClass() == Boolean.class) {
-                            app.revanced.integrations.twitter.Utils.putBooleanPerf(key, (Boolean) newValue);
-                        } else if (newValue.getClass() == String.class) {
-                            app.revanced.integrations.twitter.Utils.putStringPerf(key, (String) newValue);
+                        String newValClass = newValue.getClass().getSimpleName();
+
+                        if (newValClass.equals("Boolean")) {
+                            setBooleanPerf(key, (Boolean) newValue);
+                        } else if (newValClass.equals("String")) {
+                            setStringPref(key, (String) newValue);
+                        } else if (newValClass.equals("HashSet")) {
+                            setSetPref(key, (Set) newValue);
                         }
                     }
 
@@ -403,4 +498,28 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
             }
         });
     }
+
+    private static String strRes(String tag) {
+        try {
+            return Utils.getResourceString(tag);
+        } catch (Exception e) {
+
+            Utils.showToastShort(tag + " not found");
+        }
+        return tag;
+    }
+
+    private static void setBooleanPerf(String key, Boolean val) {
+        app.revanced.integrations.twitter.Utils.setBooleanPerf(key, val);
+    }
+
+    private static void setStringPref(String key, String val) {
+        app.revanced.integrations.twitter.Utils.setStringPref(key, val);
+    }
+
+    private static void setSetPref(String key, Set<String> val) {
+        app.revanced.integrations.twitter.Utils.setSetPerf(key, val);
+    }
+
+    //end
 }
