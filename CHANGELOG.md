@@ -1,3 +1,11 @@
+## [1.14.0-dev.2](https://github.com/crimera/revanced-integrations/compare/v1.14.0-dev.1...v1.14.0-dev.2) (2024-04-21)
+
+
+### Bug Fixes
+
+* Opening mod settings with root installation results in crash ([b9625f0](https://github.com/crimera/revanced-integrations/commit/b9625f04df790fe898bca74663a02a0b3515968c))
+* Opening mod settings with root installation results in crash ([0d3e98f](https://github.com/crimera/revanced-integrations/commit/0d3e98fd3ac5a9d5e42165c8db58dec8bdcf7fc4))
+
 ## [1.14.0-dev.1](https://github.com/crimera/revanced-integrations/compare/v1.13.0...v1.14.0-dev.1) (2024-04-19)
 
 
